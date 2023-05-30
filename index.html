@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>여행 계획 도우미</title>
+    </head>
+    <style>
+        div,
+        p,
+        button,
+        form,
+        input,
+        h1,
+        textarea {
+            margin: 0;
+            padding: 0;
+            font-size: medium;
+        }
+        .slide {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow: hidden;
+
+            position: replative;
+            width: 100%;
+        }
+        .slide_item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+            left: 0px;
+
+            width: 100%;
+            flex-shrink: 0;
+
+            transition: left 0.15s;
+        }
+        .form {
+            height: 400px;
+        }
+
+        .loading {
+            visibility: hidden;
+            width: 100%;
+            height: 100%;
+            background-color: aquamarine;
+            opacity: 0.7;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .loading.visible {
+            visibility: visible;
+        }
+
+        .chat-wrap {
+            position: fixed;
+            max-height: 50%;
+            right: 10px;
+            bottom: 10px;
+        }
+        .chat-window {
+            overflow: auto;
+        }
+        .chat-window.hide {
+            visibility: hidden;
+        }
+
+        .chat_button {
+            width: 100%;
+        }
+    </style>
+    <body>
+        <!-- header -->
+        <div class="header">
+            <h1>여행계획 도우미</h1>
+        </div>
+        <!-- body -->
+        <div class="slide">
+            <div class="slide_item form">
+                <form action="post" class="generator">
+                    <div class="gen_input">
+                        <label for="target">여행지</label>
+                        <input
+                            type="search"
+                            id="target"
+                            placeholder="여행지를 입력하세요."
+                            required
+                        />
+                    </div>
+                    <div class="gen_input">
+                        <label for="start_date">시작일</label>
+                        <input type="datetime-local" id="start_date" required />
+                    </div>
+                    <div class="gen_input">
+                        <label for="end_date">종료일</label>
+                        <input type="datetime-local" id="end_date" required />
+                    </div>
+                    <div class="gen_textarea">
+                        <div class="main_target_label">
+                            꼭 들리고싶은 여행지
+                        </div>
+                        <textarea
+                            placeholder="꼭 들리고 싶은 여행지를 자유롭게 입력해주세요."
+                            id="main_target"
+                            cols="20"
+                            rows="5"
+                        ></textarea>
+                    </div>
+                    <div class="gen_button">
+                        <button type="submit">생성</button>
+                        <button type="reset">리셋</button>
+                    </div>
+                </form>
+                <div class="slide_next_button slide_button">▶</div>
+            </div>
+            <div class="answer_container slide_item">
+                <div class="slide_prev_button slide_button">◀</div>
+                <p>
+                    해당 결과는 chatGPT를 이용해서 만들어진 계획이므로 다소
+                    무리하거나, 불가능한 계획이 포함되어있을 수 있습니다. 결과를
+                    바탕으로 수정을 통해서 완벽한 계획을 세워보시기를 바랍니다.
+                </p>
+            </div>
+        </div>
+
+        <!-- 채팅 -->
+        <div class="chat-wrap">
+            <div class="chat-window">
+                <div class="chat-screen">
+                    <div class="ai-chat">
+                        <!-- <img src="./img/licat.png" alt="licat" /> -->
+                        <div class="chat-content">
+                            반갑습니다. 어떤 것이 궁금하신가요?
+                        </div>
+                    </div>
+                    <div class="user-chat">
+                        <!-- <img src="./img/licat.png" alt="licat" /> -->
+                        <div class="chat-content">안녕</div>
+                    </div>
+                </div>
+                <form action="post" class="chat-form">
+                    <!-- <label for="question">질문</label> -->
+                    <textarea id="question"></textarea>
+                    <button type="submit" class="chat-btn">질문하기</button>
+                </form>
+            </div>
+            <button class="chat_button">숨기기</button>
+        </div>
+        <!-- 로드창 -->
+        <div class="loading">로드중입니다.</div>
+        <script src="index.js"></script>
+    </body>
+</html>
