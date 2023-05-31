@@ -1,0 +1,385 @@
+body,
+div,
+p,
+button,
+form,
+input,
+h1,
+textarea {
+    margin: 0;
+    padding: 0;
+    font-size: medium;
+}
+
+@font-face {
+    font-family: "nanumGothicBold";
+    src: url("../font/NanumBarunGothicBold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "nanumGothic";
+    src: url("../font/NanumBarunGothic.ttf") format("truetype");
+}
+
+/* 헤딩 */
+.header {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-bottom: 2px solid royalblue;
+}
+
+h1 {
+    margin-left: 25vw;
+}
+
+h1 > img {
+    height: 40px;
+}
+/* 여행계획 생성부 */
+.slide {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    position: relative;
+    width: 100vw;
+}
+.slide_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    left: 0px;
+    width: 100vw;
+    flex-shrink: 0;
+    transition: left 0.15s;
+}
+.slide_item.right {
+    left: -100vw;
+}
+.form {
+    height: 80vh;
+}
+.form img {
+    width: 100%;
+    max-width: 740px;
+    min-width: 300px;
+    margin: 0 10px 0 10px;
+}
+
+.generator {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid royalblue;
+    border-radius: 10px;
+    min-width: 270px;
+    max-width: 40vw;
+    padding: 10px;
+    gap: 20px;
+}
+
+.gen_label {
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.gen_description {
+    font-family: "nanumGothic";
+}
+
+.gen_input {
+    display: flex;
+    flex-direction: column;
+}
+.gen_input > label {
+    font-size: small;
+    font-family: "nanumGothicBold";
+    /* font-weight: 700; */
+}
+
+.gen_input > input {
+    height: 35px;
+    border: 2px solid lightblue;
+    border-radius: 5px;
+    background-color: #e8f0fe;
+    /* border-color: */
+}
+.gen_input > textarea {
+    box-sizing: border-box;
+    border: 2px solid lightblue;
+    border-radius: 5px;
+    background-color: #e8f0fe;
+    resize: none;
+    padding: 5px;
+}
+
+.gen_input > textarea::placeholder {
+    font-size: 14px;
+}
+.gen_button {
+    display: flex;
+    justify-content: space-around;
+}
+.gen_button > button {
+    width: 200px;
+    height: 30px;
+    border: 2px solid rgb(219, 243, 250);
+    border-radius: 10px;
+    background-color: rgb(219, 243, 250);
+    font-weight: 600;
+    font-size: 16px;
+}
+/* 여행계획 표시부 */
+.answer_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 70vw;
+    gap: 30px;
+}
+
+.answer_container > p {
+    font-weight: 700;
+    width: 500px;
+}
+
+.answer_box {
+    text-align: center;
+    border: 2px solid royalblue;
+    border-radius: 20px;
+}
+
+.answer_label {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: royalblue;
+}
+
+.card_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 10px;
+}
+
+.card {
+    width: 21vw;
+    min-width: 200px;
+    min-height: 200px;
+    border: 2px solid skyblue;
+    border-radius: 10px;
+}
+
+td,
+th {
+    padding: 3px 3px 3px 3px;
+}
+
+table tr:nth-child(2n) {
+    background: rgb(219, 243, 250);
+}
+
+/* 슬라이드 버튼 */
+
+.slide_button > img {
+    max-width: 5vw;
+    min-width: 5vw;
+    margin: 0 8px 0 8px;
+}
+.slide_next_button > img:hover {
+    position: relative;
+    animation: move_right 1s infinite;
+}
+
+.slide_prev_button > img:hover {
+    position: relative;
+    animation: move_left 1s infinite;
+}
+
+@keyframes move_right {
+    0% {
+        left: 0px;
+    }
+    50% {
+        left: 8px;
+    }
+    100% {
+        left: 0px;
+    }
+}
+
+@keyframes move_left {
+    0% {
+        left: 0px;
+    }
+    50% {
+        left: -8px;
+    }
+    100% {
+        left: 0px;
+    }
+}
+
+/* 로딩바 */
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    opacity: 0.9;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.loading.hide {
+    display: none;
+}
+.loading_bar span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: gray;
+    border-radius: 50%;
+    animation: loading 1s 0s linear infinite;
+}
+.loading_bar span:nth-child(1) {
+    animation-delay: 0s;
+    background-color: red;
+}
+
+.loading_bar span:nth-child(2) {
+    animation-delay: 0.2s;
+    background-color: orange;
+}
+
+.loading_bar span:nth-child(3) {
+    animation-delay: 0.4s;
+    background-color: yellowgreen;
+}
+
+@keyframes loading {
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+/* 챗봇 */
+.chat_wrap {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+}
+.chat_window {
+    background-color: rgb(219, 243, 250);
+    border: 4px solid skyblue;
+    border-radius: 10px;
+    padding: 10px 10px 2px 10px;
+    width: 50vw;
+}
+.chat_window.hide {
+    display: none;
+}
+.chat_screen {
+    height: 50vh;
+    width: 100%;
+    overflow: auto;
+}
+.chat_hide {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    border: 0;
+    background: none;
+}
+.chat_hide > img {
+    height: 40px;
+    transition-duration: 0.5s;
+}
+.chat_hide > img:hover {
+    height: 60px;
+}
+.chat_hide.open {
+    border-radius: 10px;
+    background-color: royalblue;
+    height: 30px;
+    margin: 5px;
+    color: white;
+    font-size: 16px;
+}
+
+.ai_chat {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.ai_chat img {
+    width: 50px;
+}
+
+.chat_content {
+    width: fit-content;
+    max-width: 40vw;
+    padding: 10px;
+}
+
+.ai_chat .chat_content {
+    background-color: whitesmoke;
+    border-radius: 0 20px 20px 20px;
+    margin-top: 30px;
+}
+
+.user_chat {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.user_chat .chat_content {
+    background-color: skyblue;
+    border-radius: 20px 20px 0 20px;
+}
+
+.chat_form {
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+    background-color: white;
+    margin-top: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.chat_form textarea {
+    resize: none;
+    flex-grow: 1;
+    height: 60px;
+    border: 0;
+}
+
+.chat_button {
+    background-color: rgb(219, 243, 250);
+    border: 0;
+    border-radius: 10px;
+    width: 80px;
+    height: 60px;
+}
