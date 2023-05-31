@@ -101,7 +101,7 @@ const printAnswer_gt = (answer) => {
             card = make_cardItem(answer[idx]);
             card_box.append(card);
         }
-        slideRight();
+        slide();
     }
 };
 // 여행계획 생성기 버튼 처리.

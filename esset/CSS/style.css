@@ -44,7 +44,7 @@ h1 > img {
     position: relative;
     width: 100vw;
 }
-.slide_item {
+.slide_generator {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -56,10 +56,23 @@ h1 > img {
     flex-shrink: 0;
     transition: left 0.15s;
 }
+.slide_plan {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+    gap: 20px;
+    position: relative;
+    left: 0px;
+    width: 100vw;
+    flex-shrink: 0;
+    transition: left 0.15s;
+}
 .slide_item.right {
     left: -100vw;
 }
-.form {
+.slide_generator {
     height: 80vh;
 }
 .main_img img {
@@ -78,6 +91,7 @@ h1 > img {
     max-width: 40vw;
     padding: 10px;
     gap: 20px;
+    margin-right: 10px;
 }
 
 .gen_label {
@@ -123,6 +137,12 @@ h1 > img {
 .gen_input > textarea::placeholder {
     font-size: 14px;
 }
+::-webkit-calendar-picker-indicator {
+    width: 100%;
+    height: 37px;
+    position: absolute;
+    background: transparent;
+}
 .gen_button {
     display: flex;
     justify-content: space-around;
@@ -149,6 +169,9 @@ h1 > img {
 .answer_container > p {
     font-weight: 700;
     width: 500px;
+}
+.answer_container > img {
+    height: 30px;
 }
 
 .answer_box {
@@ -198,9 +221,11 @@ table tr:nth-child(2n) {
     height: 60px;
     animation: pendulum 1s infinite;
 }
-/* .slide_button > img:hover {
-    animation: pendulum 1s infinite;
-} */
+.slide_button > img:hover {
+    height: 70px;
+    transition-duration: 0.5s;
+    animation: none;
+}
 
 @keyframes pendulum {
     0% {
