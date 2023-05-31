@@ -32,15 +32,18 @@ let data_gt = [
     },
     {
         role: "system",
-        content: `다음과 같은 양식으로 데이터를 전달받을거야. '여행지:여행지, 시작일:연도-월-일/도착한 시간:분, 종료일:연도-월-일/출발할 시간:분, 주요여행지:주요여행지들'. 시간은 24시 표기법이야. 입력값을 바탕으로 여행계획을 생성해줘.
-        주요여행지는 반드시 포함되어야해. 만약 주요여행지값이 없다면 자유롭게 짜도 괜찮아. 하루의 일정은 출발일의 도착시간과 종료일의 출발시간을 고려해서 아침식사, 오전, 점심식사, 오후, 저녁식사, 야간 일정이 가능한 한 들어가야하고 식사일정을 짤때는 추천 메뉴를 적어줘. 세부일정도 모두 네가 짜줘야 하는 부분이야. 거리와  고려해서 일정을 짜줘. 
-        일정 내부에서는 ' 를 사용해선 안돼.     
-        여행계획은 다음과 같은 JSON text로 전달해줘야해. {"$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["$시 $분 = 세부일정", "$시 $분 = 세부일정", ...]"}, "$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["$시 $분 = 세부일정", "$시 $분 = 세부일정", ...]"} }. 이 양식은 절대로 지켜져야해.
+        content: `다음과 같은 양식으로 데이터를 전달받을거야. '여행지:여행지, 시작일:연도-월-일/도착한 시간:분, 종료일:연도-월-일/출발할 시간:분, 들리고싶은관광지:들리고싶은관광지들'. 시간은 24시 표기법이야. 입력값을 바탕으로 여행계획을 생성해줘.
+        들리고싶은 광광지가 있다면 반드시 포함되어야해. 만약 들리고싶은 관광지의 값이 없다면 자유롭게 짜도 괜찮아. 하루의 일정은 출발일의 도착시간과 종료일의 출발시간을 고려해서 아침식사, 오전, 점심식사, 오후, 저녁식사, 야간 일정이 가능한 한 들어가야하고 식사일정을 짤때는 추천 메뉴를 적어줘. 세부일정도 모두 네가 짜줘야 하는 부분이야. 거리와 시간을 고려해서 일정을 짜줘. 일정 내부에서는 ' 를 사용해선 안돼.  
+        `,
+    },
+    {
+        role: "user",
+        content: `여행계획은 다음과 같은 JSON text로 전달해줘야해. {"$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["$시 $분 = 세부일정", "$시 $분 = 세부일정", ...]"}, "$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["$시 $분 = 세부일정", "$시 $분 = 세부일정", ...]"} }. 이 양식은 절대로 지켜져야해.
         하루의 일정은 한 Array 안에 담아주고 출발일의 도착한 시간이전에 일정을 잡지 마. 그리고 마지막날은 종료일의 출발할 시간과 공항이나 기차역 까지의 거리를 고려해서 적당한 일정을 만들어줘.`,
     },
     {
-        role: "system",
-        content: `양식은 절대로 지켜야해. 일정안의 세부일정은 Array로 잘 분리되어있어야하고, 전체적인 데이터는 반드시 정상적인 JSON string이여야만해. 보내주기전에 JSON 양식을 잘 지켰는지 확인하고, 지켜지지않았다면 수정하고 보내줘. 수정과정이나 다른 질문은 필요없어. JSON 만 돌려줘.`,
+        role: "user",
+        content: `양식은 절대로 지켜야해. 일정안의 세부일정은 Array로 잘 분리되어있어야하고, 전체적인 데이터는 반드시 정상적인 JSON string이여야만해. 보내주기전에 JSON 양식을 잘 지켰는지 확인하고, 지켜지지않았다면 수정하고 보내줘. 수정과정이나 다른 질문은 필요없어. JSON 만 돌려줘. 추가적인 질문은 받지 않아. 가지고있는 데이터만으로 잘 구성해보도록 해.`,
     },
 ];
 
@@ -195,13 +198,25 @@ $form_gt.addEventListener("submit", (e) => {
 $chat_hide.addEventListener("click", () => {
     if ($chat_hide.innerText == "숨기기") {
         $chat_window.classList.add("hide");
-        $chat_hide.innerText = "펼치기";
+        $chat_hide.innerText = "챗봇";
     } else {
         $chat_window.classList.remove("hide");
         $chat_hide.innerText = "숨기기";
     }
 });
 
+// 챗봇 로딩바
+const loading_cb = (_) => {
+    const ai_chat = make_box("div", "ai_chat");
+    const loading_cb = make_box("div", "loading_bar");
+    const loading_item1 = make_box("span");
+    const loading_item2 = make_box("span");
+    const loading_item3 = make_box("span");
+    ai_chat.append(loading_cb);
+    loading_cb.append(loading_item1, loading_item2, loading_item3);
+    $chat_screen.append(ai_chat);
+    $chat_window.scrollTop = $chat_window.scrollHeight;
+};
 // 챗봇 질문 저장
 const sendQuestion_cb = (question) => {
     if (question) {
@@ -228,17 +243,19 @@ const printQuestion_cb = (question) => {
     const user_chat_content = make_item("div", question, "chat_content");
     user_chat.append(user_chat_content);
     $chat_screen.append(user_chat);
-    $chat_window.scrollTop = $chat_window.scrollHeight;
+    $chat_window.scrollTop = $chat_screen.scrollHeight;
 };
 
 // 챗봇 답변 화면에 표시
 const printAnswer_cb = (answer) => {
     saveQuestion_cb(answer);
+    const loading = $chat_screen.lastChild;
+    $chat_screen.removeChild(loading);
     const ai_chat = make_box("div", "ai_chat");
     const ai_chat_content = make_item("div", answer, "chat_content");
     ai_chat.append(ai_chat_content);
     $chat_screen.append(ai_chat);
-    $chat_window.scrollTop = $chat_window.scrollHeight;
+    $chat_window.scrollTop = $chat_screen.scrollHeight;
 };
 
 // 챗봇 질문 API 요청
@@ -272,5 +289,6 @@ $form_cb.addEventListener("submit", (e) => {
     $question.value = null;
     sendQuestion_cb(question);
     printQuestion_cb(question);
+    loading_cb();
     apiPost_cb();
 });
