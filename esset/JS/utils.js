@@ -1,6 +1,5 @@
 const $slide = document.querySelector(".slide");
-const $prev_btn = document.querySelector(".slide_prev_button");
-const $next_btn = document.querySelector(".slide_next_button");
+const $slide_btn = document.querySelector(".slide_button");
 const $slideItems = document.querySelectorAll(".slide_item");
 
 // openAI API
@@ -25,20 +24,20 @@ const make_item = (type, data, ...classList) => {
 //////////////////////////////////////////
 // 슬라이딩
 //////////////////////////////////////////
-const slideLeft = (_) => {
-    $slideItems.forEach((i) => {
-        i.classList.remove("right");
-    });
+
+const slide = (_) => {
+    if ($slideItems[0].classList.contains("right")) {
+        $slideItems.forEach((i) => {
+            i.classList.remove("right");
+        });
+    } else {
+        $slideItems.forEach((i) => {
+            i.classList.add("right");
+        });
+    }
 };
 
-const slideRight = (_) => {
-    $slideItems.forEach((i) => {
-        i.classList.add("right");
-    });
-};
-
-$next_btn.addEventListener("click", slideRight);
-$prev_btn.addEventListener("click", slideLeft);
+$slide_btn.addEventListener("click", slide);
 
 //////////////////////////////////////////
 // Fetch

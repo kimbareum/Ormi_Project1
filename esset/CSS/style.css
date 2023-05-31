@@ -24,7 +24,7 @@ textarea {
 .header {
     display: flex;
     align-items: center;
-    height: 50px;
+    height: 75px;
     border-bottom: 2px solid royalblue;
 }
 
@@ -62,7 +62,7 @@ h1 > img {
 .form {
     height: 80vh;
 }
-.form img {
+.main_img img {
     width: 100%;
     max-width: 740px;
     min-width: 300px;
@@ -84,6 +84,10 @@ h1 > img {
     text-align: center;
     font-weight: 700;
     font-size: 20px;
+}
+
+.gen_label > img {
+    height: 30px;
 }
 
 .gen_description {
@@ -188,41 +192,25 @@ table tr:nth-child(2n) {
 /* 슬라이드 버튼 */
 
 .slide_button > img {
-    max-width: 5vw;
-    min-width: 5vw;
-    margin: 0 8px 0 8px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    height: 60px;
+    animation: pendulum 1s infinite;
 }
-.slide_next_button > img:hover {
-    position: relative;
-    animation: move_right 1s infinite;
-}
+/* .slide_button > img:hover {
+    animation: pendulum 1s infinite;
+} */
 
-.slide_prev_button > img:hover {
-    position: relative;
-    animation: move_left 1s infinite;
-}
-
-@keyframes move_right {
+@keyframes pendulum {
     0% {
-        left: 0px;
+        right: 10px;
     }
     50% {
-        left: 8px;
+        right: 0px;
     }
     100% {
-        left: 0px;
-    }
-}
-
-@keyframes move_left {
-    0% {
-        left: 0px;
-    }
-    50% {
-        left: -8px;
-    }
-    100% {
-        left: 0px;
+        right: 10px;
     }
 }
 
