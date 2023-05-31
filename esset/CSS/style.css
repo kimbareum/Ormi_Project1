@@ -53,6 +53,7 @@ h1 > img {
     position: relative;
     left: 0px;
     width: 100vw;
+    height: 80vh;
     flex-shrink: 0;
     transition: left 0.15s;
 }
@@ -72,9 +73,7 @@ h1 > img {
 .slide_item.right {
     left: -100vw;
 }
-.slide_generator {
-    height: 80vh;
-}
+
 .main_img img {
     width: 100%;
     max-width: 740px;
@@ -208,6 +207,10 @@ th {
     padding: 3px 3px 3px 3px;
 }
 
+th {
+    height: 30px;
+}
+
 table tr:nth-child(2n) {
     background: rgb(219, 243, 250);
 }
@@ -245,13 +248,19 @@ table tr:nth-child(2n) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: grey;
-    opacity: 0.9;
+
     position: absolute;
     left: 0;
     top: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    opacity: 0.97;
+}
+.loading > div {
+    font-weight: 700;
+    font-size: 20px;
 }
 .loading.hide {
     display: none;
