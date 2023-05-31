@@ -32,6 +32,37 @@ let data_gt = [
     },
 ];
 
+// 질문 양식 정리
+const createQuestion_gt = (_) => {
+    const target = $target.value;
+    const start_date = $start_date.value.split("T");
+    const end_date = $end_date.value.split("T");
+    const main_target = $main_target.value;
+    if (main_target == undefined) main_target = "";
+    return `여행지:${target}, 시작일:${start_date[0]}/${start_date[1]}, 종료일:${end_date[0]}/${end_date[1]}, 주요여행지:${main_target}`;
+};
+
+// 여행계획 질문 임시 저장.
+const sendQuestion_gt = (question) => {
+    if (question) {
+        data_gt.push({
+            role: "user",
+            content: question,
+        });
+    }
+};
+
+// 여행계획 JSON parsing 하기
+const json_parsing = (text) => {
+    if (text) {
+        const answer = JSON.parse(
+            text.slice(text.indexOf("{"), text.lastIndexOf("}") + 1)
+        );
+        console.log(answer);
+        return answer;
+    }
+};
+
 // 여행계획이 들어갈 table 생성
 const make_cardItem = (data) => {
     if (data) {
@@ -73,57 +104,26 @@ const printAnswer_gt = (answer) => {
         slideRight();
     }
 };
-
-// 여행계획 JSON parsing 하기
-const json_parsing = (text) => {
-    if (text) {
-        const answer = JSON.parse(
-            text.slice(text.indexOf("{"), text.lastIndexOf("}") + 1)
-        );
-        console.log(answer);
-        return answer;
-    }
-};
-
-// 여행계획 질문 임시 저장.
-const sendQuestion_gt = (question) => {
-    if (question) {
-        data_gt.push({
-            role: "user",
-            content: question,
-        });
-    }
-};
-
-// 질문 양식 정리
-const createQuestion_gt = (_) => {
-    const target = $target.value;
-    const start_date = $start_date.value.split("T");
-    const end_date = $end_date.value.split("T");
-    const main_target = $main_target.value;
-    if (main_target == undefined) main_target = "";
-    return `여행지:${target}, 시작일:${start_date[0]}/${start_date[1]}, 종료일:${end_date[0]}/${end_date[1]}, 주요여행지:${main_target}`;
-};
-
 // 여행계획 생성기 버튼 처리.
 $form_gt.addEventListener("submit", async (e) => {
     e.preventDefault();
     $loading.classList.remove("hide");
     const question_gt = createQuestion_gt();
     sendQuestion_gt(question_gt);
-    const answer = await apiPost(data_gt)
-        .then((answer) => {
+    await apiPost(data_gt)
+        .then((res) => {
+            let json_res = null;
             try {
-                return json_parsing(answer);
+                json_res = json_parsing(res);
             } catch {
-                return json_parsing(answer + "}");
+                json_res = json_parsing(res + "}");
             }
+            printAnswer_gt(json_res);
         })
         .catch((err) => {
             console.log(err);
             alert("죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.");
         });
-    printAnswer_gt(answer);
     data_gt.pop();
     $loading.classList.add("hide");
 });

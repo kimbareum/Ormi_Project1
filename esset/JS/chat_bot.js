@@ -32,7 +32,26 @@ $chat_hide.addEventListener("click", (e) => {
 // 챗봇 질문
 //////////////////////////////////////////
 
-// 챗봇 로딩바
+// 챗봇 질문 저장
+const sendQuestion_cb = (question) => {
+    if (question) {
+        data_cb.push({
+            role: "user",
+            content: question,
+        });
+    }
+};
+
+// 챗봇 질문 화면에 렌더링
+const printQuestion_cb = (question) => {
+    const user_chat = make_box("div", "user_chat");
+    const user_chat_content = make_item("div", question, "chat_content");
+    user_chat.append(user_chat_content);
+    $chat_screen.append(user_chat);
+    $chat_window.scrollTop = $chat_screen.scrollHeight;
+};
+
+// 챗봇 로딩바 생성
 const loading_cb = (_) => {
     const ai_chat = make_box("div", "ai_chat");
     const loading_cb = make_box("div", "loading_bar");
@@ -45,16 +64,6 @@ const loading_cb = (_) => {
     $chat_window.scrollTop = $chat_window.scrollHeight;
 };
 
-// 챗봇 질문 저장
-const sendQuestion_cb = (question) => {
-    if (question) {
-        data_cb.push({
-            role: "user",
-            content: question,
-        });
-    }
-};
-
 // 챗봇 답변 저장
 const saveQuestion_cb = (answer) => {
     if (answer) {
@@ -63,15 +72,6 @@ const saveQuestion_cb = (answer) => {
             content: answer,
         });
     }
-};
-
-// 챗봇 질문 화면에 표시
-const printQuestion_cb = (question) => {
-    const user_chat = make_box("div", "user_chat");
-    const user_chat_content = make_item("div", question, "chat_content");
-    user_chat.append(user_chat_content);
-    $chat_screen.append(user_chat);
-    $chat_window.scrollTop = $chat_screen.scrollHeight;
 };
 
 // 챗봇 답변 화면에 표시
@@ -91,19 +91,21 @@ const printAnswer_cb = (answer) => {
 // 챗봇 버튼 처리
 $form_cb.addEventListener("submit", async (e) => {
     e.preventDefault();
-    $chat_btn.toggleAttribute("disabled");
     const question = $question.value;
-    $question.value = null;
-    sendQuestion_cb(question);
-    printQuestion_cb(question);
-    loading_cb();
-    await apiPost(data_cb)
-        .then((answer) => {
-            printAnswer_cb(answer);
-        })
-        .catch((err) => {
-            console.log(err);
-            alert("죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.");
-        });
-    $chat_btn.removeAttribute("disabled");
+    if (question) {
+        $question.value = null;
+        $chat_btn.toggleAttribute("disabled");
+        sendQuestion_cb(question);
+        printQuestion_cb(question);
+        loading_cb();
+        await apiPost(data_cb)
+            .then((answer) => {
+                printAnswer_cb(answer);
+            })
+            .catch((err) => {
+                console.log(err);
+                alert("죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.");
+            });
+        $chat_btn.removeAttribute("disabled");
+    }
 });
