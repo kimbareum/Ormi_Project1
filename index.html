@@ -63,20 +63,32 @@
 
         .chat_wrap {
             position: fixed;
-            max-height: 50%;
+            width: 50vw;
             right: 2rem;
             bottom: 2rem;
         }
         .chat_window {
-            overflow: auto;
             background-color: #efefef;
+            width: 50vw;
+            max-height: 50vh;
+            overflow: auto;
         }
         .chat_window.hide {
             visibility: hidden;
         }
-
+        /* .chat_screen {
+        } */
         .chat_hide {
-            width: 300px;
+            position: relative;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        .chat_form {
+            position: relative;
+            width: inherit;
+            right: 0px;
+            bottom: 0px;
         }
         table tr:nth-child(2n) {
             background: #efefef;

@@ -228,6 +228,7 @@ const printQuestion_cb = (question) => {
     const user_chat_content = make_item("div", question, "chat_content");
     user_chat.append(user_chat_content);
     $chat_screen.append(user_chat);
+    $chat_window.scrollTop = $chat_window.scrollHeight;
 };
 
 // 챗봇 답변 화면에 표시
@@ -237,6 +238,7 @@ const printAnswer_cb = (answer) => {
     const ai_chat_content = make_item("div", answer, "chat_content");
     ai_chat.append(ai_chat_content);
     $chat_screen.append(ai_chat);
+    $chat_window.scrollTop = $chat_window.scrollHeight;
 };
 
 // 챗봇 질문 API 요청
