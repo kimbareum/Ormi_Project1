@@ -7,6 +7,7 @@
         <title>여행 계획 도우미</title>
     </head>
     <style>
+        body,
         div,
         p,
         button,
@@ -23,22 +24,24 @@
             flex-wrap: nowrap;
             overflow: hidden;
 
-            position: replative;
-            width: 100%;
+            position: relative;
+            width: 100vw;
         }
         .slide_item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
 
             position: relative;
             left: 0px;
 
-            width: 100%;
+            width: 100vw;
             flex-shrink: 0;
 
             transition: left 0.15s;
+        }
+        .slide_item.right {
+            left: -100vw;
         }
         .form {
             height: 400px;
@@ -58,21 +61,33 @@
             visibility: visible;
         }
 
-        .chat-wrap {
+        .chat_wrap {
             position: fixed;
             max-height: 50%;
-            right: 10px;
-            bottom: 10px;
+            right: 2rem;
+            bottom: 2rem;
         }
-        .chat-window {
+        .chat_window {
             overflow: auto;
+            background-color: #efefef;
         }
-        .chat-window.hide {
+        .chat_window.hide {
             visibility: hidden;
         }
 
-        .chat_button {
-            width: 100%;
+        .chat_hide {
+            width: 300px;
+        }
+        table tr:nth-child(2n) {
+            background: #efefef;
+        }
+        .answer_box {
+            gap: 4rem;
+        }
+        .card_box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
         }
     </style>
     <body>
@@ -130,27 +145,27 @@
         </div>
 
         <!-- 채팅 -->
-        <div class="chat-wrap">
-            <div class="chat-window">
-                <div class="chat-screen">
-                    <div class="ai-chat">
+        <div class="chat_wrap">
+            <div class="chat_window">
+                <div class="chat_screen">
+                    <div class="ai_chat">
                         <!-- <img src="./img/licat.png" alt="licat" /> -->
                         <div class="chat-content">
                             반갑습니다. 어떤 것이 궁금하신가요?
                         </div>
                     </div>
-                    <div class="user-chat">
+                    <div class="user_chat">
                         <!-- <img src="./img/licat.png" alt="licat" /> -->
                         <div class="chat-content">안녕</div>
                     </div>
                 </div>
-                <form action="post" class="chat-form">
+                <form action="post" class="chat_form">
                     <!-- <label for="question">질문</label> -->
                     <textarea id="question"></textarea>
-                    <button type="submit" class="chat-btn">질문하기</button>
+                    <button type="submit" class="chat_button">질문하기</button>
                 </form>
             </div>
-            <button class="chat_button">숨기기</button>
+            <button class="chat_hide">숨기기</button>
         </div>
         <!-- 로드창 -->
         <div class="loading">로드중입니다.</div>
