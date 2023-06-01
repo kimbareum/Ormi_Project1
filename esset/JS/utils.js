@@ -35,7 +35,7 @@ runColorMode((isDarkMode) => {
 });
 
 //////////////////////////////////////////
-// DOM node 생성
+// DOM node 생성용 함수
 //////////////////////////////////////////
 const make_box = (type, ...classList) => {
     const box = document.createElement(type);
@@ -51,7 +51,7 @@ const make_item = (type, data, ...classList) => {
 };
 
 //////////////////////////////////////////
-// 슬라이딩
+// 슬라이딩기능 구현
 //////////////////////////////////////////
 
 const slide = (_) => {
@@ -92,4 +92,27 @@ const apiPost = async (data) => {
         .catch((err) => {
             return err;
         });
+};
+
+//////////////////////////////////////////
+// 이후의 질답에 영향을 주도록
+// API로 주고받은 질문과 답변을 저장.
+//////////////////////////////////////////
+
+const saveQuestion = (data, question) => {
+    if (question) {
+        data.push({
+            role: "user",
+            content: question,
+        });
+    }
+};
+
+const saveAnswer = (data, answer) => {
+    if (answer) {
+        data.push({
+            role: "assistant",
+            content: answer,
+        });
+    }
 };
