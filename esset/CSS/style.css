@@ -11,6 +11,16 @@ textarea {
     font-size: medium;
 }
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #363636;
+        color: #cccccc;
+    }
+    tr:nth-child(2n),
+    .chat_content {
+        color: #363636;
+    }
+}
 @font-face {
     font-family: "nanumGothicBold";
     src: url("../font/NanumBarunGothicBold.ttf") format("truetype");
@@ -169,7 +179,7 @@ h1 > img {
     font-weight: 700;
     width: 500px;
 }
-.answer_container > img {
+.plan_label {
     height: 30px;
 }
 
@@ -404,6 +414,7 @@ table tr:nth-child(2n) {
     border-radius: 10px;
     width: 80px;
     height: 60px;
+    font-weight: 700;
 }
 
 .ai_chat .loading_bar {

@@ -1,9 +1,41 @@
 const $slide = document.querySelector(".slide");
 const $slide_btn = document.querySelector(".slide_button");
 const $slideItems = document.querySelectorAll(".slide_item");
+const $gen_label = document.querySelector(".gen_label>img");
+const $plan_label = document.querySelector(".plan_label");
 
 // openAI API
 const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
+
+//////////////////////////////////////////
+// Darkmode 확인
+//////////////////////////////////////////
+
+const isDarkMode = () =>
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+const runColorMode = (fn) => {
+    if (!window.matchMedia) {
+        return;
+    }
+
+    const query = window.matchMedia("(prefers-color-scheme: dark)");
+
+    fn(query.matches);
+
+    query.addEventListener("change", (event) => fn(event.matches));
+};
+
+runColorMode((isDarkMode) => {
+    if (isDarkMode) {
+        $gen_label.setAttribute("src", "./esset/img/generator_label_dark.png");
+        $plan_label.setAttribute("src", "./esset/img/plan_label_dark.png");
+    } else {
+        $gen_label.setAttribute("src", "./esset/img/generator_label.png");
+        $plan_label.setAttribute("src", "./esset/img/plan_label.png");
+    }
+});
 
 //////////////////////////////////////////
 // DOM node 생성
