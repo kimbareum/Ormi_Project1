@@ -30,6 +30,11 @@ textarea {
     src: url("../font/NanumBarunGothic.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "ohmyu_dibb";
+    src: url("../font/오뮤_다예쁨체.ttf");
+}
+
 /* 헤딩 */
 .header {
     display: flex;
@@ -170,7 +175,7 @@ h1 > img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 70vw;
+    max-width: 80vw;
     gap: 30px;
     margin: 20px 0 20px 0;
 }
@@ -190,43 +195,69 @@ h1 > img {
 }
 
 .answer_label {
+    font-family: "ohmyu_dibb";
     margin-top: 10px;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
     color: royalblue;
 }
 
 .card_box {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: flex-start;
     padding: 20px;
     gap: 10px;
 }
 
 .card {
-    width: 21vw;
-    min-width: 200px;
-    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    min-height: 400px;
     border: 2px solid skyblue;
     border-radius: 10px;
 }
-
-td,
-th {
-    padding: 3px 3px 3px 3px;
+.card > .date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid skyblue;
+    border-radius: 4px;
+    height: 60px;
+    background-color: skyblue;
+    color: #363636;
+    font-family: "ohmyu_dibb";
+    font-weight: 600;
+    font-size: 22px;
 }
 
-th {
-    height: 30px;
-}
-td {
-    height: 50px;
+.plan_box {
+    display: flex;
+    gap: 10px;
+    padding: 5px 10px 5px 10px;
 }
 
-table tr:nth-child(2n) {
-    background: rgb(219, 243, 250);
+.plan_box > .time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 55px;
+    max-width: 55px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.plan_box > .plan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.plan_box:nth-child(2n) {
+    background-color: #e8f0fe;
 }
 
 /* 슬라이드 버튼 */
