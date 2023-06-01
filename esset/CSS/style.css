@@ -254,6 +254,7 @@ h1 > img {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    font-size: 14px;
 }
 
 .plan_box:nth-child(2n) {
