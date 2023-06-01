@@ -51,7 +51,7 @@ const loading_chatbot = (_) => {
     ai_chat.append(loading_chatbot);
     loading_chatbot.append(loading_item1, loading_item2, loading_item3);
     $chat_screen.append(ai_chat);
-    $chat_window.scrollTop = $chat_window.scrollHeight;
+    $chat_screen.scrollTop = $chat_window.scrollHeight;
 };
 
 // 챗봇 답변 화면에 표시
@@ -64,18 +64,17 @@ const printAnswer_chatbot = (answer) => {
         const ai_chat_content = make_item("div", answer, "chat_content");
         ai_chat.append(ai_chat_content);
         $chat_screen.append(ai_chat);
-        $chat_window.scrollTop = $chat_screen.scrollHeight;
+        $chat_screen.scrollTop = $chat_screen.scrollHeight;
     }
 };
 
-// 챗봇 버튼 처리
-$form_chatbot.addEventListener("submit", async (e) => {
-    e.preventDefault();
+// 챗봇 액션 처리
+const chatbot_action = async (_) => {
     const question = $question.value;
     if (question) {
         $question.value = null;
         $chat_btn.toggleAttribute("disabled");
-        sendQuestion(data_chatbot, question);
+        saveQuestion(data_chatbot, question);
         printQuestion_chatbot(question);
         loading_chatbot();
         await apiPost(data_chatbot)
@@ -87,5 +86,20 @@ $form_chatbot.addEventListener("submit", async (e) => {
                 alert("죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.");
             });
         $chat_btn.removeAttribute("disabled");
+    }
+};
+
+// 챗봇 submit 버튼 액션
+$form_chatbot.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    chatbot_action();
+});
+// 챗봇 textarea Enter키 액션
+$question.addEventListener("keydown", (e) => {
+    if (e.shiftKey && e.key == "Enter") {
+        return;
+    } else if (e.key == "Enter") {
+        e.preventDefault();
+        chatbot_action();
     }
 });

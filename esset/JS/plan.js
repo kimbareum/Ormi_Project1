@@ -9,22 +9,31 @@ const $loading = document.querySelector(".loading");
 let data_generator = [
     {
         role: "system",
-        content: `assistant는 여행계획 생성기야.`,
+        content: `assistant는 여행계획을 만들어주는 전문가이다.`,
     },
     {
-        role: "user",
+        role: "system",
         content:
-            "여행계획은 이 양식으로 전달될거야. '{target} 여행을 떠날거야. 여행 시작일은 {start_date}이고, 여행지에 도착하는 시간은 {start_time}야. 여행이 끝나는 날은 {end_date}고, {end_time}에 여행지를 떠나야해. 그 외의 여행 조건은 다음과 같아. {extra condition}'. 그 외의 여행 조건은 없을수도 있어. 없으면 자유여행계획을 짜면 돼. 추가적인 질문은 하지말고 주어진 데이터로만 여행계획을 짜면 돼.",
+            "여행계획의 정보는 여행지, 여행지에 도착하는날과 시간, 여행이 끝나는 날과 시간, 그 외의 여행조건 이 주어질것이다. 그 외의 여행 조건은 없을수도 있다. 없으면 자유롭게 여행계획을 만들면 된다. 그 외의 여행조건이 있다면, 가능한한 여행계획에 반영 해야 한다. 추가적인 요구사항은 절대로 없으니까 주어진 정보만 이용해서 자유로운 여행계획을 만들면 된다. 추가적인 질문은 금지된다. 주어진 정보로만 여행계획을 만들어야한다.",
     },
     {
-        role: "user",
-        content: `일정은 여행지에 도착하는 시간이후부터 만들어. 여행지를 떠나야하는 시간이 되면 여행지를 벗어나는 일정을 짜고 일정 짜는걸 멈춰. 아침식사, 오전, 점심식사, 오후, 저녁식사, 야간 일정이 시간이 되는 한 들어가야하고 식사일정을 짤때는 추천 메뉴를 적어줘. 거리와 시간을 고려해서 일정을 짜줘. 단, 일정은 최대 6개여야해. 일정 내부에서는 ' 를 사용해선 안돼.  
+        role: "system",
+        content: `일정을 만들때는 특별한 조건이 없다면, 가용한 시간을 고려해서 따라서 아침식사, 오전일정, 점심식사, 오후일정, 저녁식사, 야간일정 으로 짜야한다. 식사 일정을 만들때는 추천 메뉴를 함꼐 적어야 한다. 거리와 시간을 고려해서 일정을 짜야한다. 일정 내부에서는 ' 를 사용해선 안된다. 곧바로 전체의 일정을 짜면 된다. 일정을 짤때 중요한건 1. 일정은 여행지에 도착하는 시간 이후부터 만들어야 한다는 것. 2. 여행이 끝나는 날에는 여행이 끝나는 시간 이후에 일정은 만들어서는 안된다는것. 3. 하루의 일정은 6개 정도가 적당하지만 무리해서 채울필요는 없다는 것. 이다. 이 조건을 반드시 준수해서 일정을 만들어야한다.
         `,
     },
     {
-        role: "user",
-        content: `여행계획은 다음과 같은 JSON 형식으로 전달해줘. {"$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["시간:분  = 세부일정", "시간:분 = 세부일정", "시간:분 = 세부일정", "시간:분 = 세부일정", "시간:분 = 세부일정", "시간:분 = 세부일정"]"}, "$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["시간:분  = 세부일정", "시간:분  = 세부일정", "시간:분 = 세부일정", "시간:분 = 세부일정", "시간:분 = 세부일정", "시간:분 = 세부일정", "시간:분 = 세부일정"]"} }. 응답하기 전에 JSON 문법을 검사하고 수정해서 보내줘. 수정과정은 필요없어.`,
+        role: "system",
+        content: `답변 형식: {"$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["시간:분  = 세부일정", "시간:분 = 세부일정", ...반복...]"}, "$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["시간:분  = 세부일정", "시간:분 = 세부일정", ...반복...]"} }.`,
     },
+    {
+        role: "system",
+        content: `답변 형식이 정확한지 한번 확인해보고, 정확하게 고쳐서 반환할것. 고치는 과정은 반환할 필요 없음.`,
+    },
+
+    // {
+    //     role: "system",
+    //     content: `여행계획은 다음과 같은 JSON 형식으로 전달해야 한다. {"$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["시간:분  = 세부일정", "시간:분 = 세부일정", ...반복...]"}, "$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["시간:분  = 세부일정", "시간:분 = 세부일정", ...반복...]"} }. 답변하기 전에 형식이 지정한것과 동일한지 검사하고 수정해서 보여줘야 한다. (1개의 {}안에 $일차에 해당하는 {}가 각각 존재하고, $일차의 {} 안에는 "날짜":"$일차($년 $월 $일, $요일)"와 "일정":"["시간:분  = 세부일정", "시간:분 = 세부일정", ...반복...]" 이 존재하는지.). 이 형식이 아닌 여행계획은 보여줄 필요가 없고, 여행계획을 세우는 과정도 보여줄 필요가 없고, 수정과정 또한 필요없고, 코드를 짤 필요도 없다.`,
+    // },
 ];
 
 // 질문 양식 정리
@@ -34,9 +43,9 @@ const createQuestion = (_) => {
     const end_date = $end_date.value.split("T");
     const extra_condition = $extra_condition.value;
     if (extra_condition == undefined) {
-        return `${target} 여행을 떠날거야. 여행 시작일은 ${start_date[0]}이고, 여행지에 도착하는 시간은 ${start_date[1]}야. 여행이 끝나는 날은 ${end_date[0]}고, ${end_date[1]}에 여행지를 떠나야해.`;
+        return `${target} 여행을 떠날거야. 여행 시작일은 ${start_date[0]} 이고, 여행지에 도착하는 시간은 ${start_date[1]}야. 여행이 끝나는 날은 ${end_date[0]} 이고, 이 날의 ${end_date[1]}에 여행지를 떠나야해. 이걸 바탕으로 여행계획을 만들어줘.`;
     }
-    return `${target} 여행을 떠날거야. 여행 시작일은 ${start_date[0]}이고, 여행지에 도착하는 시간은 ${start_date[1]}야. 여행이 끝나는 날은 ${end_date[0]}고, ${end_date[1]}에 여행지를 떠나야해. 그 외의 여행 조건은 다음과 같아.${extra_condition}`;
+    return `${target} 여행을 떠날거야. 여행 시작일은 ${start_date[0]}이고, 여행지에 도착하는 시간은 ${start_date[1]}야. 여행이 끝나는 날은 ${end_date[0]} 이고, 이 날의 ${end_date[1]}에 여행지를 떠나야해. 그 외의 여행 조건은 다음과 같아.${extra_condition}. 이걸 바탕으로 여행계획을 만들어줘.`;
 };
 
 // 여행계획 JSON parsing 하기
@@ -63,27 +72,14 @@ const make_cardItem = (data) => {
         th_item.setAttribute("colspan", "2");
         th_box.append(th_item);
         card.append(th_box);
-        // th 제외한 tr 6줄로 고정
-        for (let i = 0; i < 6; i++) {
+        for (const plan of data["일정"]) {
             const tr_plan = make_box("tr", "plan_box");
-            const td_date = make_box("td", "time");
-            const td_plan = make_box("td", "plan");
-            if (i < data["일정"].length) {
-                const plan_data = data["일정"][i].split("=");
-                td_date.textContent = plan_data[0].trim();
-                td_plan.textContent = plan_data[1].trim();
-            }
+            const plan_data = plan.split("=");
+            const td_date = make_item("td", plan_data[0].trim(), "time");
+            const td_plan = make_item("td", plan_data[1].trim(), "plan");
             tr_plan.append(td_date, td_plan);
             card.append(tr_plan);
         }
-        // for (const plan of data["일정"]) {
-        //     const tr_plan = make_box("tr", "plan_box");
-        //     const plan_data = plan.split("=");
-        //     const td_date = make_item("td", plan_data[0].trim(), "time");
-        //     const td_plan = make_item("td", plan_data[1].trim(), "plan");
-        //     tr_plan.append(td_date, td_plan);
-        //     card.append(tr_plan);
-        // }
         return card;
     }
 };
