@@ -223,7 +223,6 @@ h1 > img {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 2px solid skyblue;
     border-radius: 4px;
     height: 60px;
     background-color: skyblue;
@@ -254,10 +253,13 @@ h1 > img {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    font-size: 14px;
 }
 
 .plan_box:nth-child(2n) {
-    background-color: #e8f0fe;
+    background-color: lightblue;
+    color: #363636;
+    border-radius: 5px;
 }
 
 /* 슬라이드 버튼 */

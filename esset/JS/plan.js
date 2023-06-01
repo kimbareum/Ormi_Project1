@@ -58,7 +58,7 @@ const json_parsing = (text) => {
     }
 };
 
-// 여행계획이 들어갈 table 생성
+// 여행계획이 들어갈 카드항목 생성
 const make_cardItem = (data) => {
     if (data) {
         const card = make_box("div", "card");
@@ -79,20 +79,20 @@ const make_cardItem = (data) => {
 // 여행계획 카드 전체 생성.
 const printAnswer_generator = (answer) => {
     if (answer) {
+        const card_box = make_box("div", "card_box");
+        for (const idx in answer) {
+            card = make_cardItem(answer[idx]);
+            card_box.append(card);
+        }
         const answer_box = make_box("div", "answer_box");
         const answer_label = make_item(
             "div",
             `${$target.value} 여행 계획`,
             "answer_label"
         );
-        const card_box = make_box("div", "card_box");
         $answer_container.append(answer_box);
         answer_box.append(answer_label, card_box);
 
-        for (const idx in answer) {
-            card = make_cardItem(answer[idx]);
-            card_box.append(card);
-        }
         slide();
     }
 };
