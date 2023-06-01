@@ -11,16 +11,6 @@ textarea {
     font-size: medium;
 }
 
-@media (prefers-color-scheme: dark) {
-    body {
-        background: #363636;
-        color: #cccccc;
-    }
-    tr:nth-child(2n),
-    .chat_content {
-        color: #363636;
-    }
-}
 @font-face {
     font-family: "nanumGothicBold";
     src: url("../font/NanumBarunGothicBold.ttf") format("truetype");
@@ -44,7 +34,7 @@ textarea {
 }
 
 h1 {
-    margin-left: 25vw;
+    margin-left: 15vw;
 }
 
 h1 > img {
@@ -71,6 +61,10 @@ h1 > img {
     height: 80vh;
     flex-shrink: 0;
     transition: left 0.15s;
+    background: url(../img/main_img.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 .slide_plan {
     display: flex;
@@ -88,23 +82,18 @@ h1 > img {
     left: -100vw;
 }
 
-.main_img img {
-    width: 100%;
-    max-width: 740px;
-    min-width: 300px;
-    margin: 0 10px 0 10px;
-}
-
 .generator {
     display: flex;
     flex-direction: column;
-    border: 2px solid royalblue;
+    justify-content: space-evenly;
     border-radius: 10px;
-    min-width: 270px;
-    max-width: 40vw;
-    padding: 10px;
-    gap: 20px;
+    min-width: 400px;
+    width: 30vw;
+    min-height: 60vh;
+    padding: 30px;
+    gap: 40px;
     margin-right: 10px;
+    background-color: whitesmoke;
 }
 
 .gen_label {
@@ -159,10 +148,15 @@ h1 > img {
 .gen_button {
     display: flex;
     justify-content: space-around;
+    gap: 20px;
 }
 .gen_button > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 200px;
     height: 30px;
+    padding: 20px;
     border: 2px solid rgb(219, 243, 250);
     border-radius: 10px;
     background-color: rgb(219, 243, 250);
@@ -181,8 +175,12 @@ h1 > img {
 }
 
 .answer_container > p {
+    position: absolute;
+    right: 30px;
+    top: 30px;
     font-weight: 700;
     width: 500px;
+    font-size: 12px;
 }
 .plan_label {
     height: 30px;
@@ -196,7 +194,7 @@ h1 > img {
 
 .answer_label {
     font-family: "ohmyu_dibb";
-    margin-top: 10px;
+    padding: 20px 0 20px 0;
     font-size: 35px;
     font-weight: 600;
     color: royalblue;
@@ -215,7 +213,6 @@ h1 > img {
     display: flex;
     flex-direction: column;
     width: 300px;
-    min-height: 400px;
     border: 2px solid skyblue;
     border-radius: 10px;
 }
@@ -223,7 +220,8 @@ h1 > img {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 4px;
+    border-bottom: 3px solid black;
+    border-radius: 4px 4px 0 0;
     height: 60px;
     background-color: skyblue;
     color: #363636;
@@ -260,34 +258,23 @@ h1 > img {
 .plan_box:nth-child(2n) {
     background-color: lightblue;
     color: #363636;
-    border-radius: 5px;
 }
+
+/* .plan_box:last-child {
+    border-bottom: 3px solid lightblue;
+} */
 
 /* 슬라이드 버튼 */
 
 .slide_button > img {
     position: absolute;
     right: 10px;
-    top: 5px;
-    height: 60px;
-    animation: pendulum 1s infinite;
+    top: 10px;
+    height: 40px;
 }
 .slide_button > img:hover {
-    height: 70px;
+    height: 60px;
     transition-duration: 0.5s;
-    animation: none;
-}
-
-@keyframes pendulum {
-    0% {
-        right: 10px;
-    }
-    50% {
-        right: 0px;
-    }
-    100% {
-        right: 10px;
-    }
 }
 
 /* 로딩바 */
@@ -457,4 +444,18 @@ h1 > img {
 
 .ai_chat .loading_bar {
     margin-left: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #363636;
+        color: #cccccc;
+    }
+    .generator {
+        background: #363636;
+    }
+    tr:nth-child(2n),
+    .chat_content {
+        color: #363636;
+    }
 }

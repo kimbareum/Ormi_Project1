@@ -3,7 +3,7 @@ const $target = document.querySelector("#target");
 const $start_date = document.querySelector("#start_date");
 const $end_date = document.querySelector("#end_date");
 const $extra_condition = document.querySelector("#extra_condition");
-const $answer_container = document.querySelector(".answer_container");
+const $answer_box = document.querySelector(".answer_box");
 const $loading = document.querySelector(".loading");
 
 let data_generator = [
@@ -27,7 +27,7 @@ let data_generator = [
     },
     {
         role: "system",
-        content: `답변 형식이 정확한지 한번 확인해보고, 정확하게 고쳐서 반환할것. 일정안의 시작시간:분 = 세부일정 에서 =을 다른걸로 교체하지 말것. 고치는 과정은 반환할 필요 없음.`,
+        content: `답변 형식에 맞게 답변하고 있는지 다시 한번 확인해보고, 정확하게 답변형식대로 고쳐서 반환할것. 답변에서 "일정" array 안의 시작시간:분 = 세부일정 에서 =을 다른걸로 교체하지 말것. 고치는 과정은 반환할 필요 없음.`,
     },
 ];
 
@@ -78,20 +78,20 @@ const make_cardItem = (data) => {
 
 // 여행계획 카드 전체 생성.
 const printAnswer_generator = (answer) => {
+    $answer_box.innerHTML = "";
+    $answer_box.removeAttribute("style");
     if (answer) {
         const card_box = make_box("div", "card_box");
         for (const idx in answer) {
             card = make_cardItem(answer[idx]);
             card_box.append(card);
         }
-        const answer_box = make_box("div", "answer_box");
         const answer_label = make_item(
             "div",
             `${$target.value} 여행 계획`,
             "answer_label"
         );
-        $answer_container.append(answer_box);
-        answer_box.append(answer_label, card_box);
+        $answer_box.append(answer_label, card_box);
 
         slide();
     }
