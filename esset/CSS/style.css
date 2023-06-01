@@ -257,9 +257,9 @@ h1 > img {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 55px;
-    max-width: 55px;
-    font-size: 16px;
+    min-width: 67px;
+    max-width: 67px;
+    font-size: 14px;
 }
 
 .plan_box > .plan {

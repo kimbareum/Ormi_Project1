@@ -23,11 +23,11 @@ let data_generator = [
     },
     {
         role: "system",
-        content: `답변 형식: {"$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["시작시간:분  = 세부일정", "시작시간:분 = 세부일정"]"}, "$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["시작시간:분  = 세부일정", "시작시간:분 = 세부일정"]"} }.`,
+        content: `답변 형식: {"$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["00시 00분 : 일정내용", "00시 00분 : 일정내용"]"}, "$일차" : {"날짜":"$일차($년 $월 $일, $요일)", "일정":"["00시 00분  : 일정내용", "00시 00분 : 일정내용"]"}}.`,
     },
     {
         role: "system",
-        content: `답변 형식에 맞게 답변하고 있는지 다시 한번 확인해보고, 정확하게 답변형식대로 고쳐서 반환할것. 답변에서 "일정" array 안의 시작시간:분 = 세부일정 에서 =을 다른걸로 교체하지 말것. 고치는 과정은 반환할 필요 없음. 반드시 답변형식대로 답변할것.`,
+        content: `답변 형식에 맞게 답변하고 있는지 다시 한번 확인해보고, 정확하게 답변형식대로 고쳐서 반환할것. 고치는 과정은 반환할 필요 없음. 반드시 답변형식대로 답변할것.`,
     },
 ];
 
@@ -65,7 +65,7 @@ const make_cardItem = (data) => {
         const label = make_item("div", data["날짜"], "date");
         for (const plan of data["일정"]) {
             const row = make_box("div", "plan_box");
-            const plan_data = plan.split("=");
+            const plan_data = plan.split(":");
             const col_time = make_item("div", plan_data[0].trim(), "time");
             const col_plan = make_item("div", plan_data[1].trim(), "plan");
             row.append(col_time, col_plan);
@@ -78,8 +78,6 @@ const make_cardItem = (data) => {
 
 // 여행계획 카드 전체 생성.
 const printAnswer_generator = (answer) => {
-    $answer_box.innerHTML = "";
-    $answer_box.removeAttribute("style");
     if (answer) {
         const card_box = make_box("div", "card_box");
         for (const idx in answer) {
@@ -91,6 +89,8 @@ const printAnswer_generator = (answer) => {
             `${$target.value} 여행 계획`,
             "answer_label"
         );
+        $answer_box.innerHTML = "";
+        $answer_box.removeAttribute("style");
         $answer_box.append(answer_label, card_box);
 
         slide();
