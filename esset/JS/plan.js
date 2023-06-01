@@ -4,7 +4,7 @@ const $start_date = document.querySelector("#start_date");
 const $end_date = document.querySelector("#end_date");
 const $extra_condition = document.querySelector("#extra_condition");
 const $answer_box = document.querySelector(".answer_box");
-const $loading = document.querySelector(".loading");
+const $loading_screen = document.querySelector(".loading");
 
 let data_generator = [
     {
@@ -47,44 +47,65 @@ const createQuestion = (_) => {
 const json_parsing = (text) => {
     if (text) {
         let answer = null;
-        let newText = text.slice(text.indexOf("{"), text.lastIndexOf("}") + 1);
+        const newText = text.slice(
+            text.indexOf("{"),
+            text.lastIndexOf("}") + 1
+        );
         try {
             answer = JSON.parse(newText);
         } catch {
             answer = JSON.parse(newText + "}");
         }
-        console.log(answer);
         return answer;
     }
 };
 
-// 여행계획이 들어갈 카드항목 생성
-const make_cardItem = (data) => {
+// 여행계획 카드 타이틀 생성
+const makeCardTitle = (data) => {
+    const label_box = makeBox("div", "date_box");
+    const label = makeItem("div", data, "date");
+    label_box.append(label);
+    return label_box;
+};
+// 여행계획 카드 내용 생성
+const makeCardItem = (data) => {
+    const row = makeBox("div", "plan_row");
+    const col_time = makeItem("div", data[0].trim(), "time");
+    const col_plan = makeItem(
+        "div",
+        data.slice(1, data.length).join("").trim(),
+        "plan"
+    );
+    row.append(col_time, col_plan);
+    return row;
+};
+
+// 여행계획이 들어갈 카드 생성
+const makeCard = (data) => {
     if (data) {
-        const card = make_box("div", "card");
-        const label = make_item("div", data["날짜"], "date");
+        const card = makeBox("div", "card");
+        const label_box = makeCardTitle(data["날짜"]);
+        const plan_box = makeBox("div", "plan_box");
         for (const plan of data["일정"]) {
-            const row = make_box("div", "plan_box");
-            const plan_data = plan.split(":");
-            const col_time = make_item("div", plan_data[0].trim(), "time");
-            const col_plan = make_item("div", plan_data[1].trim(), "plan");
-            row.append(col_time, col_plan);
-            card.append(row);
+            const split_data = plan.split(":");
+            const row = makeCardItem(split_data);
+            plan_box.append(row);
         }
-        card.prepend(label);
+        card.append(label_box, plan_box);
         return card;
     }
 };
 
-// 여행계획 카드 전체 생성.
-const printAnswer_generator = (answer) => {
+// 여행계획 렌더링
+const planRender = (answer) => {
     if (answer) {
-        const card_box = make_box("div", "card_box");
+        const card_box = makeBox("div", "card_box");
+
         for (const idx in answer) {
-            const card = make_cardItem(answer[idx]);
+            const card = makeCard(answer[idx]);
             card_box.append(card);
         }
-        const answer_label = make_item(
+        const answer_label = makeItem(
             "div",
             `${$target.value} 여행 계획`,
             "answer_label"
@@ -92,25 +113,29 @@ const printAnswer_generator = (answer) => {
         $answer_box.innerHTML = "";
         $answer_box.removeAttribute("style");
         $answer_box.append(answer_label, card_box);
-
-        slide();
     }
 };
+
 // 여행계획 생성기 버튼 처리.
 $form_generator.addEventListener("submit", async (e) => {
     e.preventDefault();
-    $loading.classList.remove("hide");
+    $loading_screen.classList.remove("hide");
     const question = createQuestion();
     saveQuestion(data_generator, question);
     await apiPost(data_generator)
         .then((res) => {
-            const json_res = json_parsing(res);
-            printAnswer_generator(json_res);
+            return json_parsing(res);
+        })
+        .then((json_res) => {
+            planRender(json_res);
         })
         .catch((err) => {
             console.log(err);
             alert("죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.");
         });
     data_generator.pop();
-    $loading.classList.add("hide");
+    $loading_screen.classList.add("hide");
+    if (!$slideItems[0].classList.contains("right")) {
+        slide();
+    }
 });

@@ -33,7 +33,7 @@ $chat_hide.addEventListener("click", (e) => {
 //////////////////////////////////////////
 
 // 챗봇 질문 화면에 렌더링
-const printQuestion_chatbot = (question) => {
+const questionRender = (question) => {
     const user_chat = make_box("div", "user_chat");
     const user_chat_content = make_item("div", question, "chat_content");
     user_chat.append(user_chat_content);
@@ -42,20 +42,20 @@ const printQuestion_chatbot = (question) => {
 };
 
 // 챗봇 로딩바 생성
-const loading_chatbot = (_) => {
+const chatbotLoading = (_) => {
     const ai_chat = make_box("div", "ai_chat");
-    const loading_chatbot = make_box("div", "loading_bar");
+    const loading_box = make_box("div", "loading_bar");
     const loading_item1 = make_box("span");
     const loading_item2 = make_box("span");
     const loading_item3 = make_box("span");
-    ai_chat.append(loading_chatbot);
-    loading_chatbot.append(loading_item1, loading_item2, loading_item3);
+    ai_chat.append(loading_box);
+    loading_box.append(loading_item1, loading_item2, loading_item3);
     $chat_screen.append(ai_chat);
     $chat_screen.scrollTop = $chat_window.scrollHeight;
 };
 
 // 챗봇 답변 화면에 표시
-const printAnswer_chatbot = (answer) => {
+const answerRender = (answer) => {
     $chat_screen.removeChild($chat_screen.lastChild);
     if (answer) {
         saveAnswer(data_chatbot, answer);
@@ -69,17 +69,17 @@ const printAnswer_chatbot = (answer) => {
 };
 
 // 챗봇 액션 처리
-const chatbot_action = async (_) => {
+const chatbotAction = async (_) => {
     const question = $question.value;
     if (question) {
         $question.value = null;
         $chat_btn.toggleAttribute("disabled");
         saveQuestion(data_chatbot, question);
-        printQuestion_chatbot(question);
-        loading_chatbot();
+        questionRender(question);
+        chatbotLoading();
         await apiPost(data_chatbot)
             .then((answer) => {
-                printAnswer_chatbot(answer);
+                answerRender(answer);
             })
             .catch((err) => {
                 console.log(err);
@@ -92,7 +92,7 @@ const chatbot_action = async (_) => {
 // 챗봇 submit 버튼 액션
 $form_chatbot.addEventListener("submit", async (e) => {
     e.preventDefault();
-    chatbot_action();
+    chatbotAction();
 });
 // 챗봇 textarea Enter키 액션
 $question.addEventListener("keydown", (e) => {
@@ -100,6 +100,6 @@ $question.addEventListener("keydown", (e) => {
         return;
     } else if (e.key == "Enter") {
         e.preventDefault();
-        chatbot_action();
+        chatbotAction();
     }
 });
