@@ -1,0 +1,488 @@
+body,
+div,
+p,
+button,
+form,
+input,
+h1,
+textarea,
+button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: medium;
+}
+
+@font-face {
+    font-family: "nanumGothicBold";
+    src: url("../font/Nanum_barun_gothic_bold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "nanumGothic";
+    src: url("../font/Nanum_barun_gothic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "ohmyu_daibbm";
+    src: url("../font/ohmyu_daibbm.ttf");
+}
+
+/* 헤딩 */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 75px;
+    border-bottom: 2px solid royalblue;
+}
+
+h1 {
+    margin-left: 15vw;
+}
+
+h1 > img {
+    height: 40px;
+}
+
+/* 슬라이드 버튼 */
+.slide_button > img {
+    padding-right: 2vw;
+    height: 40px;
+}
+.slide_button > img:hover {
+    height: 60px;
+    transition-duration: 0.5s;
+}
+
+/* 여행계획 생성부 */
+.slide {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+}
+.slide_generator {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    left: 0px;
+    width: 100vw;
+    height: fit-content;
+    padding: 5vw 0 5vw 0;
+    flex-shrink: 0;
+    transition: left 0.15s;
+    background: url(../img/main_img.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.slide_plan {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+    left: 0px;
+    width: 100vw;
+    flex-shrink: 0;
+    transition: left 0.15s;
+}
+.slide_item.right {
+    left: -100vw;
+}
+
+.generator {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    position: relative;
+    width: 450px;
+    min-height: 60vh;
+    padding: 30px;
+    gap: 40px;
+    background-color: whitesmoke;
+}
+
+.gen_label {
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.gen_label > img {
+    height: 30px;
+}
+
+.gen_description {
+    font-family: "nanumGothic";
+    word-break: keep-all;
+    line-height: 23px;
+}
+
+.gen_input {
+    display: flex;
+    flex-direction: column;
+}
+.gen_input > label {
+    font-size: 16px;
+    font-family: "nanumGothicBold";
+    /* font-weight: 700; */
+}
+
+.gen_input > input {
+    height: 35px;
+    border: 2px solid lightblue;
+    border-radius: 5px;
+    background-color: #e8f0fe;
+    /* border-color: */
+}
+.gen_input > textarea {
+    box-sizing: border-box;
+    border: 2px solid lightblue;
+    border-radius: 5px;
+    background-color: #e8f0fe;
+    resize: none;
+    padding: 5px;
+}
+
+.gen_input > textarea::placeholder {
+    font-size: 14px;
+}
+::-webkit-calendar-picker-indicator {
+    width: 100%;
+    height: 37px;
+    position: absolute;
+    background: transparent;
+}
+.gen_button {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+.gen_button > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 30px;
+    padding: 25px 20px 25px 20px;
+    border-radius: 10px;
+    background-color: royalblue;
+    font-weight: 600;
+    font-size: 16px;
+    color: whitesmoke;
+    box-shadow: 2px 2px 2px black;
+}
+
+.gen_button > button:hover {
+    box-shadow: none;
+    transition-duration: 0.5s;
+}
+
+/* 여행계획 표시부 */
+.answer_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 20px 0 20px 0;
+}
+
+.answer_box > p {
+    font-weight: 700;
+    padding: 0px 30px 10px 30px;
+    font-size: 12px;
+}
+.plan_label {
+    height: 30px;
+    margin: 20px 0px 20px 0;
+}
+
+.answer_box {
+    text-align: center;
+    border: 2px solid royalblue;
+    border-radius: 10px;
+    width: 1000px;
+}
+
+.answer_label {
+    font-family: "ohmyu_daibbm";
+    padding: 40px 0 20px 0;
+    font-size: 30px;
+    color: black;
+}
+
+.card_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 20px;
+    gap: 30px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+.date_box > .date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid black;
+    border-radius: 10px 10px 0 0;
+    height: 50px;
+    background-color: royalblue;
+    color: whitesmoke;
+    font-family: "ohmyu_daibbm";
+    font-size: 20px;
+}
+.plan_box {
+    display: flex;
+    height: 100%;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 2px solid royalblue;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 15px;
+}
+.plan_row {
+    display: flex;
+    min-height: 25px;
+}
+
+.plan_row > .time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 67px;
+    max-width: 67px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.plan_row > .plan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 3px solid royalblue;
+    padding-left: 10px;
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+/* 챗봇 */
+.chat_wrap {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+}
+.chat_window {
+    background-color: #677bac;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 5px 5px 0 0;
+    width: 30vw;
+}
+.chat_window.hide {
+    display: none;
+}
+.chat_screen {
+    height: 50vh;
+    overflow: auto;
+    padding: 10px;
+}
+
+.chat_hide {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    border: 0;
+    background: none;
+}
+.chat_hide > img {
+    height: 40px;
+    transition-duration: 0.5s;
+}
+.chat_hide > img:hover {
+    height: 60px;
+}
+.chat_hide.open {
+    border-radius: 0 0 5px 5px;
+    background-color: royalblue;
+    border: 1px solid rgb(190, 190, 190);
+    border-top: none;
+    height: 40px;
+    color: white;
+    font-size: 18px;
+}
+
+.ai_chat {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.ai_chat:first-child {
+    margin-top: 0;
+}
+
+.ai_chat img {
+    width: 50px;
+}
+
+.chat_content {
+    width: fit-content;
+    max-width: 40vw;
+    padding: 10px;
+}
+
+.ai_chat .chat_content {
+    background-color: orange;
+    border-radius: 0 20px 20px 20px;
+    margin-top: 20px;
+}
+
+.user_chat {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.user_chat .chat_content {
+    background-color: skyblue;
+    border-radius: 20px 20px 0 20px;
+}
+
+.chat_form {
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+    background-color: whitesmoke;
+    border-top: 2px solid #363636;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.chat_form textarea {
+    resize: none;
+    background-color: whitesmoke;
+    flex-grow: 1;
+    height: 60px;
+    border: 0;
+}
+
+.chat_button {
+    background-color: royalblue;
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    width: 80px;
+    height: 60px;
+    font-weight: 700;
+    box-shadow: 1px 1px 1px black;
+}
+
+.chat_button:hover {
+    box-shadow: none;
+}
+
+.ai_chat .loading_bar {
+    margin-left: 5px;
+}
+
+/* 로딩바 */
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin-left: -30px;
+    background-color: grey;
+    opacity: 0.97;
+    border-radius: inherit;
+}
+.loading.hide {
+    display: none;
+}
+
+.loading > div {
+    font-weight: 700;
+    font-size: 18px;
+}
+.loading_bar span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: gray;
+    border-radius: 50%;
+    animation: loading 1s 0s linear infinite;
+}
+.loading_bar span:nth-child(1) {
+    animation-delay: 0s;
+    background-color: red;
+}
+
+.loading_bar span:nth-child(2) {
+    animation-delay: 0.2s;
+    background-color: orange;
+}
+
+.loading_bar span:nth-child(3) {
+    animation-delay: 0.4s;
+    background-color: yellowgreen;
+}
+
+@keyframes loading {
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@media (max-width: 1100px) {
+    .answer_box {
+        width: 670px;
+    }
+    .chat_window {
+        width: 45vw;
+    }
+}
+
+@media (max-width: 720px) {
+    .answer_box {
+        width: 350px;
+    }
+    .card_box {
+        justify-content: center;
+    }
+    .chat_window {
+        width: 70vw;
+    }
+}
+
+@media (max-width: 560px) {
+    .generator {
+        width: 400px;
+    }
+}
