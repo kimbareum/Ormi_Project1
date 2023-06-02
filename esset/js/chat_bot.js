@@ -34,8 +34,8 @@ $chat_hide.addEventListener("click", (e) => {
 
 // 챗봇 질문 화면에 렌더링
 const questionRender = (question) => {
-    const user_chat = make_box("div", "user_chat");
-    const user_chat_content = make_item("div", question, "chat_content");
+    const user_chat = makeBox("div", "user_chat");
+    const user_chat_content = makeItem("div", question, "chat_content");
     user_chat.append(user_chat_content);
     $chat_screen.append(user_chat);
     $chat_window.scrollTop = $chat_screen.scrollHeight;
@@ -43,11 +43,11 @@ const questionRender = (question) => {
 
 // 챗봇 로딩바 생성
 const chatbotLoading = (_) => {
-    const ai_chat = make_box("div", "ai_chat");
-    const loading_box = make_box("div", "loading_bar");
-    const loading_item1 = make_box("span");
-    const loading_item2 = make_box("span");
-    const loading_item3 = make_box("span");
+    const ai_chat = makeBox("div", "ai_chat");
+    const loading_box = makeBox("div", "loading_bar");
+    const loading_item1 = makeBox("span");
+    const loading_item2 = makeBox("span");
+    const loading_item3 = makeBox("span");
     ai_chat.append(loading_box);
     loading_box.append(loading_item1, loading_item2, loading_item3);
     $chat_screen.append(ai_chat);
@@ -59,9 +59,9 @@ const answerRender = (answer) => {
     $chat_screen.removeChild($chat_screen.lastChild);
     if (answer) {
         saveAnswer(data_chatbot, answer);
-        const ai_chat = make_box("div", "ai_chat");
+        const ai_chat = makeBox("div", "ai_chat");
         ai_chat.innerHTML = `<img src="./esset/img/robot_icon.png" alt="AI icon" />`;
-        const ai_chat_content = make_item("div", answer, "chat_content");
+        const ai_chat_content = makeItem("div", answer, "chat_content");
         ai_chat.append(ai_chat_content);
         $chat_screen.append(ai_chat);
         $chat_screen.scrollTop = $chat_screen.scrollHeight;
