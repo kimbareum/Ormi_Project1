@@ -70,12 +70,10 @@ $slide.addEventListener("mouseup", (e) => {
 // 모바일 스와이프
 $slide.addEventListener("touchstart", (e) => {
     startPoint = e.touches[0].pageX;
-    console.log(e.touches);
 });
 
 $slide.addEventListener("touchend", (e) => {
     endPoint = e.changedTouches[0].pageX;
-    console.log(e.touches);
     if (startPoint < endPoint && endPoint - startPoint >= 100) {
         slideLeft();
     } else if (startPoint > endPoint && startPoint - endPoint >= 100) {

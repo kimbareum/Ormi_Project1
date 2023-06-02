@@ -201,5 +201,5 @@ $form_generator.addEventListener("submit", async (e) => {
         });
     data_generator.pop();
     $loading_screen.classList.add("hide");
-    slide_right();
+    slideRight();
 });
