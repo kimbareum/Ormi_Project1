@@ -201,7 +201,5 @@ $form_generator.addEventListener("submit", async (e) => {
         });
     data_generator.pop();
     $loading_screen.classList.add("hide");
-    if (!$slideItems[0].classList.contains("right")) {
-        slide();
-    }
+    slide_right();
 });
