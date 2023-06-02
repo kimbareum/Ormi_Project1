@@ -171,9 +171,14 @@ const planRender = (answer) => {
             `${$target.value} 여행 계획`,
             "answer_label"
         );
-        $answer_box.innerHTML = "";
+        const answer_description = makeItem(
+            "p",
+            `해당 결과는 chatGPT를 이용해서 만들어진 계획이므로 다소 무리하거나, 불가능한 계획이 포함되어있을 수 있습니다.
+        수정을 통해서 완벽한 계획을 세워보시기를 바랍니다.`
+        );
+        $answer_box.innerHtml = "";
         $answer_box.removeAttribute("style");
-        $answer_box.append(answer_label, card_box);
+        $answer_box.append(answer_label, card_box, answer_description);
     }
 };
 

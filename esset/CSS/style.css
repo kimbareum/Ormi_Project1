@@ -59,7 +59,6 @@ h1 > img {
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
-
     position: relative;
     width: 100vw;
 }
@@ -72,13 +71,13 @@ h1 > img {
     position: relative;
     left: 0px;
     width: 100vw;
-    height: 90vh;
+    height: fit-content;
+    padding: 5vw 0 5vw 0;
     flex-shrink: 0;
     transition: left 0.15s;
     background: url(../img/main_img.jpg);
     background-position: center;
     background-size: cover;
-    background-repeat: repeat;
 }
 .slide_plan {
     display: flex;
@@ -195,12 +194,9 @@ h1 > img {
     margin: 20px 0 20px 0;
 }
 
-.answer_container > p {
-    position: absolute;
-    right: 50px;
-    top: 40px;
+.answer_box > p {
     font-weight: 700;
-    width: 30vw;
+    padding: 0px 30px 10px 30px;
     font-size: 12px;
 }
 .plan_label {
@@ -460,5 +456,32 @@ h1 > img {
     50% {
         opacity: 1;
         transform: scale(1.2);
+    }
+}
+
+@media (max-width: 1100px) {
+    .answer_box {
+        width: 670px;
+    }
+    .chat_window {
+        width: 45vw;
+    }
+}
+
+@media (max-width: 720px) {
+    .answer_box {
+        width: 350px;
+    }
+    .card_box {
+        justify-content: center;
+    }
+    .chat_window {
+        width: 70vw;
+    }
+}
+
+@media (max-width: 560px) {
+    .generator {
+        width: 400px;
     }
 }
