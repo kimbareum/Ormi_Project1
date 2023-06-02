@@ -4,6 +4,9 @@ const $slideItems = document.querySelectorAll(".slide_item");
 const $gen_label = document.querySelector(".gen_label>img");
 const $plan_label = document.querySelector(".plan_label");
 
+let startPoint = 0;
+let endPoint = 0;
+
 // openAI API
 const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
@@ -27,20 +30,56 @@ const makeItem = (type, data, ...classList) => {
 // 슬라이딩기능 구현
 //////////////////////////////////////////
 
+const slideLeft = (_) => {
+    $slideItems.forEach((i) => {
+        i.classList.remove("right");
+    });
+};
+
+const slideRight = (_) => {
+    $slideItems.forEach((i) => {
+        i.classList.add("right");
+    });
+};
+
 const slide = (_) => {
     if ($slideItems[0].classList.contains("right")) {
-        $slideItems.forEach((i) => {
-            i.classList.remove("right");
-        });
+        slideLeft();
     } else {
-        $slideItems.forEach((i) => {
-            i.classList.add("right");
-        });
+        slideRight();
     }
 };
 
+// 버튼클릭
 $slide_btn.addEventListener("click", slide);
 
+// 마우스 드래그
+$slide.addEventListener("mousedown", (e) => {
+    startPoint = e.pageX;
+});
+
+$slide.addEventListener("mouseup", (e) => {
+    endPoint = e.pageX;
+    if (startPoint < endPoint && endPoint - startPoint >= 100) {
+        slideLeft();
+    } else if (startPoint > endPoint && startPoint - endPoint >= 100) {
+        slideRight();
+    }
+});
+
+// 모바일 스와이프
+$slide.addEventListener("touchstart", (e) => {
+    startPoint = e.touches[0].pageX;
+});
+
+$slide.addEventListener("touchend", (e) => {
+    endPoint = e.changedTouches[0].pageX;
+    if (startPoint < endPoint && endPoint - startPoint >= 100) {
+        slideLeft();
+    } else if (startPoint > endPoint && startPoint - endPoint >= 100) {
+        slideRight();
+    }
+});
 //////////////////////////////////////////
 // Fetch
 //////////////////////////////////////////
