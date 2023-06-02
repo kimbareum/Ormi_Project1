@@ -312,9 +312,14 @@ h1 > img {
     height: 40px;
     transition-duration: 0.5s;
 }
+.chat_hide.wait > img {
+    animation: wait 2s infinite;
+}
 .chat_hide > img:hover {
     height: 60px;
+    animation: none;
 }
+
 .chat_hide.open {
     border-radius: 0 0 5px 5px;
     background-color: royalblue;
@@ -447,6 +452,7 @@ h1 > img {
     animation-delay: 0.4s;
     background-color: yellowgreen;
 }
+/* animation */
 
 @keyframes loading {
     0%,
@@ -457,6 +463,16 @@ h1 > img {
     50% {
         opacity: 1;
         transform: scale(1.2);
+    }
+}
+
+@keyframes wait {
+    0%,
+    100% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1);
     }
 }
 

@@ -17,6 +17,7 @@ let data_chatbot = [
 //////////////////////////////////////////
 
 $chat_hide.addEventListener("click", (e) => {
+    $chat_hide.classList.remove("wait");
     if ($chat_window.classList.contains("hide")) {
         $chat_window.classList.remove("hide");
         $chat_hide.innerText = "숨기기";
@@ -77,6 +78,7 @@ const chatbotAction = async (_) => {
         saveQuestion(data_chatbot, question);
         questionRender(question);
         chatbotLoading();
+
         await apiPost(data_chatbot)
             .then((answer) => {
                 answerRender(answer);
@@ -85,6 +87,7 @@ const chatbotAction = async (_) => {
                 console.log(err);
                 alert("죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.");
             });
+        $chat_hide.classList.add("wait");
         $chat_btn.removeAttribute("disabled");
     }
 };
