@@ -312,7 +312,7 @@ h1 > img {
     height: 40px;
     transition-duration: 0.5s;
 }
-.chat_hide.wait > img {
+.chat_hide.notice > img {
     animation: wait 2s infinite;
 }
 .chat_hide > img:hover {
