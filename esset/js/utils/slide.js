@@ -12,14 +12,6 @@ export const slideRight = (_) => {
     });
 };
 
-export const slide = (_) => {
-    if ($slideItems[0].classList.contains("right")) {
-        slideLeft();
-    } else {
-        slideRight();
-    }
-};
-
 export class Slide {
     constructor() {
         this.$slideButton = document.querySelector(".slide_button");
@@ -33,8 +25,16 @@ export class Slide {
         this.setSwipeEvent();
     }
 
+    slide() {
+        if ($slideItems[0].classList.contains("right")) {
+            slideLeft();
+        } else {
+            slideRight();
+        }
+    }
+
     setButtonEvent() {
-        this.$slideButton.addEventListener("click", () => slide());
+        this.$slideButton.addEventListener("click", () => this.slide());
     }
 
     setDragEvent() {
