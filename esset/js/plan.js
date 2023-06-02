@@ -115,7 +115,7 @@ const json_parsing = (text) => {
         try {
             answer = JSON.parse(jsonStr[0]);
         } catch {
-            answer = JSON.parse(jsonStr[0] + "}");
+            answer = JSON.parse(jsonStr[1]);
         }
         return answer;
     }
@@ -195,11 +195,14 @@ $form_generator.addEventListener("submit", async (e) => {
         .then((json_res) => {
             planRender(json_res);
         })
+        .then(() => {
+            slideRight();
+        })
         .catch((err) => {
             console.log(err);
             alert("죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.");
+            slideLeft();
         });
     data_generator.pop();
     $loading_screen.classList.add("hide");
-    slideRight();
 });

@@ -4,8 +4,10 @@ const $slideItems = document.querySelectorAll(".slide_item");
 const $gen_label = document.querySelector(".gen_label>img");
 const $plan_label = document.querySelector(".plan_label");
 
-let startPoint = 0;
-let endPoint = 0;
+let startPointX = 0;
+let startPointY = 0;
+let endPointX = 0;
+let endPointY = 0;
 
 // openAI API
 const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
@@ -50,33 +52,39 @@ const slide = (_) => {
     }
 };
 
-// 버튼클릭
+// 버튼클릭 슬라이드
 $slide_btn.addEventListener("click", slide);
 
-// 마우스 드래그
+// 마우스 드래그 슬라이드
 $slide.addEventListener("mousedown", (e) => {
-    startPoint = e.pageX;
+    startPointX = e.pageX;
+    startPointY = e.pageY;
 });
 
 $slide.addEventListener("mouseup", (e) => {
-    endPoint = e.pageX;
-    if (startPoint < endPoint && endPoint - startPoint >= 100) {
+    endPointX = e.pageX;
+    endPointY = e.pageY;
+    // 복사를 위해 세로로 200px 이상 움직이면 슬라이드 안되게 설정.
+    if (Math.abs(startPointY - endPointY) >= 200) {
+        return;
+    }
+    if (startPointX < endPointX && endPointX - startPointX >= 150) {
         slideLeft();
-    } else if (startPoint > endPoint && startPoint - endPoint >= 100) {
+    } else if (startPointX > endPointX && startPointX - endPointX >= 150) {
         slideRight();
     }
 });
 
-// 모바일 스와이프
+// 모바일 스와이프 슬라이드
 $slide.addEventListener("touchstart", (e) => {
     startPoint = e.touches[0].pageX;
 });
 
 $slide.addEventListener("touchend", (e) => {
     endPoint = e.changedTouches[0].pageX;
-    if (startPoint < endPoint && endPoint - startPoint >= 100) {
+    if (startPoint < endPoint && endPoint - startPoint >= 80) {
         slideLeft();
-    } else if (startPoint > endPoint && startPoint - endPoint >= 100) {
+    } else if (startPoint > endPoint && startPoint - endPoint >= 80) {
         slideRight();
     }
 });
