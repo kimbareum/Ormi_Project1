@@ -403,11 +403,6 @@ h1 > img {
     box-shadow: none;
 }
 
-.chat_button:disabled {
-    background-color: grey;
-    box-shadow: none;
-}
-
 .ai_chat .loading_bar {
     margin-left: 5px;
 }
