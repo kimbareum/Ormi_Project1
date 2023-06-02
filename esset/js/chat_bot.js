@@ -52,7 +52,7 @@ const chatbotLoading = (_) => {
     ai_chat.append(loading_box);
     loading_box.append(loading_item1, loading_item2, loading_item3);
     $chat_screen.append(ai_chat);
-    $chat_screen.scrollTop = $chat_window.scrollHeight;
+    $chat_screen.scrollTop = $chat_screen.scrollHeight;
 };
 
 // 챗봇 답변 화면에 표시
@@ -74,7 +74,7 @@ const chatbotAction = async (_) => {
     const question = $question.value;
     if (question) {
         $question.value = null;
-        $chat_btn.toggleAttribute("disabled");
+        $chat_btn.setAttribute("disabled", "");
         saveQuestion(data_chatbot, question);
         questionRender(question);
         chatbotLoading();
