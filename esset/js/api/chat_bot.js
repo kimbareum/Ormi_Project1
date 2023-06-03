@@ -18,6 +18,7 @@ export default class ChatBot extends OpenAiApi {
     scrollTop() {
         this.$screen.scrollTop = this.$screen.scrollHeight;
     }
+
     questionRender(question) {
         const user_chat = makeBox("div", "user_chat");
         const user_chat_content = makeItem("div", question, "chat_content");
@@ -25,6 +26,7 @@ export default class ChatBot extends OpenAiApi {
         this.$screen.append(user_chat);
         this.scrollTop();
     }
+
     chatbotLoading() {
         const ai_chat = makeBox("div", "ai_chat");
         const loading_box = makeBox("div", "loading_bar");
@@ -36,6 +38,7 @@ export default class ChatBot extends OpenAiApi {
         this.$screen.append(ai_chat);
         this.scrollTop();
     }
+
     answerRender(answer) {
         this.$screen.removeChild(this.$screen.lastChild);
         if (answer) {
@@ -48,6 +51,7 @@ export default class ChatBot extends OpenAiApi {
             this.scrollTop();
         }
     }
+
     async chatbotAction() {
         const question = this.$input.value;
         if (question) {
@@ -88,6 +92,7 @@ export default class ChatBot extends OpenAiApi {
             }
         });
     }
+
     addButtonEvent() {
         this.$form.addEventListener("submit", async (e) => {
             e.preventDefault();
