@@ -25,7 +25,7 @@ export default class PlanBox {
     }
 
     render() {
-        this.plan_label.innerText = this.data.target;
+        this.plan_label.innerText = `${this.data.target} 여행 계획`;
         this.cardBox.setData(this.data.answer);
     }
 }
