@@ -1,6 +1,6 @@
 import Header from "./Header.js";
 import ChatBot from "./ChatBot.js";
-import { data_chatbot } from "../data/api_data.js";
+import Slide from "./Slide.js";
 
 export default class App {
     constructor($target) {
@@ -12,7 +12,10 @@ export default class App {
         $target.innerHTML = "";
         this.header = new Header($target);
 
+        this.slide = new Slide($target);
+
         this.chatbot = new ChatBot($target);
+
         // this.chat_bot = new ChatBot($target, data);
     }
 }

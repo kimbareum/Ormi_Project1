@@ -1,6 +1,6 @@
 const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
-export const apiPost = async (data) => {
+const apiPost = async (data) => {
     return await fetch(url, {
         method: "POST",
         headers: {
@@ -22,20 +22,4 @@ export const apiPost = async (data) => {
         });
 };
 
-export const saveQuestion = (data, question) => {
-    if (question) {
-        data.push({
-            role: "user",
-            content: question,
-        });
-    }
-};
-
-export const saveAnswer = (data, answer) => {
-    if (answer) {
-        data.push({
-            role: "assistant",
-            content: answer,
-        });
-    }
-};
+export default apiPost;
