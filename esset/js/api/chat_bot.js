@@ -3,7 +3,8 @@ import { makeBox, makeItem } from "../utils/dom_func.js";
 
 export default class ChatBot extends OpenAiApi {
     constructor(data) {
-        super(data);
+        super();
+        this.data = data;
         this.$hide_button = document.querySelector(".chat_hide");
         this.$window = document.querySelector(".chat_window");
         this.$form = document.querySelector(".chat_form");

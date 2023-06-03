@@ -4,7 +4,7 @@ import { slideLeft, slideRight } from "../utils/slide.js";
 
 export default class PlanGenerator extends OpenAiApi {
     constructor(data) {
-        super(data);
+        super();
         this.data = data;
         this.$form = document.querySelector(".generator");
         this.$target = document.querySelector("#target");

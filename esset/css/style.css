@@ -30,7 +30,7 @@ button {
 /* 
 헤딩 
 */
-.header {
+header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -47,11 +47,11 @@ h1 > img {
 }
 
 /* 슬라이드 버튼 */
-.slide_button > img {
+slide-button > img {
     padding-right: 2vw;
     height: 40px;
 }
-.slide_button > img:hover {
+slide-button > img:hover {
     height: 60px;
     transition-duration: 0.5s;
 }
@@ -189,7 +189,7 @@ h1 > img {
     font-weight: 700;
     font-size: 18px;
 }
-.loading_bar span {
+loading-bar span {
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -197,17 +197,17 @@ h1 > img {
     border-radius: 50%;
     animation: loading 1s 0s linear infinite;
 }
-.loading_bar span:nth-child(1) {
+loading-bar span:nth-child(1) {
     animation-delay: 0s;
     background-color: red;
 }
 
-.loading_bar span:nth-child(2) {
+loading-bar span:nth-child(2) {
     animation-delay: 0.2s;
     background-color: orange;
 }
 
-.loading_bar span:nth-child(3) {
+loading-bar span:nth-child(3) {
     animation-delay: 0.4s;
     background-color: yellowgreen;
 }
@@ -329,69 +329,70 @@ h1 > img {
 챗봇
  */
 /* 챗 스크린 */
-.chat_wrap {
+chat-bot {
     position: fixed;
     right: 2rem;
     bottom: 2rem;
 }
-.chat_window {
+.chat-window {
+    display: block;
     background-color: #677bac;
     border: 1px solid rgb(190, 190, 190);
     border-radius: 5px 5px 0 0;
     width: 30vw;
 }
-.chat_window.hide {
+.chat-window.hide {
     display: none;
 }
-.chat_screen {
+.chat-screen {
     height: 50vh;
     overflow: auto;
     padding: 10px;
 }
 
-.ai_chat {
+ai-chat {
     display: flex;
     align-items: flex-start;
     gap: 10px;
     margin-top: 20px;
 }
 
-.ai_chat:first-child {
+ai-chat:first-child {
     margin-top: 0;
 }
 
-.ai_chat img {
+ai-chat img {
     width: 50px;
 }
 
-.chat_content {
+chat-content {
     width: fit-content;
     max-width: 40vw;
     padding: 10px;
 }
 
-.ai_chat .chat_content {
+ai-chat chat-content {
     background-color: orange;
     border-radius: 0 20px 20px 20px;
     margin-top: 20px;
 }
 
-.ai_chat .loading_bar {
+ai-chat loading-bar {
     margin-left: 5px;
 }
 
-.user_chat {
+user-chat {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
 }
 
-.user_chat .chat_content {
+user-chat chat-content {
     background-color: skyblue;
     border-radius: 20px 20px 0 20px;
 }
 
-.chat_form {
+.chat-form {
     background-color: whitesmoke;
     border-top: 2px solid #363636;
     display: flex;
@@ -400,7 +401,7 @@ h1 > img {
     padding: 10px;
 }
 
-.chat_form textarea {
+.chat-form textarea {
     resize: none;
     background-color: whitesmoke;
     flex-grow: 1;
@@ -408,7 +409,7 @@ h1 > img {
     border: 0;
 }
 
-.chat_button {
+.chat-button {
     background-color: royalblue;
     color: white;
     border-radius: 10px;
@@ -418,28 +419,28 @@ h1 > img {
     box-shadow: 1px 1px 1px black;
 }
 
-.chat_button:hover {
+.chat-button:hover {
     box-shadow: none;
 }
 
 /* 챗봇 숨기기, 표시하기 */
-.chat_hide {
+.chat-hide {
     width: 100%;
     background: none;
 }
-.chat_hide > img {
+.chat-hide > img {
     height: 40px;
     transition-duration: 0.5s;
 }
-.chat_hide.notice > img {
+.chat-hide.notice > img {
     animation: wait 2s infinite;
 }
-.chat_hide > img:hover {
+.chat-hide > img:hover {
     height: 60px;
     animation: none;
 }
 
-.chat_hide.open {
+.chat-hide.open {
     border-radius: 0 0 5px 5px;
     background-color: royalblue;
     height: 40px;
