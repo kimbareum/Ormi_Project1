@@ -76,14 +76,14 @@ export default class Slide {
         $slide.addEventListener("mouseup", (e) => {
             endPointX = e.pageX;
             endPointY = e.pageY;
-            if (Math.abs(startPointY - endPointY) >= 200) {
+            if (Math.abs(startPointY - endPointY) >= 150) {
                 return;
             }
-            if (startPointX < endPointX && endPointX - startPointX >= 150) {
+            if (startPointX < endPointX && endPointX - startPointX >= 300) {
                 this.setState("one");
             } else if (
                 startPointX > endPointX &&
-                startPointX - endPointX >= 150
+                startPointX - endPointX >= 300
             ) {
                 this.setState("two");
             }
@@ -97,14 +97,16 @@ export default class Slide {
         $slide.addEventListener("touchend", (e) => {
             endPointX = e.touches[0].pageX;
             endPointY = e.touches[0].pageY;
-            if (Math.abs(startPointY - endPointY) >= 100) {
+            console.log(`X1:${startPointX}, X2:${endPointX}`);
+            console.log(`Y1:${startPointY}, Y2:${endPointY}`);
+            if (Math.abs(startPointY - endPointY) >= 90) {
                 return;
             }
-            if (startPointX < endPointX && endPointX - startPointX >= 80) {
+            if (startPointX < endPointX && endPointX - startPointX >= 90) {
                 this.setState("one");
             } else if (
                 startPointX > endPointX &&
-                startPointX - endPointX >= 80
+                startPointX - endPointX >= 90
             ) {
                 this.setState("two");
             }
