@@ -1,6 +1,7 @@
 import PlanGenerator from "./slide/PlanGenerator.js";
 import PlanViewer from "./slide/PlanViewer.js";
 
+// main
 export default class Slide {
     constructor($target) {
         this.data = { answer: "", target: "" };
@@ -28,6 +29,7 @@ export default class Slide {
     }
 
     render() {
+        // viewer state 변경 => viewer 그리기 시작.
         this.planViewer.setState(this.state);
         this.setPage("two");
     }
@@ -37,6 +39,7 @@ export default class Slide {
         this.setState(newState);
     };
 
+    // 페이지전환 메서드.
     setPage(newPage) {
         if (this.page === newPage) {
             return;
@@ -48,6 +51,7 @@ export default class Slide {
         this.page = newPage;
     }
 
+    // 페이지 전환 이벤트들 추가.
     setEvent() {
         this.slideButton.addEventListener("click", () => {
             this.slideItems[0].getAttribute("view") === "one"

@@ -48,6 +48,7 @@ export default class ChatForm {
 
     handleQuestion() {
         const question = this.question.value;
+        // 입력값이 없거나 답변을 대기중인 상태면 중단.
         if (question && !this.state.busy) {
             this.question.value = null;
 

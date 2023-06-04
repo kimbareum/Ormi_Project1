@@ -42,9 +42,9 @@ export default class ChatBot {
         if (this.state.busy) {
             this.chatApi.getAnswer();
         } else {
-            // 챗봇 알림
+            // 챗봇 알림 on
             this.hideButton.toggleNotice(true);
-            // 챗봇 form 상태 변경
+            // 챗봇 form 입력 가능하게 설정
             this.chatForm.setState({ busy: false });
         }
     }

@@ -10,7 +10,7 @@ export default class GeneratorForm {
     constructor({ $panel, getState }) {
         this.state = { busy: false };
 
-        // form내 input 생성
+        // form내 input
         this.target = new Target({ $panel });
         this.start_date = new StartDate({ $panel });
         this.end_date = new EndDate({ $panel });
@@ -46,10 +46,11 @@ export default class GeneratorForm {
     }
 
     handleQuestion() {
+        // 답변을 대기중인 상태면 중단.
         if (!this.state.busy) {
             const target = this.target.getValue();
-            saveQuestion(data, this.createQuestion(target));
-            console.log(data);
+            const question = this.createQuestion(target);
+            saveQuestion(data, question);
             this.setState({ busy: true });
             this.sendState({ busy: true, target: target, answer: "" });
         }
@@ -63,6 +64,6 @@ export default class GeneratorForm {
         if (extra == "") {
             return `${target} 여행을 떠날거야. 여행 시작일은 ${start_date[0]} 이고, 여행지에 도착하는 시간은 ${start_date[1]}야. 여행이 끝나는 날은 ${end_date[0]} 이고, 이 날의 ${end_date[1]}에 여행지를 떠나야해. 그 외의 여행 조건은 없어. 이걸 바탕으로 여행계획을 만들어줘.`;
         }
-        return `${target} 여행을 떠날거야. 여행 시작일은 ${start_date[0]}이고, 여행지에 도착하는 시간은 ${start_date[1]}야. 여행이 끝나는 날은 ${end_date[0]} 이고, 이 날의 ${end_date[1]}에 여행지를 떠나야해. 그 외의 여행 조건은 다음과 같아.${extra_condition}. 이걸 바탕으로 여행계획을 만들어줘.`;
+        return `${target} 여행을 떠날거야. 여행 시작일은 ${start_date[0]}이고, 여행지에 도착하는 시간은 ${start_date[1]}야. 여행이 끝나는 날은 ${end_date[0]} 이고, 이 날의 ${end_date[1]}에 여행지를 떠나야해. 그 외의 여행 조건은 다음과 같아.${extra}. 이걸 바탕으로 여행계획을 만들어줘.`;
     }
 }
