@@ -95,8 +95,8 @@ export default class Slide {
         });
 
         $slide.addEventListener("touchend", (e) => {
-            endPointX = e.touches[0].pageX;
-            endPointY = e.touches[0].pageY;
+            endPointX = e.changedTouches[0].pageX;
+            endPointY = e.changedTouches[0].pageY;
             console.log(`X1:${startPointX}, X2:${endPointX}`);
             console.log(`Y1:${startPointY}, Y2:${endPointY}`);
             if (Math.abs(startPointY - endPointY) >= 90) {
