@@ -1,29 +1,33 @@
+import img_src from "../../data/img_data.js";
+
 export default class HideButton {
     constructor({ $chat_bot, $window }) {
         this.hide_button = document.createElement("button");
         this.hide_button.className = "chat-hide";
+
         const button_img = document.createElement("img");
-        button_img.src = "./esset/img/chatbot_icon.png";
+        button_img.src = img_src.chat_hide_icon;
         button_img.alt = "챗봇 토글";
-        $chat_bot.append(this.hide_button);
 
         this.hide_button.append(button_img);
-        this.setEvent(this.hide_button, $window);
+        $chat_bot.append(this.hide_button);
+
+        this.setEvent($window);
     }
 
-    setEvent(hide_button, $window) {
-        hide_button.addEventListener("click", () => {
-            hide_button.classList.remove("notice");
+    setEvent($window) {
+        this.hide_button.addEventListener("click", () => {
+            this.hide_button.classList.remove("notice");
             if ($window.classList.contains("hide")) {
                 $window.classList.remove("hide");
-                hide_button.innerText = "숨기기";
-                hide_button.classList.add("open");
+                this.hide_button.innerText = "숨기기";
+                this.hide_button.classList.add("open");
                 this.toggleNotice(false);
                 document.querySelector("#question").focus();
             } else {
                 $window.classList.add("hide");
-                hide_button.innerHTML = `<img src="./esset/img/chatbot_icon.png" alt="챗봇 토글" />`;
-                hide_button.classList.remove("open");
+                this.hide_button.innerHTML = `<img src=${img_src.chat_hide_icon} alt="챗봇 토글" />`;
+                this.hide_button.classList.remove("open");
             }
         });
     }

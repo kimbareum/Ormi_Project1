@@ -1,38 +1,35 @@
-import apiPost from "../utils/open_ai_api.js";
 import ChatScreen from "./chat_bot/ChatScreen.js";
 import HideButton from "./chat_bot/HideButton.js";
 import ChatForm from "./chat_bot/ChatForm.js";
-import { saveQuestion, saveAnswer } from "../utils/data_record.js";
-import { data_chatbot as data } from "../data/api_data.js";
+import ChatApi from "./chat_bot/ChatApi.js";
 
 export default class ChatBot {
     constructor($target) {
         this.state = {
-            loading: false,
-            question: "",
-            answer: "",
-            wait: false,
+            busy: false,
         };
 
-        const $chat_bot = document.createElement("aside");
-        $chat_bot.className = "chat-bot";
-        const $window = document.createElement("div");
-        $window.classList.add("chat-window", "hide");
-        $chat_bot.append($window);
+        const chat_bot = document.createElement("aside");
+        chat_bot.className = "chat-bot";
+        const window = document.createElement("div");
+        window.classList.add("chat-window", "hide");
+        chat_bot.append(window);
 
-        this.chatScreen = new ChatScreen({ $window });
+        this.chatScreen = new ChatScreen({ $window: window });
 
         this.chatForm = new ChatForm({
-            $window,
-            getQuestion: this.getQuestion,
+            $window: window,
+            getState: this.getState,
         });
 
         this.hideButton = new HideButton({
-            $chat_bot,
-            $window,
+            $chat_bot: chat_bot,
+            $window: window,
         });
 
-        $target.append($chat_bot);
+        this.chatApi = new ChatApi({ getState: this.getState });
+
+        $target.append(chat_bot);
     }
 
     setState(newState) {
@@ -41,48 +38,19 @@ export default class ChatBot {
     }
 
     render() {
-        if (this.state.question == "" || this.state.wait) {
-            return;
-        }
         this.chatScreen.setState(this.state);
-        if (this.state.loading) {
-            saveQuestion(data, this.state.question);
-            this.getAnswer();
-            this.state.wait = true;
+        if (this.state.busy) {
+            this.chatApi.getAnswer();
         } else {
-            saveAnswer(data, this.state.answer);
             // 챗봇 알림
             this.hideButton.toggleNotice(true);
+            // 챗봇 form 상태 변경
+            this.chatForm.setState({ busy: false });
         }
     }
 
-    getQuestion = (question) => {
-        this.setState({
-            loading: true,
-            question: question,
-            answer: "",
-            wait: this.state.wait,
-        });
+    // 하위 컴포넌트에서 state 받아오기
+    getState = (newState) => {
+        this.setState(newState);
     };
-
-    async getAnswer() {
-        await apiPost(data)
-            .then((res) => {
-                this.setState({
-                    loading: false,
-                    question: this.state.question,
-                    answer: res,
-                    wait: false,
-                });
-            })
-            .catch((err) => {
-                this.setState({
-                    loading: false,
-                    question: "",
-                    answer: "",
-                    wait: false,
-                });
-                alert("죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.");
-            });
-    }
 }

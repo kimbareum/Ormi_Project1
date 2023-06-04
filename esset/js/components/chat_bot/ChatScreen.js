@@ -1,6 +1,9 @@
+import img_src from "../../data/img_data.js";
+import { data_chatbot as data } from "../../data/api_data.js";
+
 export default class ChatScreen {
     constructor({ $window }) {
-        this.state = { loading: false, question: "", answer: "" };
+        this.state = { busy: false };
 
         this.chat_screen = document.createElement("div");
         this.chat_screen.className = "chat-screen";
@@ -8,7 +11,7 @@ export default class ChatScreen {
 
         const ai_chat = document.createElement("ai-chat");
         const ai_icon = document.createElement("img");
-        ai_icon.src = "./esset/img/robot_icon.png";
+        ai_icon.src = img_src.ai_chat_icon;
         ai_icon.alt = "AI icon";
         const chat_content = document.createElement("chat-content");
         chat_content.innerText = "반갑습니다. 어떤 것이 궁금하신가요?";
@@ -23,20 +26,24 @@ export default class ChatScreen {
     }
 
     render() {
-        if (this.state.loading) {
-            this.renderQuestion(this.state.question);
-            this.renderLoading();
+        if (this.state.busy) {
+            this.renderQuestion(data[data.length - 1].content);
+            this.showLoading();
         } else {
+            // 로딩제거
             this.chat_screen.removeChild(this.chat_screen.lastChild);
-            this.renderAnswer(this.state.answer);
+            if (data[data.length - 1].role === "assistant") {
+                this.renderAnswer(data[data.length - 1].content);
+            }
         }
+        this.scrollTop();
     }
 
     scrollTop() {
         this.chat_screen.scrollTop = this.chat_screen.scrollHeight;
     }
 
-    renderLoading() {
+    showLoading() {
         const ai_chat = document.createElement("ai-chat");
         const loading_box = document.createElement("loading-bar");
         const loading_item1 = document.createElement("span");
@@ -45,7 +52,6 @@ export default class ChatScreen {
         ai_chat.append(loading_box);
         loading_box.append(loading_item1, loading_item2, loading_item3);
         this.chat_screen.append(ai_chat);
-        this.scrollTop();
     }
 
     renderQuestion(question) {
@@ -59,12 +65,11 @@ export default class ChatScreen {
     renderAnswer(answer) {
         if (answer) {
             const ai_chat = document.createElement("ai-chat");
-            ai_chat.innerHTML = `<img src="./esset/img/robot_icon.png" alt="AI icon" />`;
+            ai_chat.innerHTML = `<img src="${img_src.ai_chat_icon}" alt="AI icon" />`;
             const ai_chat_content = document.createElement("chat-content");
             ai_chat_content.innerText = answer;
             ai_chat.append(ai_chat_content);
             this.chat_screen.append(ai_chat);
-            this.scrollTop();
         }
     }
 }
