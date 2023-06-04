@@ -53,6 +53,7 @@ export default class GeneratorForm {
             saveQuestion(data, question);
             this.setState({ busy: true });
             this.sendState({ busy: true, target: target, answer: "" });
+            console.log(question);
         }
     }
 

@@ -82,7 +82,8 @@ export let data_generator = [
         role: "system",
         content: `답변을 하기전에 다음 사항을 한번 더 검토하고, 올바르지 않다면 수정한다.
         1. 답변은 한글이다.
-        2. JSON parsing 해서 사용할 것이기 때문에, parsing 할 수 있는 정확한 JSON 형식이어야 한다.`,
+        2. JSON parsing 해서 사용할 것이기 때문에, parsing 할 수 있는 정확한 JSON 형식이어야 한다.
+        3. JSON 형식 데이터만 답변한다. 수정과정이나 JSON 형식이 아닌 여행 계획은 보여주지 않는다.`,
     },
 ];
 

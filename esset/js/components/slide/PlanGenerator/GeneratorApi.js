@@ -16,7 +16,7 @@ export default class GeneratorApi {
     json_parsing(text) {
         if (text) {
             let result = null;
-            const regex = /\{[\s\S]*\}/g; // {}안에 있는 모든 문자를 포함하는 정규식
+            const regex = /\{[\s\S]*\}/g;
             const jsonStr = text.match(regex);
             result = JSON.parse(jsonStr[0]);
 

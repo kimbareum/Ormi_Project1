@@ -15,6 +15,7 @@ export default class HideButton {
         this.setEvent($window);
     }
 
+    // 챗봇 토글 이벤트.
     setEvent($window) {
         this.hide_button.addEventListener("click", () => {
             this.hide_button.classList.remove("notice");
