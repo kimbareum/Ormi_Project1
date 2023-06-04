@@ -4,7 +4,7 @@ import PlanViewer from "./slide/PlanViewer.js";
 // main
 export default class Slide {
     constructor($target) {
-        this.data = { answer: "", target: "" };
+        this.state = { render: false };
         this.page = "one";
 
         this.slide = document.createElement("main");
@@ -29,9 +29,10 @@ export default class Slide {
     }
 
     render() {
-        // viewer state 변경 => viewer 그리기 시작.
-        this.planViewer.setState(this.state);
-        this.setPage("two");
+        if (this.state.render) {
+            this.planViewer.render();
+            this.setPage("two");
+        }
     }
 
     // 하위 컴포넌트 데이터 받아오기

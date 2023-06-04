@@ -1,4 +1,4 @@
-import { data_chatbot as data } from "../../data/api_data.js";
+import { chatbot_data as data } from "../../data/api_data.js";
 import { saveQuestion } from "../../utils/data_record.js";
 
 export default class ChatForm {

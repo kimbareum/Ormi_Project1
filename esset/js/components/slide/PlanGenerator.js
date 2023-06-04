@@ -6,7 +6,7 @@ import GeneratorApi from "./PlanGenerator/GeneratorApi.js";
 
 export default class PlanGenerator {
     constructor({ $slide, getState }) {
-        this.state = { busy: false, target: "", answer: "" };
+        this.state = { busy: false };
 
         const window = document.createElement("section");
         window.classList.add("slide-generator", "slide-item");
@@ -51,20 +51,15 @@ export default class PlanGenerator {
 
     render() {
         // 로딩스크린 토글
-        this.loadingScreen.setState(this.state.busy);
+        this.loadingScreen.setState(this.state);
 
         if (this.state.busy) {
             this.genApi.setState(this.state);
         } else {
-            if (this.state.answer !== "fail") {
-                this.sendState({
-                    answer: this.state.answer,
-                    target: this.state.target,
-                });
-            }
-            // form 입력 다시 가능하게
-            this.genForm.setState({ busy: false });
+            this.sendState({ render: true });
         }
+        // form 입력 다시 가능하게
+        this.genForm.setState(this.state);
     }
 
     getState = (newState) => {

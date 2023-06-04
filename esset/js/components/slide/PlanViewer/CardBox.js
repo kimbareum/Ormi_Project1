@@ -1,7 +1,7 @@
+import { plan_data as plan } from "../../../data/api_data.js";
+
 export default class CardBox {
     constructor({ $plan_box }) {
-        this.data = null;
-
         this.card_box = document.createElement("div");
         this.card_box.className = "card-box";
         $plan_box.append(this.card_box);
@@ -10,15 +10,10 @@ export default class CardBox {
         this.card_box.innerHTML = `<div style="padding: 300px 0 300px 0"> 여행계획이 아직 생성되지 않았습니다.</div>`;
     }
 
-    setState(newData) {
-        this.data = newData;
-        this.render();
-    }
-
     render() {
         this.card_box.innerHTML = "";
 
-        const plans = this.data;
+        const plans = plan.responce;
         for (const idx in plans) {
             const card = this.makeCard(plans[idx]);
             this.card_box.append(card);

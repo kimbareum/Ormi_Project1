@@ -1,5 +1,5 @@
 import img_src from "../../data/img_data.js";
-import { data_chatbot as data } from "../../data/api_data.js";
+import { chatbot_data as data } from "../../data/api_data.js";
 
 export default class ChatScreen {
     constructor({ $window }) {

@@ -1,9 +1,12 @@
-import { data_generator as data } from "../../../data/api_data.js";
+import {
+    generator_data as data,
+    plan_data as plan,
+} from "../../../data/api_data.js";
 import apiPost from "../../../utils/open_ai_api.js";
 
 export default class GeneratorApi {
     constructor({ getState }) {
-        this.state = { busy: false, target: "", answer: "" };
+        this.state = { busy: false };
 
         this.sendState = getState;
     }
@@ -30,21 +33,15 @@ export default class GeneratorApi {
                 return this.json_parsing(res);
             })
             .then((answer) => {
-                this.sendState({
-                    ...this.state,
-                    busy: false,
-                    answer: answer,
-                });
+                plan.responce = answer;
+                plan.isCorrect = true;
             })
             .catch((err) => {
-                this.sendState({
-                    ...this.state,
-                    busy: false,
-                    answer: "fail",
-                });
+                plan.isCorrect = false;
                 console.log(err);
                 alert("죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.");
             });
         data.pop();
+        this.sendState({ busy: false });
     }
 }

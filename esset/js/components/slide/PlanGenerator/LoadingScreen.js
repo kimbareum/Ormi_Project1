@@ -1,6 +1,6 @@
 export default class LoadingScreen {
     constructor({ $panel }) {
-        this.state = false;
+        this.state = { busy: false };
 
         this.loading = document.createElement("loading-screen");
         this.loading.className = "hide";
@@ -25,7 +25,7 @@ export default class LoadingScreen {
     }
 
     render() {
-        if (this.state) {
+        if (this.state.busy) {
             this.loading.classList.remove("hide");
         } else {
             this.loading.classList.add("hide");

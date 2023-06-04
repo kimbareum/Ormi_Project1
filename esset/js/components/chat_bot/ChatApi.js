@@ -1,6 +1,6 @@
 import apiPost from "../../utils/open_ai_api.js";
 import { saveAnswer } from "../../utils/data_record.js";
-import { data_chatbot as data } from "../../data/api_data.js";
+import { chatbot_data as data } from "../../data/api_data.js";
 
 export default class ChatApi {
     constructor({ getState }) {

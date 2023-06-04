@@ -3,7 +3,6 @@ import img_src from "../../data/img_data.js";
 
 export default class PlanViewer {
     constructor({ $slide }) {
-        this.state = { answer: "", target: "" };
         const window = document.createElement("section");
         window.classList.add("slide-viewer", "slide-item");
         window.setAttribute("view", "one");
@@ -21,15 +20,10 @@ export default class PlanViewer {
         label.append(label_img);
         screen.append(label);
 
-        this.plan = new PlanBox({ $screen: screen });
-    }
-
-    setState(newState) {
-        this.state = newState;
-        this.render();
+        this.planBox = new PlanBox({ $screen: screen });
     }
 
     render() {
-        this.plan.setState(this.state);
+        this.planBox.render();
     }
 }

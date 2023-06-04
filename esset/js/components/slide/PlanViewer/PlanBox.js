@@ -1,8 +1,8 @@
 import CardBox from "./CardBox.js";
+import { plan_data as plan } from "../../../data/api_data.js";
 
 export default class PlanBox {
     constructor({ $screen }) {
-        this.state = null;
         const plan_box = document.createElement("div");
         plan_box.className = "plan-box";
         $screen.append(plan_box);
@@ -19,13 +19,10 @@ export default class PlanBox {
         plan_box.append(answer_description);
     }
 
-    setState(newState) {
-        this.state = newState;
-        this.render();
-    }
-
     render() {
-        this.plan_label.innerText = `${this.state.target} 여행 계획`;
-        this.cardBox.setState(this.state.answer);
+        if (plan.isCorrect) {
+            this.plan_label.innerText = `${plan.target} 여행 계획`;
+            this.cardBox.render();
+        }
     }
 }

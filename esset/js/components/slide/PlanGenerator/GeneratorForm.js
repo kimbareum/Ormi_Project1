@@ -1,4 +1,7 @@
-import { data_generator as data } from "../../../data/api_data.js";
+import {
+    generator_data as data,
+    plan_data as plan,
+} from "../../../data/api_data.js";
 import { saveQuestion } from "../../../utils/data_record.js";
 
 import Target from "./form/Target.js";
@@ -49,10 +52,14 @@ export default class GeneratorForm {
         // 답변을 대기중인 상태면 중단.
         if (!this.state.busy) {
             const target = this.target.getValue();
-            const question = this.createQuestion(target);
+            const question = this.createQuestion();
+
+            // 질문과 타겟 외부에 저장
             saveQuestion(data, question);
+            plan.target = target;
+
             this.setState({ busy: true });
-            this.sendState({ busy: true, target: target, answer: "" });
+            this.sendState({ busy: true });
         }
     }
 
