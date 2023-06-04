@@ -7,7 +7,12 @@ import { data_chatbot as data } from "../data/api_data.js";
 
 export default class ChatBot {
     constructor($target) {
-        this.state = { loading: false, question: "", answer: "", wait: false };
+        this.state = {
+            loading: false,
+            question: "",
+            answer: "",
+            wait: false,
+        };
 
         const $chat_bot = document.createElement("aside");
         $chat_bot.className = "chat-bot";
@@ -32,10 +37,10 @@ export default class ChatBot {
 
     setState(newState) {
         this.state = newState;
-        this.action();
+        this.render();
     }
 
-    action() {
+    render() {
         if (this.state.question == "" || this.state.wait) {
             return;
         }
@@ -46,7 +51,8 @@ export default class ChatBot {
             this.state.wait = true;
         } else {
             saveAnswer(data, this.state.answer);
-            this.hideButton.toggleWait(true);
+            // 챗봇 알림
+            this.hideButton.toggleNotice(true);
         }
     }
 

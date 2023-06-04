@@ -6,7 +6,7 @@ export default class ChatForm {
         $window.append(chat_form);
 
         const question = document.createElement("textarea");
-        question.className = "question";
+        question.id = "question";
 
         const button = document.createElement("button");
         button.setAttribute("type", "submit");

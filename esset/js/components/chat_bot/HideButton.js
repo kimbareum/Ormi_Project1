@@ -4,6 +4,7 @@ export default class HideButton {
         this.hide_button.className = "chat-hide";
         const button_img = document.createElement("img");
         button_img.src = "./esset/img/chatbot_icon.png";
+        button_img.alt = "챗봇 토글";
         $chat_bot.append(this.hide_button);
 
         this.hide_button.append(button_img);
@@ -17,18 +18,19 @@ export default class HideButton {
                 $window.classList.remove("hide");
                 hide_button.innerText = "숨기기";
                 hide_button.classList.add("open");
-                this.toggleWait(false);
-                document.querySelector(".question").focus();
+                this.toggleNotice(false);
+                document.querySelector("#question").focus();
             } else {
                 $window.classList.add("hide");
-                hide_button.innerHTML = `<img src="./esset/img/chatbot_icon.png" alt="챗봇 이미지" />`;
+                hide_button.innerHTML = `<img src="./esset/img/chatbot_icon.png" alt="챗봇 토글" />`;
                 hide_button.classList.remove("open");
             }
         });
     }
 
-    toggleWait(isWait) {
-        if (isWait) {
+    // 챗봇 답변 알림
+    toggleNotice(isNotice) {
+        if (isNotice) {
             this.hide_button.classList.add("notice");
         } else {
             this.hide_button.classList.remove("notice");
