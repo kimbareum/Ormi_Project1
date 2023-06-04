@@ -35,6 +35,7 @@ export default class PlanGenerator {
 
         $panel.append(label, generator_notice);
 
+        // form내 input 생성
         this.target = new Target({ $panel });
         this.start_date = new StartDate({ $panel });
         this.end_date = new EndDate({ $panel });
@@ -54,6 +55,7 @@ export default class PlanGenerator {
 
         this.loadingScreen = new LoadingScreen({ $panel });
 
+        // Slide 컴포넌트로 데이터 전송
         this.sendResponce = getReponce;
 
         this.setEvent($panel, submit_button);
@@ -62,21 +64,20 @@ export default class PlanGenerator {
     setState(newState) {
         this.state = newState;
         this.render();
-        this.action();
     }
 
     render() {
+        // 로딩스크린 토글
         this.loadingScreen.setState(this.state.loading);
-    }
 
-    action() {
-        if (this.state.answer == "fail") {
+        if (this.state.answer === "fail") {
             return;
         }
         if (this.state.loading) {
             saveQuestion(data, this.state.question);
             this.getResponce();
         } else {
+            // Slide 컴포넌트로 데이터 전송
             this.sendResponce({
                 answer: this.state.answer,
                 target: this.state.target,
@@ -88,10 +89,10 @@ export default class PlanGenerator {
         $panel.addEventListener("submit", (e) => {
             e.preventDefault();
             this.setState({
+                ...this.state,
                 loading: true,
                 question: this.createQuestion(),
-                answer: "",
-                target: "",
+                target: this.target.getValue(),
             });
         });
 
@@ -101,10 +102,10 @@ export default class PlanGenerator {
             } else if (e.key == "Enter") {
                 e.preventDefault();
                 this.setState({
+                    ...this.state,
                     loading: true,
                     question: this.createQuestion(),
-                    answer: "",
-                    target: "",
+                    target: this.target.getValue(),
                 });
             }
         });
@@ -139,18 +140,16 @@ export default class PlanGenerator {
             })
             .then((answer) => {
                 this.setState({
+                    ...this.state,
                     loading: false,
-                    question: "",
                     answer: answer,
-                    target: this.target.getValue(),
                 });
             })
             .catch((err) => {
                 this.setState({
+                    ...this.state,
                     loading: false,
-                    question: "",
                     answer: "fail",
-                    target: "",
                 });
                 console.log(err);
                 alert("죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.");

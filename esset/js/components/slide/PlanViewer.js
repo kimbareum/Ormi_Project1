@@ -23,12 +23,12 @@ export default class PlanViewer {
         this.plan = new PlanBox({ $screen });
     }
 
-    setData(newData) {
+    setState(newData) {
         this.data = newData;
         this.render();
     }
 
     render() {
-        this.plan.setData(this.data);
+        this.plan.setState(this.data);
     }
 }

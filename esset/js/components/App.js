@@ -15,7 +15,5 @@ export default class App {
         this.slide = new Slide($target);
 
         this.chatbot = new ChatBot($target);
-
-        // this.chat_bot = new ChatBot($target, data);
     }
 }

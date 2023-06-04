@@ -10,7 +10,7 @@ export default class CardBox {
         this.card_box.innerHTML = `<div style="padding: 300px 0 300px 0"> 여행계획이 아직 생성되지 않았습니다.</div>`;
     }
 
-    setData(newData) {
+    setState(newData) {
         this.data = newData;
         this.render();
     }

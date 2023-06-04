@@ -4,6 +4,7 @@ import PlanViewer from "./slide/PlanViewer.js";
 export default class Slide {
     constructor($target) {
         this.data = { answer: "", target: "" };
+        this.page = "one";
 
         const $slide = document.createElement("main");
         $target.append($slide);
@@ -21,39 +22,35 @@ export default class Slide {
         this.setEvent(slideButton, $slide);
     }
 
-    setState(page) {
-        this.state = page;
+    setState(newData) {
+        this.data = newData;
         this.render();
     }
 
     render() {
-        if (this.state == this.slideItems[0].getAttribute("view")) {
+        this.planViewer.setState(this.data);
+        this.setPage("two");
+    }
+
+    setPage(newPage) {
+        if (this.page === newPage) {
             return;
         } else {
-            if (this.state == "one") {
-                this.slideItems.forEach((i) => {
-                    i.setAttribute("view", "one");
-                });
-            } else {
+            if (this.page === "one") {
                 this.slideItems.forEach((i) => {
                     i.setAttribute("view", "two");
                 });
+            } else {
+                this.slideItems.forEach((i) => {
+                    i.setAttribute("view", "one");
+                });
             }
         }
-    }
-
-    setData(newData) {
-        this.data = newData;
-        this.action();
-        this.setState("two");
-    }
-
-    action() {
-        this.planViewer.setData(this.data);
+        this.page = newPage;
     }
 
     getReponce = (data) => {
-        this.setData(data);
+        this.setState(data);
     };
 
     setEvent(slideButton, $slide) {
@@ -64,8 +61,8 @@ export default class Slide {
 
         slideButton.addEventListener("click", () => {
             this.slideItems[0].getAttribute("view") == "one"
-                ? this.setState("two")
-                : this.setState("one");
+                ? this.setPage("two")
+                : this.setPage("one");
         });
 
         $slide.addEventListener("mousedown", (e) => {
@@ -80,12 +77,12 @@ export default class Slide {
                 return;
             }
             if (startPointX < endPointX && endPointX - startPointX >= 300) {
-                this.setState("one");
+                this.setPage("one");
             } else if (
                 startPointX > endPointX &&
                 startPointX - endPointX >= 300
             ) {
-                this.setState("two");
+                this.setPage("two");
             }
         });
 
@@ -97,18 +94,16 @@ export default class Slide {
         $slide.addEventListener("touchend", (e) => {
             endPointX = e.changedTouches[0].pageX;
             endPointY = e.changedTouches[0].pageY;
-            console.log(`X1:${startPointX}, X2:${endPointX}`);
-            console.log(`Y1:${startPointY}, Y2:${endPointY}`);
-            if (Math.abs(startPointY - endPointY) >= 90) {
+            if (Math.abs(startPointY - endPointY) >= 100) {
                 return;
             }
             if (startPointX < endPointX && endPointX - startPointX >= 90) {
-                this.setState("one");
+                this.setPage("one");
             } else if (
                 startPointX > endPointX &&
                 startPointX - endPointX >= 90
             ) {
-                this.setState("two");
+                this.setPage("two");
             }
         });
     }
