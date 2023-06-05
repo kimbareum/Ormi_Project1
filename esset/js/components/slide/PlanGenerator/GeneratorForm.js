@@ -117,7 +117,8 @@ export default class GeneratorForm {
             const target = this.target.getValue();
             const start_date = this.start_date.getValue().split("T");
             const end_date = this.end_date.getValue().split("T");
-            if (!!target || !!start_date || !!end_date) {
+            console.log(!!target, !!start_date[0], !!end_date[0]);
+            if (!target || !start_date[0] || !end_date[0]) {
                 return;
             }
             const extra = this.extra.getValue();
