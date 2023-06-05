@@ -5,8 +5,13 @@ button,
 form,
 input,
 h1,
+h2,
 textarea,
-button {
+button,
+ul,
+li,
+section,
+aside {
     margin: 0;
     padding: 0;
     border: none;
@@ -27,17 +32,15 @@ button {
     src: url("../font/ohmyu_daibbm.ttf");
 }
 
-/* 
-헤딩 
-*/
-.header {
+/* == 헤딩 == */
+header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 75px;
     border-bottom: 2px solid royalblue;
 }
-/* 로고 */
+
 h1 {
     margin-left: 15vw;
 }
@@ -46,35 +49,32 @@ h1 > img {
     height: 40px;
 }
 
-/* 슬라이드 버튼 */
-.slide_button > img {
+.slide-button > img {
     padding-right: 2vw;
     height: 40px;
 }
-.slide_button > img:hover {
+.slide-button > img:hover {
     height: 60px;
     transition-duration: 0.5s;
 }
 
-/* 
-여행계획 생성부 
-*/
+/* == 여행계획 생성부 == */
 
 /* 슬라이드 설정 */
-.slide {
+main {
     display: flex;
     flex-wrap: nowrap;
-    overflow: hidden;
+    overflow-x: hidden;
 }
-.slide_generator {
+.slide-generator {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     left: 0px;
     width: 100vw;
-    height: fit-content;
-    padding: 5vh 0 5vh 0;
+    height: 93vh;
+    min-height: fit-content;
     flex-shrink: 0;
     transition: left 0.15s;
     background: url(../img/main_img.jpg);
@@ -94,46 +94,49 @@ h1 > img {
     background-color: whitesmoke;
 }
 
-.gen_label {
+.gen-label {
     text-align: center;
 }
 
-.gen_label > img {
+.gen-label > img {
     height: 30px;
 }
 
-.gen_description {
+.gen-notice {
     font-family: "nanumGothic";
     word-break: keep-all;
     line-height: 23px;
 }
 
-.gen_input {
+.gen-input {
     display: flex;
     flex-direction: column;
 }
-.gen_input > label {
+.gen-input > label {
     font-size: 16px;
     font-family: "nanumGothicBold";
 }
 
-.gen_input > input {
-    height: 35px;
+.gen-input > input {
+    display: flex;
     border: 2px solid lightblue;
     border-radius: 5px;
     background-color: #e8f0fe;
+    padding: 12px 10px;
+    margin-top: 5px;
 }
 
-.gen_input > textarea {
+.gen-input > textarea {
     box-sizing: border-box;
     border: 2px solid lightblue;
     border-radius: 5px;
     background-color: #e8f0fe;
     resize: none;
-    padding: 5px;
+    padding: 10px 10px;
+    margin-top: 5px;
 }
 
-.gen_input > textarea::placeholder {
+.gen-input > textarea::placeholder {
     font-size: 14px;
 }
 ::-webkit-calendar-picker-indicator {
@@ -142,12 +145,12 @@ h1 > img {
     position: absolute;
     background: transparent;
 }
-.gen_button {
+.gen-button {
     display: flex;
     justify-content: space-around;
     gap: 20px;
 }
-.gen_button > button {
+.gen-button > button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,17 +165,22 @@ h1 > img {
     box-shadow: 2px 2px 2px black;
 }
 
-.gen_button > button:hover {
+.gen-button > button:hover {
+    box-shadow: 3px 3px 2px black;
+    transition-duration: 300ms;
+}
+
+.gen-button > button:active {
     box-shadow: none;
-    transition-duration: 0.5s;
 }
 
 /* 여행계획 생성 로딩스크린 */
-.loading {
+loading-screen {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -181,15 +189,24 @@ h1 > img {
     opacity: 0.97;
     border-radius: inherit;
 }
-.loading.hide {
+loading-screen.hide {
     display: none;
 }
 
-.loading > div {
+loading-screen > div {
     font-weight: 700;
     font-size: 18px;
+    padding: 20px;
+    text-align: center;
 }
-.loading_bar span {
+
+loading-bar {
+    display: flex;
+    gap: 5px;
+    width: 45px;
+}
+
+loading-bar span {
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -197,26 +214,25 @@ h1 > img {
     border-radius: 50%;
     animation: loading 1s 0s linear infinite;
 }
-.loading_bar span:nth-child(1) {
+loading-bar span:nth-child(1) {
     animation-delay: 0s;
     background-color: red;
 }
 
-.loading_bar span:nth-child(2) {
+loading-bar span:nth-child(2) {
     animation-delay: 0.2s;
     background-color: orange;
 }
 
-.loading_bar span:nth-child(3) {
+loading-bar span:nth-child(3) {
     animation-delay: 0.4s;
     background-color: yellowgreen;
 }
 
-/*
-여행계획 표시부 
-*/
+/* == 여행계획 표시부 == */
+
 /* 슬라이드 설정 */
-.slide_plan {
+.slide-viewer {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -227,7 +243,7 @@ h1 > img {
     transition: left 0.15s;
 }
 
-.answer_container {
+.viewer-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -235,32 +251,34 @@ h1 > img {
     margin: 20px 0 20px 0;
 }
 
-.plan_label {
+.viewer-label {
     height: 30px;
     margin: 20px 0px 20px 0;
 }
 
 /* 여행계획 표시 박스 */
-.answer_box {
+.plan-box {
     text-align: center;
     border: 2px solid royalblue;
     border-radius: 10px;
     width: 1330px;
 }
-.answer_box > p {
+
+.plan-box > p {
     font-weight: 700;
-    padding: 0px 30px 10px 30px;
+    padding: 0 30px 10px 30px;
     font-size: 12px;
 }
 
-.answer_label {
+.plan-label {
     font-family: "ohmyu_daibbm";
     padding: 40px 0 20px 0;
-    font-size: 30px;
+    font-size: 26px;
 }
-/* 여행계획 카드*/
-.card_box {
+/* 여행계획 카드 */
+.card-box {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     padding: 20px;
     gap: 30px;
@@ -271,7 +289,7 @@ h1 > img {
     flex-direction: column;
     width: 300px;
 }
-.date_box > .date {
+.card-label-row {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -280,10 +298,13 @@ h1 > img {
     height: 50px;
     background-color: royalblue;
     color: whitesmoke;
-    font-family: "ohmyu_daibbm";
-    font-size: 20px;
 }
-.plan_box {
+.card-label {
+    font-family: "ohmyu_daibbm";
+    font-size: 19px;
+}
+
+.card-detail {
     display: flex;
     height: 100%;
     gap: 10px;
@@ -295,12 +316,12 @@ h1 > img {
     padding: 15px;
     word-break: keep-all;
 }
-.plan_row {
+.card-row {
     display: flex;
     min-height: 25px;
 }
 
-.plan_row > .time {
+.card-row > .time {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -310,7 +331,7 @@ h1 > img {
     margin-right: 5px;
 }
 
-.plan_row > .plan {
+.card-row > .detail {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -321,77 +342,77 @@ h1 > img {
 }
 
 /* 슬라이드 기능 구현*/
-.slide_item.right {
+.slide-item[view="two"] {
     left: -100vw;
 }
 
-/* 
-챗봇
- */
+/* == 챗봇 ==  */
+
 /* 챗 스크린 */
-.chat_wrap {
+.chat-bot {
     position: fixed;
     right: 2rem;
     bottom: 2rem;
 }
-.chat_window {
+.chat-window {
+    display: block;
     background-color: #677bac;
     border: 1px solid rgb(190, 190, 190);
     border-radius: 5px 5px 0 0;
     width: 30vw;
 }
-.chat_window.hide {
+.chat-window.hide {
     display: none;
 }
-.chat_screen {
+.chat-screen {
     height: 50vh;
     overflow: auto;
     padding: 10px;
 }
 
-.ai_chat {
+ai-chat {
     display: flex;
     align-items: flex-start;
     gap: 10px;
     margin-top: 20px;
 }
 
-.ai_chat:first-child {
+ai-chat:first-child {
     margin-top: 0;
 }
 
-.ai_chat img {
+ai-chat img {
     width: 50px;
 }
 
-.chat_content {
+chat-content {
     width: fit-content;
     max-width: 40vw;
     padding: 10px;
 }
 
-.ai_chat .chat_content {
+ai-chat chat-content {
     background-color: orange;
     border-radius: 0 20px 20px 20px;
     margin-top: 20px;
 }
 
-.ai_chat .loading_bar {
+ai-chat loading-bar {
     margin-left: 5px;
 }
 
-.user_chat {
+user-chat {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
 }
 
-.user_chat .chat_content {
+user-chat chat-content {
     background-color: skyblue;
     border-radius: 20px 20px 0 20px;
 }
 
-.chat_form {
+.chat-form {
     background-color: whitesmoke;
     border-top: 2px solid #363636;
     display: flex;
@@ -400,15 +421,16 @@ h1 > img {
     padding: 10px;
 }
 
-.chat_form textarea {
+.chat-form textarea {
     resize: none;
     background-color: whitesmoke;
     flex-grow: 1;
     height: 60px;
     border: 0;
+    outline: none;
 }
 
-.chat_button {
+.chat-button {
     background-color: royalblue;
     color: white;
     border-radius: 10px;
@@ -418,28 +440,33 @@ h1 > img {
     box-shadow: 1px 1px 1px black;
 }
 
-.chat_button:hover {
+.chat-button:hover {
+    box-shadow: 2px 2px 1px black;
+    transition-duration: 300ms;
+}
+
+.chat-button:active {
     box-shadow: none;
 }
 
 /* 챗봇 숨기기, 표시하기 */
-.chat_hide {
+.chat-hide {
     width: 100%;
     background: none;
 }
-.chat_hide > img {
+.chat-hide > img {
     height: 40px;
     transition-duration: 0.5s;
 }
-.chat_hide.notice > img {
+.chat-hide.notice > img {
     animation: wait 2s infinite;
 }
-.chat_hide > img:hover {
+.chat-hide > img:hover {
     height: 60px;
     animation: none;
 }
 
-.chat_hide.open {
+.chat-hide.open {
     border-radius: 0 0 5px 5px;
     background-color: royalblue;
     height: 40px;
@@ -447,9 +474,7 @@ h1 > img {
     font-size: 18px;
 }
 
-/*
-animation
-*/
+/* == animation == */
 
 @keyframes loading {
     0%,
@@ -473,15 +498,14 @@ animation
     }
 }
 
-/* 여행계획 생성부 반응형 */
+/* == 여행계획 생성부 반응형 == */
 @media (max-width: 560px) {
     .generator {
         width: 90vw;
         padding: 30px 20px 30px 20px;
     }
-    .loading {
+    loading-screen {
         margin-left: -20px;
-        padding: 30px;
     }
 }
 
@@ -490,38 +514,38 @@ animation
         width: 90vw;
         padding: 30px 15px 30px 15px;
     }
-    .loading {
+    loading-screen {
         margin-left: -15px;
     }
-    .chat_window {
+    .chat-window {
         width: 80vw;
     }
 }
 
-/* 여행계획 표시부 및 챗봇 반응형 */
+/* == 여행계획 표시부 및 챗봇 반응형 == */
 @media (max-width: 1400px) {
-    .answer_box {
+    .plan-box {
         width: 1000px;
     }
 }
 
 @media (max-width: 1100px) {
-    .answer_box {
+    .plan-box {
         width: 670px;
     }
-    .chat_window {
+    .chat-window {
         width: 45vw;
     }
 }
 
 @media (max-width: 720px) {
-    .answer_box {
+    .plan-box {
         width: 350px;
     }
-    .card_box {
+    .card-box {
         justify-content: center;
     }
-    .chat_window {
+    .chat-window {
         width: 70vw;
     }
 }
