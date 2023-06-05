@@ -27,10 +27,11 @@ export default class ChatScreen {
 
     render() {
         if (this.state.busy) {
+            // 상태가 busy 일때 : 챗스크린에 user-chat(질문) 렌더링 후, 로딩창 표시
             this.renderQuestion(data[data.length - 1].content);
             this.showLoading();
         } else {
-            // 로딩제거
+            // 상태가 busy가 아닐때 : 로딩창을 제거한 후, 챗스크린에 ai-chat(답변) 렌더링
             this.chat_screen.removeChild(this.chat_screen.lastChild);
             if (data[data.length - 1].role === "assistant") {
                 this.renderAnswer(data[data.length - 1].content);
@@ -39,6 +40,7 @@ export default class ChatScreen {
         this.scrollTop();
     }
 
+    // 답변이 생성되었거나
     scrollTop() {
         this.chat_screen.scrollTop = this.chat_screen.scrollHeight;
     }

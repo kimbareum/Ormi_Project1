@@ -8,7 +8,7 @@ export default class LoadingScreen {
 
         const loading_description = document.createElement("div");
         loading_description.innerText =
-            "여행의 조건에 따라서 긴 시간이 소요될 수 있습니다.";
+            "여행의 조건에 따라서 약 1~2분 정도의 시간이 소요됩니다.";
 
         const loading_box = document.createElement("loading-bar");
         const loading_item1 = document.createElement("span");

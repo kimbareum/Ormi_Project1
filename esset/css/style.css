@@ -64,7 +64,7 @@ h1 > img {
 main {
     display: flex;
     flex-wrap: nowrap;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 .slide-generator {
     display: flex;
@@ -73,8 +73,8 @@ main {
     position: relative;
     left: 0px;
     width: 100vw;
-    height: fit-content;
-    padding: 5vh 0 5vh 0;
+    height: 93vh;
+    min-height: fit-content;
     flex-shrink: 0;
     transition: left 0.15s;
     background: url(../img/main_img.jpg);
@@ -118,10 +118,12 @@ main {
 }
 
 .gen-input > input {
-    height: 35px;
+    display: flex;
     border: 2px solid lightblue;
     border-radius: 5px;
     background-color: #e8f0fe;
+    padding: 12px 10px;
+    margin-top: 5px;
 }
 
 .gen-input > textarea {
@@ -130,7 +132,8 @@ main {
     border-radius: 5px;
     background-color: #e8f0fe;
     resize: none;
-    padding: 5px;
+    padding: 10px 10px;
+    margin-top: 5px;
 }
 
 .gen-input > textarea::placeholder {
@@ -163,8 +166,12 @@ main {
 }
 
 .gen-button > button:hover {
+    box-shadow: 3px 3px 2px black;
+    transition-duration: 300ms;
+}
+
+.gen-button > button:active {
     box-shadow: none;
-    transition-duration: 0.5s;
 }
 
 /* 여행계획 생성 로딩스크린 */
@@ -266,7 +273,7 @@ loading-bar span:nth-child(3) {
 .plan-label {
     font-family: "ohmyu_daibbm";
     padding: 40px 0 20px 0;
-    font-size: 30px;
+    font-size: 26px;
 }
 /* 여행계획 카드 */
 .card-box {
@@ -291,9 +298,12 @@ loading-bar span:nth-child(3) {
     height: 50px;
     background-color: royalblue;
     color: whitesmoke;
-    font-family: "ohmyu_daibbm";
-    font-size: 20px;
 }
+.card-label {
+    font-family: "ohmyu_daibbm";
+    font-size: 19px;
+}
+
 .card-detail {
     display: flex;
     height: 100%;
@@ -431,6 +441,11 @@ user-chat chat-content {
 }
 
 .chat-button:hover {
+    box-shadow: 2px 2px 1px black;
+    transition-duration: 300ms;
+}
+
+.chat-button:active {
     box-shadow: none;
 }
 
