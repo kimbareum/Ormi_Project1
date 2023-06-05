@@ -198,6 +198,7 @@ loading-screen > div {
     font-size: 18px;
     padding: 20px;
     text-align: center;
+    word-break: keep-all;
 }
 
 loading-bar {

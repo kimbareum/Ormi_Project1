@@ -1,14 +1,15 @@
 import img_src from "../../data/img_data.js";
+import { makeImgBox } from "../../utils/dom_box.js";
 
 export default class SlideButton {
     constructor({ $header }) {
-        const slide_button = document.createElement("aside");
-        slide_button.className = "slide-button";
-        const button = document.createElement("img");
-        button.src = img_src.slide_button;
-        button.alt = "슬라이드 전환";
-
-        slide_button.append(button);
+        // 슬라이드 전환버튼 박스 및 이미지 생성
+        const slide_button = makeImgBox({
+            boxTag: "aside",
+            boxClass: "slide-button",
+            imgSrc: img_src.slide_button,
+            imgAlt: "슬라이드 전환",
+        });
 
         $header.append(slide_button);
     }

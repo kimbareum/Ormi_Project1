@@ -1,3 +1,4 @@
+// 여행계획 생성기 기본 세팅
 export let generator_data = [
     {
         role: "system",
@@ -76,8 +77,10 @@ export let generator_data = [
     },
 ];
 
+// 여행계획 생성기의 목표와 응답, 응답의 유효성 저장
 export let plan_data = { target: "", responce: "", isCorrect: true };
 
+// 챗봇의 기본세팅 및 질문 응답 저장.
 export let chatbot_data = [
     {
         role: "system",

@@ -1,22 +1,22 @@
+import { makeBox } from "../../../utils/dom_box.js";
+
 export default class LoadingScreen {
     constructor({ $panel }) {
         this.state = { busy: false };
 
-        this.loading = document.createElement("loading-screen");
-        this.loading.className = "hide";
+        // 로딩스크린 박스 생성.
+        this.loading = makeBox({
+            boxTag: "loading-screen",
+            boxClass: "hide",
+        });
         $panel.append(this.loading);
 
-        const loading_description = document.createElement("div");
-        loading_description.innerText =
-            "여행의 조건에 따라서 약 1~2분 정도의 시간이 소요됩니다.";
+        // 로딩스크린의 내용 생성.
+        const loading_description = `
+        <div>여행의 조건에 따라서 약 1~2분 정도의 시간이 소요됩니다.</div>`;
+        const loading_box = `<loading-bar><span></span><span></span><span></span></loading-bar>`;
 
-        const loading_box = document.createElement("loading-bar");
-        const loading_item1 = document.createElement("span");
-        const loading_item2 = document.createElement("span");
-        const loading_item3 = document.createElement("span");
-
-        loading_box.append(loading_item1, loading_item2, loading_item3);
-        this.loading.append(loading_description, loading_box);
+        this.loading.innerHTML = loading_description + loading_box;
     }
 
     setState(newState) {
@@ -26,8 +26,10 @@ export default class LoadingScreen {
 
     render() {
         if (this.state.busy) {
+            // API 응답중 에는 로딩창 표시
             this.loading.classList.remove("hide");
         } else {
+            // API 응답이 끝나면 로딩창 숨김
             this.loading.classList.add("hide");
         }
     }
