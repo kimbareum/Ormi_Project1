@@ -8,5 +8,7 @@ export default class Button {
         $target.append(this.button);
     }
 
-    setEvent({ eventType, event }) {}
+    setEvent({ eventType, event }) {
+        this.input.addEventListener(eventType, (e) => event(e));
+    }
 }
