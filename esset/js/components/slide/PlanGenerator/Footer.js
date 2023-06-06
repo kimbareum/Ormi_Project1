@@ -1,5 +1,5 @@
 import img_src from "../../../data/img_data.js";
-import { makeImgBox, makeTextBox } from "../../common/dom_box.js";
+import { makeImgBox, makeTextBox } from "../../common/common_box.js";
 
 export default class Footer {
     constructor({ $target }) {

@@ -1,4 +1,4 @@
-import { makeBox } from "../../common/dom_box.js";
+import { makeBox } from "../../common/common_box.js";
 
 export default class LoadingScreen {
     constructor({ $panel }) {

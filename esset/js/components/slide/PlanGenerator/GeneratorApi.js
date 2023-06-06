@@ -26,7 +26,7 @@ export default class GeneratorApi {
     }
 
     // 응답값 전처리2 : 유효한 양식인지 검사
-    validation(data) {
+    checkValidation(data) {
         for (const idx in data) {
             for (const plan of data[idx]["일정"]) {
                 const hasColon = plan.includes(":");
@@ -45,7 +45,7 @@ export default class GeneratorApi {
             })
             .then((answer) => {
                 // 응답값 전처리2: 유효한 양식인지 검사
-                this.validation(answer);
+                this.checkValidation(answer);
                 return answer;
             })
             .then((answer) => {

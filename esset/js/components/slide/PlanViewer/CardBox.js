@@ -1,4 +1,4 @@
-import { makeBox, makeTextBox } from "../../common/dom_box.js";
+import { makeBox, makeTextBox } from "../../common/common_box.js";
 
 export default class CardBox {
     constructor({ $planBox }) {

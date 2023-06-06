@@ -1,4 +1,4 @@
-import { makeImgBox } from "./common/dom_box.js";
+import { makeImgBox } from "./common/common_box.js";
 import SlideButton from "./header/SlideButton.js";
 
 import img_src from "../data/img_data.js";

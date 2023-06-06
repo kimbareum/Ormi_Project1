@@ -1,5 +1,5 @@
 import img_src from "../../data/img_data.js";
-import { makeBox } from "../common/dom_box.js";
+import { makeBox } from "../common/common_box.js";
 
 import LoadingScreen from "./PlanGenerator/LoadingScreen.js";
 import GeneratorForm from "./PlanGenerator/GeneratorForm.js";

@@ -1,5 +1,5 @@
 import CardBox from "./CardBox.js";
-import { makeBox, makeTextBox } from "../../common/dom_box.js";
+import { makeBox, makeTextBox } from "../../common/common_box.js";
 
 export default class PlanBox {
     constructor({ $screen }) {
@@ -27,19 +27,19 @@ export default class PlanBox {
         });
         planBox.append(planDescription);
 
-        this.render();
+        this.render(true);
     }
 
-    render() {
+    render(init) {
         const isCorrect = localStorage.getItem("isCorrect");
         const target = localStorage.getItem("target");
-        // localStorage에 데이터가 없다면 박스 초기화
+        // localStorage에 데이터가 없다면 박스를 초기화.
         if (!target) {
             this.cardBox.clear();
             return;
         }
         // localStarage에 데이터가 있고 양식이 유효하다면 렌더링 시작.
-        if (isCorrect === "true") {
+        if (isCorrect === "true" || init) {
             this.planLabel.innerText = `${target} 여행 계획`;
             this.cardBox.render();
         }

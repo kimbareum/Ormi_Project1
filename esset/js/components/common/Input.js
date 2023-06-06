@@ -25,10 +25,17 @@ export default class Input {
     getValue = () => {
         return this.input.value;
     };
+
     // 입력값을 초기화
     resetValue = () => {
         this.input.value = null;
     };
+
+    // 입력창에 포커스
+    focus = () => {
+        this.input.focus();
+    };
+
     // 텍스트입력폼에 이벤트 추가.
     setEvent({ eventType, event }) {
         if (eventType === "enter") {
