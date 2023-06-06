@@ -5,6 +5,7 @@ const img_src = {
     ai_chat_icon: "./esset/img/robot_icon.png",
     chat_hide_icon: "./esset/img/chatbot_icon.png",
     slide_button: "./esset/img/exchange.png",
+    github_mark: "./esset/img/github-mark.png",
 };
 
 export default img_src;

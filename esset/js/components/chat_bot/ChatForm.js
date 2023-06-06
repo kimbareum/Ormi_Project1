@@ -1,4 +1,4 @@
-import { chatbot_data as data } from "../../data/api_data.js";
+import { chatbotData as data } from "../../data/api_data.js";
 import { saveQuestion } from "../../utils/data_record.js";
 import Button from "../common/button.js";
 import Input from "../common/Input.js";
@@ -7,20 +7,20 @@ export default class ChatForm {
     constructor({ $window, getState }) {
         this.state = { busy: false };
         // 챗봇용 form 박스 생성
-        this.chat_form = document.createElement("form");
-        this.chat_form.setAttribute("action", "post");
-        this.chat_form.className = "chat-form";
-        $window.append(this.chat_form);
+        this.chatForm = document.createElement("form");
+        this.chatForm.setAttribute("action", "post");
+        this.chatForm.className = "chat-form";
+        $window.append(this.chatForm);
         // 질문을 받는 input 생성.
         this.question = new Input({
-            $target: this.chat_form,
+            $target: this.chatForm,
             type: "textarea",
             id: "question",
         });
 
         // 질문을 답변할 button 생성.
         this.button = new Button({
-            $target: this.chat_form,
+            $target: this.chatForm,
             type: "submit",
             className: "chat-button",
             text: "질문하기",
@@ -38,7 +38,7 @@ export default class ChatForm {
 
     setEvent() {
         // form 에 submit 이벤트 추가
-        this.chat_form.addEventListener("submit", (e) => {
+        this.chatForm.addEventListener("submit", (e) => {
             e.preventDefault();
             this.handleQuestion();
         });

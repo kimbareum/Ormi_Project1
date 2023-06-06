@@ -8,9 +8,5 @@ export default class Button {
         $target.append(this.button);
     }
 
-    setEvent({ eventType, event, option = {} }) {
-        if (eventType === "chatbot_hide") {
-            this.button.addEventListener("click", event);
-        }
-    }
+    setEvent({ eventType, event }) {}
 }

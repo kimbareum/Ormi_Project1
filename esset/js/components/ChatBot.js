@@ -1,16 +1,15 @@
 import ChatScreen from "./chat_bot/ChatScreen.js";
-import HideButton from "./chat_bot/HideButton.js";
+import ToggleChatBot from "./chat_bot/ToggleChatBot.js";
 import ChatForm from "./chat_bot/ChatForm.js";
 import ChatApi from "./chat_bot/ChatApi.js";
 
 import { makeBox } from "../utils/dom_box.js";
-
 export default class ChatBot {
     constructor($target) {
         this.state = { busy: false };
 
         // chat_bot 컨테이너 생성.
-        const chat_bot = makeBox({
+        const chatBot = makeBox({
             boxTag: "aside",
             boxClass: "chat-bot",
         });
@@ -19,7 +18,7 @@ export default class ChatBot {
             boxTag: "div",
             boxClass: ["chat-window", "hide"],
         });
-        chat_bot.append(window);
+        chatBot.append(window);
 
         // 챗봇의 렌더링을 담당하는 컴포넌트 생성
         this.chatScreen = new ChatScreen({ $window: window });
@@ -31,15 +30,15 @@ export default class ChatBot {
         });
 
         // 챗봇의 표기, 비표기를 토글하는 컴포넌트 생성.
-        this.hideButton = new HideButton({
-            $chat_bot: chat_bot,
+        this.toggleChatBot = new ToggleChatBot({
+            $chatBot: chatBot,
             $window: window,
         });
 
         // 챗봇의 API 응답을 담당하는 컴포넌트 생성.
         this.chatApi = new ChatApi({ getState: this.getState });
 
-        $target.append(chat_bot);
+        $target.append(chatBot);
     }
 
     setState(newState) {
@@ -57,7 +56,7 @@ export default class ChatBot {
         } else {
             //상태가 busy하지 않다면(api 응답이 끝난 상황)
             // 챗봇 알림 on
-            this.hideButton.toggleNotice(true);
+            this.toggleChatBot.toggleNotice(true);
             // 챗봇 form 입력 가능하게 설정
             this.chatForm.setState({ busy: false });
         }

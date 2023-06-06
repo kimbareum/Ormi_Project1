@@ -30,7 +30,7 @@ export default class Input {
         this.input.value = null;
     };
     // 텍스트입력폼에 이벤트 추가.
-    setEvent({ eventType, event, option = {} }) {
+    setEvent({ eventType, event }) {
         if (eventType === "enter") {
             // Enter key 입력 이벤트.
             this.input.addEventListener("keydown", (e) => {

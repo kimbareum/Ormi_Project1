@@ -4,6 +4,7 @@ import { makeBox } from "../../utils/dom_box.js";
 import LoadingScreen from "./PlanGenerator/LoadingScreen.js";
 import GeneratorForm from "./PlanGenerator/GeneratorForm.js";
 import GeneratorApi from "./PlanGenerator/GeneratorApi.js";
+import Footer from "./PlanGenerator/Footer.js";
 
 export default class PlanGenerator {
     constructor({ $slide, getState }) {
@@ -29,10 +30,10 @@ export default class PlanGenerator {
         // 여행계획 생성기 제목 과 설명 생성
         const label = `
         <h2 class="gen-label"><img src="${img_src.generator_label}" alt="여행계획 생성기"></h2>`;
-        const generator_notice = `
+        const generatorNotice = `
         <p class="gen-notice">chatGPT를 활용해서 여러분들의 여행계획을 자동으로 짜드립니다. 우측하단의 챗봇을 통해 여행관련 질문도 자유롭게 해주세요!</p>`;
 
-        panel.innerHTML = label + generator_notice;
+        panel.innerHTML = label + generatorNotice;
 
         // form 을 다루는 컴포넌트 생성.
         this.genForm = new GeneratorForm({
@@ -45,6 +46,9 @@ export default class PlanGenerator {
 
         // 여행계획생성기 로딩스크린 컴포넌트 생성.
         this.loadingScreen = new LoadingScreen({ $panel: panel });
+
+        // 여행계획생성기 푸터 생성.
+        this.footer = new Footer({ $target: window });
 
         this.sendState = getState;
     }

@@ -1,6 +1,6 @@
 import {
-    generator_data as data,
-    plan_data as plan,
+    generatorData as data,
+    planData as plan,
 } from "../../../data/api_data.js";
 import apiPost from "../../../utils/open_ai_api.js";
 
@@ -17,7 +17,7 @@ export default class GeneratorApi {
     }
 
     // 응답값 전처리
-    json_parsing(text) {
+    jsonParsing(text) {
         if (text) {
             let result = null;
             const regex = /\{[\s\S]*\}/g;
@@ -32,7 +32,7 @@ export default class GeneratorApi {
         await apiPost(data)
             .then((res) => {
                 // 응답값 전처리
-                return this.json_parsing(res);
+                return this.jsonParsing(res);
             })
             .then((answer) => {
                 // 응답이 왔고 올바른 응답이었음을 plan data에 기록.

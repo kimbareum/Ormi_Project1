@@ -66,8 +66,10 @@ main {
     flex-wrap: nowrap;
     overflow-x: hidden;
 }
+
 .slide-generator {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -81,6 +83,7 @@ main {
     background-position: center;
     background-size: cover;
 }
+
 /* 여행계획 생성 form */
 .generator {
     display: flex;
@@ -89,6 +92,7 @@ main {
     border-radius: 10px;
     position: relative;
     max-width: 450px;
+    margin-top: auto;
     padding: 30px;
     gap: 40px;
     background-color: whitesmoke;
@@ -347,6 +351,35 @@ loading-bar span:nth-child(3) {
     left: -100vw;
 }
 
+/* == footer --*/
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    width: 100%;
+    min-height: 80px;
+    border-top: 2px solid royalblue;
+    background-color: aliceblue;
+}
+
+.github-link {
+    order: 1;
+}
+.github-link > img {
+    height: 25px;
+    margin-left: 20px;
+}
+
+.page-description {
+    order: 2;
+    flex-grow: 1;
+    text-align: center;
+    padding: 20px;
+    word-break: keep-all;
+}
+
 /* == 챗봇 ==  */
 
 /* 챗 스크린 */
@@ -354,6 +387,7 @@ loading-bar span:nth-child(3) {
     position: fixed;
     right: 2rem;
     bottom: 2rem;
+    z-index: 9999;
 }
 .chat-window {
     display: block;
@@ -451,23 +485,23 @@ user-chat chat-content {
 }
 
 /* 챗봇 숨기기, 표시하기 */
-.chat-hide {
+.toggle-chat {
     width: 100%;
     background: none;
 }
-.chat-hide > img {
+.toggle-chat > img {
     height: 40px;
     transition-duration: 0.5s;
 }
-.chat-hide.notice > img {
+.toggle-chat.notice > img {
     animation: wait 2s infinite;
 }
-.chat-hide > img:hover {
+.toggle-chat > img:hover {
     height: 60px;
     animation: none;
 }
 
-.chat-hide.open {
+.toggle-chat.open {
     border-radius: 0 0 5px 5px;
     background-color: royalblue;
     height: 40px;

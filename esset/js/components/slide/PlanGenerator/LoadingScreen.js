@@ -12,11 +12,11 @@ export default class LoadingScreen {
         $panel.append(this.loading);
 
         // 로딩스크린의 내용 생성.
-        const loading_description = `
+        const loadingDescription = `
         <div>여행의 조건에 따라서 약 1~2분 정도의 시간이 소요됩니다.</div>`;
-        const loading_box = `<loading-bar><span></span><span></span><span></span></loading-bar>`;
+        const loadingBox = `<loading-bar><span></span><span></span><span></span></loading-bar>`;
 
-        this.loading.innerHTML = loading_description + loading_box;
+        this.loading.innerHTML = loadingDescription + loadingBox;
     }
 
     setState(newState) {

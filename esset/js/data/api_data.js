@@ -1,5 +1,5 @@
 // 여행계획 생성기 기본 세팅
-export let generator_data = [
+export let generatorData = [
     {
         role: "system",
         content: `assistant는 여행계획을 만들어주는 전문가이다.`,
@@ -78,10 +78,10 @@ export let generator_data = [
 ];
 
 // 여행계획 생성기의 목표와 응답, 응답의 유효성 저장
-export let plan_data = { target: "", responce: "", isCorrect: true };
+export let planData = { target: "", responce: "", isCorrect: true };
 
 // 챗봇의 기본세팅 및 질문 응답 저장.
-export let chatbot_data = [
+export let chatbotData = [
     {
         role: "system",
         content: "assistant는 여행 관련 질문에 대답해주는 여행 전문가야.",
