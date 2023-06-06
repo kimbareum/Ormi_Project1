@@ -77,7 +77,8 @@ main {
     position: relative;
     left: 0px;
     width: 100vw;
-    min-height: 93vh;
+    min-height: 90vh;
+    max-height: 110vh;
     background: url(../img/main_img.jpg);
     background-position: center;
     background-size: cover;

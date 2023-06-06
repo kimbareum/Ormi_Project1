@@ -1,7 +1,4 @@
-import {
-    generatorData as data,
-    planData as plan,
-} from "../../../data/api_data.js";
+import { generatorData as data } from "../../../data/api_data.js";
 import { saveQuestion } from "../../../utils/data_record.js";
 import Button from "../../common/button.js";
 import Input from "../../common/Input.js";
@@ -131,7 +128,7 @@ export default class GeneratorForm {
 
             // 질문과 타겟을 데이터에 저장
             saveQuestion(data, question);
-            plan.target = target;
+            localStorage.setItem("newTarget", target);
 
             this.setState({ busy: true });
             this.sendState({ busy: true });

@@ -77,9 +77,6 @@ export let generatorData = [
     },
 ];
 
-// 여행계획 생성기의 목표와 응답, 응답의 유효성 저장
-export let planData = { target: "", responce: "", isCorrect: true };
-
 // 챗봇의 기본세팅 및 질문 응답 저장.
 export let chatbotData = [
     {

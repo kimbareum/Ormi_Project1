@@ -1,4 +1,3 @@
-import { planData as plan } from "../../../data/api_data.js";
 import { makeBox, makeTextBox } from "../../common/dom_box.js";
 
 export default class CardBox {
@@ -9,9 +8,6 @@ export default class CardBox {
             boxClass: "card-box",
         });
         $planBox.append(this.cardBox);
-
-        // card box 초기화
-        this.cardBox.innerHTML = `<div style="padding: 300px 0 300px 0"> 여행계획이 아직 생성되지 않았습니다.</div>`;
     }
 
     render() {
@@ -19,12 +15,17 @@ export default class CardBox {
         this.cardBox.innerHTML = "";
 
         // 응답의 내용을 저장.
-        const plans = plan.responce;
+        const plans = JSON.parse(localStorage.getItem("plans"));
         for (const idx in plans) {
             // 일차마다 card를 한장씩 생성
             const card = this.makeCard(plans[idx]);
             this.cardBox.append(card);
         }
+    }
+
+    clear() {
+        // localStorage에 데이터가 없다면 박스 초기화.
+        this.cardBox.innerHTML = `<div style="padding: 300px 0 300px 0"> 여행계획이 아직 생성되지 않았습니다.</div>`;
     }
 
     makeCard(data) {
