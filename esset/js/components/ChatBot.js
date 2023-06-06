@@ -3,7 +3,7 @@ import ToggleChatBot from "./chat_bot/ToggleChatBot.js";
 import ChatForm from "./chat_bot/ChatForm.js";
 import ChatApi from "./chat_bot/ChatApi.js";
 
-import { makeBox } from "../utils/dom_box.js";
+import { makeBox } from "./common/dom_box.js";
 export default class ChatBot {
     constructor($target) {
         this.state = { busy: false };

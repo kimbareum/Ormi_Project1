@@ -1,6 +1,6 @@
 import CardBox from "./CardBox.js";
 import { planData as plan } from "../../../data/api_data.js";
-import { makeBox, makeTextBox } from "../../../utils/dom_box.js";
+import { makeBox, makeTextBox } from "../../common/dom_box.js";
 
 export default class PlanBox {
     constructor({ $screen }) {

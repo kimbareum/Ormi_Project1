@@ -1,5 +1,5 @@
 import img_src from "../../data/img_data.js";
-import { makeImgBox } from "../../utils/dom_box.js";
+import { makeImgBox } from "../common/dom_box.js";
 
 export default class SlideButton {
     constructor({ $header }) {

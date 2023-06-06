@@ -72,13 +72,12 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
+    transition: left 0.15s;
     position: relative;
     left: 0px;
     width: 100vw;
-    height: 93vh;
-    min-height: fit-content;
-    flex-shrink: 0;
-    transition: left 0.15s;
+    min-height: 93vh;
     background: url(../img/main_img.jpg);
     background-position: center;
     background-size: cover;
@@ -88,7 +87,7 @@ main {
 .generator {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     border-radius: 10px;
     position: relative;
     max-width: 450px;

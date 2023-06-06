@@ -1,6 +1,6 @@
 import PlanBox from "./PlanViewer/PlanBox.js";
 import img_src from "../../data/img_data.js";
-import { makeBox } from "../../utils/dom_box.js";
+import { makeBox } from "../common/dom_box.js";
 
 export default class PlanViewer {
     constructor({ $slide }) {

@@ -5,7 +5,7 @@ import {
 import { saveQuestion } from "../../../utils/data_record.js";
 import Button from "../../common/button.js";
 import Input from "../../common/Input.js";
-import { makeLabelBox } from "../../../utils/dom_box.js";
+import { makeLabelBox } from "../../common/dom_box.js";
 
 export default class GeneratorForm {
     constructor({ $panel, getState }) {

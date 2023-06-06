@@ -1,7 +1,6 @@
 import Header from "./Header.js";
 import ChatBot from "./ChatBot.js";
 import Slide from "./Slide.js";
-import Footer from "./slide/PlanGenerator/Footer.js";
 
 export default class App {
     constructor($target) {

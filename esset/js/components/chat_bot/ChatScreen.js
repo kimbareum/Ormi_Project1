@@ -1,6 +1,6 @@
 import img_src from "../../data/img_data.js";
 import { chatbotData as data } from "../../data/api_data.js";
-import { makeBox, makeTextBox, makeImgBox } from "../../utils/dom_box.js";
+import { makeBox, makeTextBox, makeImgBox } from "../common/dom_box.js";
 
 export default class ChatScreen {
     constructor({ $window }) {
