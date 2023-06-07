@@ -1,26 +1,29 @@
-import img_src from "../../data/img_data.js";
+import IMG_SRC from "../../data/img_data.js";
 import { chatbotData as data } from "../../data/api_data.js";
-import { makeBox, makeTextBox, makeImgBox } from "../common/common_box.js";
-import AlertModal from "../common/alert_modal.js";
+import { makeBox, makeTextBox, makeImgBox } from "../common/common_boxes.js";
+import AlertModal from "../common/AlertModal.js";
 
+/** 챗봇 화면의 렌더링을 담당한다. */
 export default class ChatScreen {
-    constructor({ $window }) {
+    constructor({ $target }) {
         this.state = { busy: false };
 
         // chatScreen 박스 생성
         this.chatScreen = makeBox({ boxTag: "div", boxClass: "chat-screen" });
-        $window.append(this.chatScreen);
+        $target.append(this.chatScreen);
 
         /* chatScreen 초기값 */
         // ai-chat 박스를 만들고 AI 아이콘 삽입
         const aiChat = makeImgBox({
-            boxTag: "ai-chat",
-            imgSrc: img_src.ai_chat_icon,
+            boxTag: "div",
+            boxClass: "ai-chat",
+            imgSrc: IMG_SRC.ai_chat_icon,
             imgAlt: "AI icon",
         });
         // ai-chat 박스에 chat-content 박스를 만들어서 추가
         const aiChatContent = makeTextBox({
-            boxTag: "chat-content",
+            boxTag: "div",
+            boxClass: "chat-content",
             text: "반갑습니다. 어떤 것이 궁금하신가요?",
         });
         aiChat.append(aiChatContent);
@@ -28,7 +31,7 @@ export default class ChatScreen {
         this.chatScreen.append(aiChat);
 
         this.alertModal = new AlertModal({
-            $target: $window,
+            $target: $target,
             text: "실수했어요. (´；д；). 다시 물어봐주세요.",
         });
     }
@@ -55,25 +58,26 @@ export default class ChatScreen {
         this.scrollTop();
     }
 
-    // 챗스크린이 업데이트될때 스크롤을 맨위로 이동.
+    /** 챗스크린이 업데이트될때 스크롤을 맨위로 이동한다. */
     scrollTop() {
         this.chatScreen.scrollTop = this.chatScreen.scrollHeight;
     }
 
-    // ai-chat의 위치에 로딩창을 렌더링.
+    /** ai-chat의 위치에 로딩바를 렌더링한다 */
     showLoading() {
-        const aiChat = makeBox({ boxTag: "ai-chat" });
-        const loadingBox = `<loading-bar><span></span><span></span><span></span></loading-bar>`;
+        const aiChat = makeBox({ boxTag: "div", boxClass: "ai-chat" });
+        const loadingBox = `<div class="loading-bar"><span></span><span></span><span></span></div>`;
         aiChat.innerHTML = loadingBox;
 
         this.chatScreen.append(aiChat);
     }
 
-    // 질문을 화면에 렌더링.
+    /** user-chat(질문)을 화면에 렌더링한다. */
     renderQuestion(question) {
-        const userChat = makeBox({ boxTag: "user-chat" });
+        const userChat = makeBox({ boxTag: "div", boxClass: "user-chat" });
         const userChatBontent = makeTextBox({
-            boxTag: "chat-content",
+            boxTag: "div",
+            boxClass: "chat-content",
             text: question,
         });
         userChat.append(userChatBontent);
@@ -81,15 +85,17 @@ export default class ChatScreen {
         this.chatScreen.append(userChat);
     }
 
-    // 답변을 화면에 렌더링
+    /** ai-chat(답변)을 화면에 렌더링한다. */
     renderAnswer(answer) {
         const aiChat = makeImgBox({
-            boxTag: "ai-chat",
-            imgSrc: img_src.ai_chat_icon,
+            boxTag: "div",
+            boxClass: "ai-chat",
+            imgSrc: IMG_SRC.ai_chat_icon,
             imgAlt: "AI icon",
         });
         const aiChatContent = makeTextBox({
-            boxTag: "chat-content",
+            boxTag: "div",
+            boxClass: "chat-content",
             text: answer,
         });
         aiChat.append(aiChatContent);

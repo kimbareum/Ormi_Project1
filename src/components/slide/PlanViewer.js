@@ -1,9 +1,10 @@
 import PlanBox from "./plan_viewer/PlanBox.js";
-import img_src from "../../data/img_data.js";
-import { makeBox } from "../common/common_box.js";
+import IMG_SRC from "../../data/img_data.js";
+import { makeBox } from "../common/common_boxes.js";
 
+/** section2 여행계획 뷰어 */
 export default class PlanViewer {
-    constructor({ $slide }) {
+    constructor({ $target }) {
         // 여행계획 뷰어 section 생성
         const window = makeBox({
             boxTag: "section",
@@ -11,7 +12,7 @@ export default class PlanViewer {
         });
         // 현재 페이지를 one으로 설정.
         window.setAttribute("view", "one");
-        $slide.append(window);
+        $target.append(window);
 
         // 여행계획 뷰어 내부 컨테이너 생성.
         const screen = makeBox({
@@ -22,11 +23,11 @@ export default class PlanViewer {
 
         // 여행계획 뷰어 제목 생성
         const label = `
-        <h2 class="viewer-label"><img src="${img_src.viewer_label}" alt="여행계획 뷰어"></h2>`;
+        <h2 class="viewer-label"><img src="${IMG_SRC.viewer_label}" alt="여행계획 뷰어"></h2>`;
         screen.innerHTML = label;
 
         // 여행계획을 표시할 컴포넌트 생성
-        this.planBox = new PlanBox({ $screen: screen });
+        this.planBox = new PlanBox({ $target: screen });
     }
 
     render() {

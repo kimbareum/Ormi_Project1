@@ -1,14 +1,15 @@
-import img_src from "../../data/img_data.js";
-import { makeBox } from "../common/common_box.js";
+import IMG_SRC from "../../data/img_data.js";
+import { makeBox } from "../common/common_boxes.js";
 
-import LoadingScreen from "./plan_generator/LoadingScreen.js";
-import AlertModal from "../common/alert_modal.js";
+import LoadingScreen from "../common/LoadingScreen.js";
+import AlertModal from "../common/AlertModal.js";
 import GeneratorForm from "./plan_generator/GeneratorForm.js";
 import GeneratorApi from "./plan_generator/GeneratorApi.js";
 import Footer from "./plan_generator/Footer.js";
 
+/** section1 여행계획생성기 */
 export default class PlanGenerator {
-    constructor({ $slide, getState }) {
+    constructor({ $target, getState }) {
         this.state = { busy: false };
 
         // 여행계획 생성기 section 생성
@@ -16,9 +17,9 @@ export default class PlanGenerator {
             boxTag: "section",
             boxClass: ["slide-generator", "slide-item"],
         });
-        // 현재 페이지를 one으로 설정.
+        // 초기 페이지를 one으로 설정.
         window.setAttribute("view", "one");
-        $slide.append(window);
+        $target.append(window);
 
         // 여행계획 생성기 form 생성.
         const panel = makeBox({
@@ -30,7 +31,7 @@ export default class PlanGenerator {
 
         // 여행계획 생성기 제목 과 설명 생성
         const label = `
-        <h2 class="gen-label"><img src="${img_src.generator_label}" alt="여행계획 생성기"></h2>`;
+        <h2 class="gen-label"><img src="${IMG_SRC.generator_label}" alt="여행계획 생성기"></h2>`;
         const generatorNotice = `
         <p class="gen-notice">chatGPT를 활용해서 여러분들의 여행계획을 자동으로 짜드립니다. 우측하단의 챗봇을 통해 여행관련 질문도 자유롭게 해주세요!</p>`;
 
@@ -38,7 +39,7 @@ export default class PlanGenerator {
 
         // form 을 다루는 컴포넌트 생성.
         this.genForm = new GeneratorForm({
-            $panel: panel,
+            $target: panel,
             getState: this.getState,
         });
 
@@ -46,7 +47,10 @@ export default class PlanGenerator {
         this.genApi = new GeneratorApi({ getState: this.getState });
 
         // 여행계획생성기 로딩스크린 컴포넌트 생성.
-        this.loadingScreen = new LoadingScreen({ $panel: panel });
+        this.loadingScreen = new LoadingScreen({
+            $target: panel,
+            text: "여행의 조건에 따라서 약 1~2분 정도의 시간이 소요됩니다.",
+        });
 
         this.alertModal = new AlertModal({
             $target: window,
@@ -65,13 +69,12 @@ export default class PlanGenerator {
     }
 
     render() {
-        // 로딩스크린 토글
-        this.loadingScreen.setState(this.state);
-
         if (this.state.busy) {
+            this.loadingScreen.show();
             // state가 busy 라면(api 응답을 받아야 하는 상태) api 호출
             this.genApi.setState(this.state);
         } else {
+            this.loadingScreen.hide();
             // state가 busy가 아닐때(api 응답을 받은 상태)
             if (localStorage.getItem("isCorrect") === "true") {
                 // 응답이 정상적이었다면 slide state를 true로
@@ -88,6 +91,7 @@ export default class PlanGenerator {
         this.genForm.setState(this.state);
     }
 
+    /** 하위컴포넌트의 state를 상위컴포넌트로 전송한다. */
     getState = (newState) => {
         this.setState(newState);
     };

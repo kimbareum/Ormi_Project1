@@ -1,5 +1,6 @@
-import { makeBox, makeTextBox } from "../../common/common_box.js";
+import { makeBox, makeTextBox } from "../../common/common_boxes.js";
 
+/** PlanBox의 하위 컴포넌트로 카드 한장한장의 생성을 담당한다. */
 export default class CardBox {
     constructor({ $planBox }) {
         // card box 생성
@@ -23,11 +24,12 @@ export default class CardBox {
         }
     }
 
+    /** 박스를 초기화한다. */
     clear() {
-        // localStorage에 데이터가 없다면 박스 초기화.
         this.cardBox.innerHTML = `<div style="padding: 300px 0 300px 0"> 여행계획이 아직 생성되지 않았습니다.</div>`;
     }
 
+    /** 여행계획 카드 1장을 생성한다. */
     makeCard(data) {
         if (data) {
             // card 한장의 box 생성.
@@ -35,6 +37,7 @@ export default class CardBox {
                 boxTag: "div",
                 boxClass: "card",
             });
+
             // card의 제목 box 생성.
             const labelBox = makeBox({
                 boxTag: "div",
@@ -53,6 +56,7 @@ export default class CardBox {
                 boxTag: "ul",
                 boxClass: "card-detail",
             });
+
             for (const plan of data["일정"]) {
                 // 세부일정을 시간과 일정내용으로 분리
                 const splitData = plan.split(":");

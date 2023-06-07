@@ -1,5 +1,5 @@
-import img_src from "../../../data/img_data.js";
-import { makeImgBox, makeTextBox } from "../../common/common_box.js";
+import IMG_SRC from "../../../data/img_data.js";
+import { makeImgBox, makeTextBox } from "../../common/common_boxes.js";
 
 export default class Footer {
     constructor({ $target }) {
@@ -10,8 +10,8 @@ export default class Footer {
         const githubLink = makeImgBox({
             boxTag: "a",
             boxClass: "github-link",
-            imgSrc: img_src.github_mark,
-            imgAlt: "GitHub",
+            imgSrc: IMG_SRC.github_mark,
+            imgAlt: "GitHub 링크",
         });
         githubLink.setAttribute(
             "href",

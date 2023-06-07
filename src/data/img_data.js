@@ -1,4 +1,5 @@
-const img_src = {
+/** 이미지의 src값을 저장하는 데이터 */
+const IMG_SRC = {
     main_logo: "./src/img/logo.png",
     generator_label: "./src/img/generator_label.png",
     viewer_label: "./src/img/plan_label.png",
@@ -8,4 +9,4 @@ const img_src = {
     github_mark: "./src/img/github-mark.png",
 };
 
-export default img_src;
+export default IMG_SRC;

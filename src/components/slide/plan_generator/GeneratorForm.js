@@ -1,11 +1,12 @@
 import { generatorData as data } from "../../../data/api_data.js";
 import { saveQuestion } from "../../../utils/data_record.js";
-import Button from "../../common/button.js";
+import Button from "../../common/Button.js";
 import Input from "../../common/Input.js";
-import { makeTextBox, makeLabelBox } from "../../common/common_box.js";
+import { makeTextBox, makeLabelBox } from "../../common/common_boxes.js";
 
+/** 여행계획생성기의 입력값을 관리한다. */
 export default class GeneratorForm {
-    constructor({ $panel, getState }) {
+    constructor({ $target, getState }) {
         this.state = { busy: false };
 
         /* form내 input과 label 생성 */
@@ -63,7 +64,7 @@ export default class GeneratorForm {
             },
         });
         // 패널에 input 추가.
-        $panel.append(
+        $target.append(
             this.targetBox,
             this.startDateBox,
             this.endDateBox,
@@ -73,7 +74,7 @@ export default class GeneratorForm {
         // form 내 버튼 생성.
         const buttonBox = document.createElement("div");
         buttonBox.className = "gen-button";
-        $panel.append(buttonBox);
+        $target.append(buttonBox);
 
         this.submitButton = new Button({
             $target: buttonBox,
@@ -86,11 +87,11 @@ export default class GeneratorForm {
             text: "리셋",
         });
 
-        // 하위 컴포턴트 상태 받아오기.
+        // 상위 컴포넌트로 state 전송.
         this.sendState = getState;
 
         // 패널을 이벤트에서 사용할것이기 때문에 this로 받고 이벤트 세팅
-        this.$panel = $panel;
+        this.$target = $target;
         this.setEvent();
     }
 
@@ -100,7 +101,7 @@ export default class GeneratorForm {
 
     setEvent() {
         // submit 이벤트
-        this.$panel.addEventListener("submit", (e) => {
+        this.$target.addEventListener("submit", (e) => {
             e.preventDefault();
             this.handleQuestion();
         });
@@ -118,6 +119,7 @@ export default class GeneratorForm {
         });
     }
 
+    /** 현재의 state가 busy하지 않을때, 입력폼의 데이터의 유효성을 검증하고, 양식을 맞춘 후 로컬스토리지에 저장한다. */
     handleQuestion = () => {
         // 상태가 busy 라면(api응답을 대기중인 상태면) 중단.
         if (!this.state.busy) {
@@ -127,14 +129,14 @@ export default class GeneratorForm {
             const extra = this.extra.getValue();
 
             //답변의 유효성 검증
-            if (this.checkValidation(target, startDate, endDate)) {
+            if (this.checkValidation({ target, startDate, endDate })) {
                 // 답변 양식 전처리.
-                const question = this.createQuestion(
+                const question = this.createQuestion({
                     target,
                     startDate,
                     endDate,
-                    extra
-                );
+                    extra,
+                });
 
                 // 질문과 타겟을 데이터에 저장
                 saveQuestion(data, question);
@@ -146,8 +148,8 @@ export default class GeneratorForm {
         }
     };
 
-    // 입력 form 유효성 검증
-    checkValidation(target, startDate, endDate) {
+    /** 입력폼의 데이터가 정확한지 확인하고, 피드백을 화면에 표기한다. */
+    checkValidation({ target, startDate, endDate }) {
         // 각각의 필수 데이터가 없을때
         if (!target) {
             this.target.focus();
@@ -196,7 +198,8 @@ export default class GeneratorForm {
         // 유효성 검증 통과
         return true;
     }
-    // 유효성 검증 실패시 입력창 아래에 메세지 출력
+
+    /** 유효성 검증 실패시 입력폼 아래에 메세지를 표기한다. */
     noticeValidInfo({ target, text }) {
         // info box
         const notice = makeTextBox({
@@ -209,8 +212,8 @@ export default class GeneratorForm {
         setTimeout(() => target.removeChild(notice), 1500);
     }
 
-    // 답변 양식 전처리
-    createQuestion(target, startDate, endDate, extra) {
+    /** 입력된 데이터를 api에 전송할 양식에 맞춰서 전처리한 후 반환한다. */
+    createQuestion({ target, startDate, endDate, extra }) {
         const [startDay, startTime] = startDate.split("T");
         const [endDay, endTime] = endDate.split("T");
         if (extra == "") {

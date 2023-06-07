@@ -1,16 +1,16 @@
 import { chatbotData as data } from "../../data/api_data.js";
 import { saveQuestion } from "../../utils/data_record.js";
-import Button from "../common/button.js";
+import Button from "../common/Button.js";
 import Input from "../common/Input.js";
 
 export default class ChatForm {
-    constructor({ $window, getState }) {
+    constructor({ $target, getState }) {
         this.state = { busy: false };
         // 챗봇용 form 박스 생성
         this.chatForm = document.createElement("form");
         this.chatForm.setAttribute("action", "post");
         this.chatForm.className = "chat-form";
-        $window.append(this.chatForm);
+        $target.append(this.chatForm);
         // 질문을 받는 input 생성.
         this.question = new Input({
             $target: this.chatForm,
@@ -57,7 +57,9 @@ export default class ChatForm {
         });
     }
 
-    // form 데이터 처리.
+    /** 현재의 상태가 busy하지 않고, 입력값이 있다면 데이터를 저장하고, api요청을 요구한다.
+     * busy하거나 입력값이 없다면, 중단한다.
+     */
     handleQuestion = () => {
         const question = this.question.getValue();
         // 입력값이 없거나 답변을 대기중인 상태면 중단.

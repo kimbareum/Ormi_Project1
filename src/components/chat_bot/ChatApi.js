@@ -2,12 +2,13 @@ import apiPost from "../../api/open_ai_api.js";
 import { saveAnswer } from "../../utils/data_record.js";
 import { chatbotData as data } from "../../data/api_data.js";
 
+/** 챗봇의 API응답과 응답의 처리를 담당한다 */
 export default class ChatApi {
     constructor({ getState }) {
         // ChatBot으로 state 전달.
         this.sendState = getState;
     }
-    // 챗봇의 질문을 API로 전송
+    /** API 요청을 보낸 후 응답을 chatbotData에 저장한다. */
     async getAnswer() {
         await apiPost(data)
             .then((res) => {
@@ -18,7 +19,7 @@ export default class ChatApi {
                     busy: false,
                 });
             })
-            .catch((err) => {
+            .catch(() => {
                 this.sendState({
                     busy: false,
                 });

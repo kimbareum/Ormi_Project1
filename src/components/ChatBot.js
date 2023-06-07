@@ -2,9 +2,10 @@ import ChatScreen from "./chat_bot/ChatScreen.js";
 import ToggleChatBot from "./chat_bot/ToggleChatBot.js";
 import ChatForm from "./chat_bot/ChatForm.js";
 import ChatApi from "./chat_bot/ChatApi.js";
-import AlertModal from "./common/alert_modal.js";
 
-import { makeBox } from "./common/common_box.js";
+import { makeBox } from "./common/common_boxes.js";
+
+//* aside: 챗봇 */
 export default class ChatBot {
     constructor($target) {
         this.state = { busy: false };
@@ -22,18 +23,18 @@ export default class ChatBot {
         chatBot.append(this.window);
 
         // 챗봇의 렌더링을 담당하는 컴포넌트 생성
-        this.chatScreen = new ChatScreen({ $window: this.window });
+        this.chatScreen = new ChatScreen({ $target: this.window });
 
         // 챗봇의 입력을 담당하는 컴포넌트 생성
         this.chatForm = new ChatForm({
-            $window: this.window,
+            $target: this.window,
             getState: this.getState,
         });
 
         // 챗봇의 표기, 비표기를 토글하는 컴포넌트 생성.
         this.toggleChatBot = new ToggleChatBot({
-            $chatBot: chatBot,
-            $window: this.window,
+            $target: chatBot,
+            $eventTarget: this.window,
         });
 
         // 챗봇의 API 응답을 담당하는 컴포넌트 생성.
@@ -63,7 +64,7 @@ export default class ChatBot {
         }
     }
 
-    // 하위 컴포넌트에서 state 받아오기
+    /** 하위 컴포넌트에서 상위 컴포넌트로 state를 전송한다. */
     getState = (newState) => {
         this.setState(newState);
     };

@@ -1,6 +1,7 @@
 import { generatorData as data } from "../../../data/api_data.js";
 import apiPost from "../../../api/open_ai_api.js";
 
+/** 여행계획생성기의 API응답과 응답의 전처리, 유효성검증을 담당한다. */
 export default class GeneratorApi {
     constructor({ getState }) {
         this.state = { busy: false };
@@ -13,7 +14,7 @@ export default class GeneratorApi {
         this.getAnswer();
     }
 
-    // 응답값 전처리1 : JSON 스트링만 뽑아내서 parsing
+    /** 응답값 전처리1 : JSON 스트링만 뽑아내서 parsing 한다. */
     jsonParsing(text) {
         if (text) {
             let result = null;
@@ -25,7 +26,7 @@ export default class GeneratorApi {
         }
     }
 
-    // 응답값 전처리2 : 유효한 양식인지 검사
+    /** 응답값 전처리2 : 유효한 양식인지 검사하고, 양식이 옳지않다면 에러를 발생시킨다. */
     checkValidation(data) {
         for (const idx in data) {
             for (const plan of data[idx]["일정"]) {
@@ -37,6 +38,7 @@ export default class GeneratorApi {
         }
     }
 
+    /** API 응답을 요청하고, 전처리한 후 로컬스토리지에 저장한다. */
     async getAnswer() {
         await apiPost(data)
             .then((res) => {

@@ -1,6 +1,7 @@
-import { makeBox } from "./common_box.js";
-import Button from "./button.js";
+import { makeBox } from "./common_boxes.js";
+import Button from "./Button.js";
 
+/** alert용도로 사용될 modal을 생성하고, 텍스트변경, 표기, 숨김 메서드를 제공한다. */
 export default class AlertModal {
     constructor({ $target, text = "" }) {
         this.alertScreen = makeBox({
@@ -36,7 +37,7 @@ export default class AlertModal {
     }
 
     setEvent() {
-        // 박스 외부나 버튼 클릭시 모달 닫기
+        // 박스 외부나 버튼 클릭시 => alert hide() (alert창 숨김)
         this.alertScreen.addEventListener("click", (e) => {
             if (
                 e.target !== this.alertBox &&
@@ -46,15 +47,18 @@ export default class AlertModal {
             }
         });
     }
-
+    /**
+     * alertModal의 innerText를 변경한다.
+     * @param {string} text 변경할 innerText
+     */
     setDescription(text) {
         this.alertDescription.innerText = text;
     }
-
+    /** alertModal을 표시한다. */
     show = () => {
         this.alertScreen.classList.add("show");
     };
-
+    /** alertModal을 숨긴다. */
     hide = () => {
         this.alertScreen.classList.remove("show");
     };

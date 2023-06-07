@@ -1,7 +1,7 @@
 import PlanGenerator from "./slide/PlanGenerator.js";
 import PlanViewer from "./slide/PlanViewer.js";
 
-// main
+/** main 여행계획 생성기 */
 export default class Slide {
     constructor($target) {
         this.state = { render: false };
@@ -13,12 +13,12 @@ export default class Slide {
 
         // 여행계획 생성을 담당하는 컴포넌트 생성.
         this.planGenerator = new PlanGenerator({
-            $slide: this.slide,
+            $target: this.slide,
             getState: this.getState,
         });
 
         // 여행계획의 렌더링을 담당하는 컴포넌트 생성.
-        this.planViewer = new PlanViewer({ $slide: this.slide });
+        this.planViewer = new PlanViewer({ $target: this.slide });
 
         // 슬라이드 전환 이벤트를 위해 노드 선택.
         this.slideItems = document.querySelectorAll(".slide-item");
@@ -44,12 +44,15 @@ export default class Slide {
         }
     }
 
-    // 하위 컴포넌트 데이터 받아오기
+    /** 하위 컴포넌트의 데이터 받아온다 */
     getState = (newState) => {
         this.setState(newState);
     };
 
-    // 슬라이드전환 메서드.
+    /**
+     * 슬라이드를 전환한다.
+     * @param {"one"|"two"} 전환할 페이지.
+     */
     setPage(newPage) {
         if (this.page === newPage) {
             return;
@@ -93,13 +96,13 @@ export default class Slide {
         });
     }
 
-    // 드래그 or 스와이프 시작시 좌표 저장
+    /** 드래그 or 스와이프 시작시 좌표를 저장한다. */
     handleDragStart(startX, startY) {
         this.startPointX = startX;
         this.startPointY = startY;
     }
 
-    // 드래그 or 스와이프 종료시 둘사이의 차에 따라서 슬라이드 좌우로 전환.
+    /** 드래그 or 스와이프 종료시 둘 사이의 좌표의 차이에 따라서 슬라이드를 좌우로 전환한다. */
     handleDragEnd(endX, endY, eventType) {
         const diffX = endX - this.startPointX;
         const diffY = endY - this.startPointY;

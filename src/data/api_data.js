@@ -1,4 +1,4 @@
-// 여행계획 생성기 기본 세팅
+/** 여행계획 생성기의 기본세팅 및 질문을 저장하는 데이터. */
 export let generatorData = [
     {
         role: "system",
@@ -77,7 +77,7 @@ export let generatorData = [
     },
 ];
 
-// 챗봇의 기본세팅 및 질문 응답 저장.
+/** 챗봇의 기본세팅 및 질문과 응답을 저장하는 데이터. */
 export let chatbotData = [
     {
         role: "system",
