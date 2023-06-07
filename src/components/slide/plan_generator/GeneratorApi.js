@@ -1,5 +1,5 @@
 import { generatorData as data } from "../../../data/apiData.js";
-import apiPost from "../../../api/open_ai_api.js";
+import apiPost from "../../../api/openAIApi.js";
 
 /** 여행계획생성기의 API응답과 응답의 전처리, 유효성검증을 담당한다. */
 export default class GeneratorApi {

@@ -1,4 +1,4 @@
-import apiPost from "../../api/open_ai_api.js";
+import apiPost from "../../api/openAIApi.js";
 import { saveAnswer } from "../../utils/dataRecord.js";
 import { chatbotData as data } from "../../data/apiData.js";
 

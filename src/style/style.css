@@ -78,7 +78,7 @@ main {
     left: 0px;
     width: 100vw;
     height: 1000px;
-    background: url(../img/main_img.jpg);
+    background: url(../img/background_main.jpg);
     background-position: center;
     background-size: cover;
 }
