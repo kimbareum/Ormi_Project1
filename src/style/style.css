@@ -430,7 +430,6 @@ footer {
 
 .chat-content {
     width: fit-content;
-    max-width: 40vw;
     padding: 10px;
 }
 
@@ -438,6 +437,7 @@ footer {
     background-color: orange;
     border-radius: 0 20px 20px 20px;
     margin-top: 20px;
+    margin-right: 20px;
 }
 
 .ai-chat .loading-bar {
@@ -453,6 +453,7 @@ footer {
 .user-chat .chat-content {
     background-color: skyblue;
     border-radius: 20px 20px 0 20px;
+    margin-left: 50px;
 }
 
 .chat-form {
@@ -621,18 +622,6 @@ footer {
     }
 }
 
-@media (max-width: 470px) {
-    .generator {
-        padding: 30px 15px 30px 15px;
-    }
-    .loading-screen {
-        margin-left: -15px;
-    }
-    .chat-window {
-        width: 80vw;
-    }
-}
-
 /* == 여행계획 표시부 및 챗봇 반응형 == */
 @media (max-width: 1400px) {
     .plan-box {
@@ -658,5 +647,17 @@ footer {
     }
     .chat-window {
         width: 70vw;
+    }
+}
+
+@media (max-width: 470px) {
+    .generator {
+        padding: 30px 15px 30px 15px;
+    }
+    .loading-screen {
+        margin-left: -15px;
+    }
+    .chat-window {
+        width: 80vw;
     }
 }
