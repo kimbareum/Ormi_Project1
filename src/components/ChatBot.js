@@ -2,6 +2,7 @@ import ChatScreen from "./chat_bot/ChatScreen.js";
 import ToggleChatBot from "./chat_bot/ToggleChatBot.js";
 import ChatForm from "./chat_bot/ChatForm.js";
 import ChatApi from "./chat_bot/ChatApi.js";
+import AlertModal from "./common/alert_modal.js";
 
 import { makeBox } from "./common/common_box.js";
 export default class ChatBot {
@@ -14,25 +15,25 @@ export default class ChatBot {
             boxClass: "chat-bot",
         });
         // 챗봇 메인window 생성.
-        const window = makeBox({
+        this.window = makeBox({
             boxTag: "div",
             boxClass: ["chat-window", "hide"],
         });
-        chatBot.append(window);
+        chatBot.append(this.window);
 
         // 챗봇의 렌더링을 담당하는 컴포넌트 생성
-        this.chatScreen = new ChatScreen({ $window: window });
+        this.chatScreen = new ChatScreen({ $window: this.window });
 
         // 챗봇의 입력을 담당하는 컴포넌트 생성
         this.chatForm = new ChatForm({
-            $window: window,
+            $window: this.window,
             getState: this.getState,
         });
 
         // 챗봇의 표기, 비표기를 토글하는 컴포넌트 생성.
         this.toggleChatBot = new ToggleChatBot({
             $chatBot: chatBot,
-            $window: window,
+            $window: this.window,
         });
 
         // 챗봇의 API 응답을 담당하는 컴포넌트 생성.

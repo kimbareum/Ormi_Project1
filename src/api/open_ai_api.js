@@ -18,7 +18,7 @@ const apiPost = async (data) => {
             return text;
         })
         .catch((err) => {
-            return err;
+            console.log(err);
         });
 };
 

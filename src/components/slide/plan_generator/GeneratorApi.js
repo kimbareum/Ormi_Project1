@@ -49,17 +49,16 @@ export default class GeneratorApi {
                 return answer;
             })
             .then((answer) => {
-                // 응답이 왔고 올바른 응답이었음을 plan data에 기록.
+                // 응답의 데이터와 올바른 응답이었음을 로컬스토리지에 저장.
                 localStorage.setItem("plans", JSON.stringify(answer));
                 localStorage.setItem("isCorrect", true);
                 const target = localStorage.getItem("newTarget");
                 localStorage.setItem("target", target);
             })
             .catch((err) => {
-                // 올바르지 않은 응답이었음을 plan data에 기록.
+                // 올바르지 않은 응답이었음을 로컬스토리지에 저장.
                 localStorage.setItem("isCorrect", false);
                 console.log(err);
-                alert("죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.");
             });
         // 앞서 전송했던 질문을 제거.
         data.pop();

@@ -27,22 +27,17 @@ export default class PlanBox {
         });
         planBox.append(planDescription);
 
-        this.render(true);
+        this.render();
     }
 
-    render(init) {
-        const isCorrect = localStorage.getItem("isCorrect");
+    render() {
         const target = localStorage.getItem("target");
         // localStorage에 데이터가 없다면 박스를 초기화.
         if (!target) {
             this.cardBox.clear();
             return;
         }
-        // localStarage에 데이터가 있고 양식이 유효하다면
-        // 또는 초기화단계이고 target이 있다면 렌더링 시작.
-        if (isCorrect === "true" || init) {
-            this.planLabel.innerText = `${target} 여행 계획`;
-            this.cardBox.render();
-        }
+        this.planLabel.innerText = `${target} 여행 계획`;
+        this.cardBox.render();
     }
 }

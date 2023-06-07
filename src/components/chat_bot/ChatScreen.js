@@ -1,6 +1,7 @@
 import img_src from "../../data/img_data.js";
 import { chatbotData as data } from "../../data/api_data.js";
 import { makeBox, makeTextBox, makeImgBox } from "../common/common_box.js";
+import AlertModal from "../common/alert_modal.js";
 
 export default class ChatScreen {
     constructor({ $window }) {
@@ -25,6 +26,11 @@ export default class ChatScreen {
         aiChat.append(aiChatContent);
 
         this.chatScreen.append(aiChat);
+
+        this.alertModal = new AlertModal({
+            $target: $window,
+            text: "실수했어요. (´；д；). 다시 물어봐주세요.",
+        });
     }
 
     setState(newState) {
@@ -42,6 +48,8 @@ export default class ChatScreen {
             this.chatScreen.removeChild(this.chatScreen.lastChild);
             if (data[data.length - 1].role === "assistant") {
                 this.renderAnswer(data[data.length - 1].content);
+            } else {
+                this.alertModal.show();
             }
         }
         this.scrollTop();

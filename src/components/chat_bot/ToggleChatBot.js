@@ -27,6 +27,8 @@ export default class ToggleChatBot {
     }
 
     toggleChatBot = () => {
+        // 답변알림기능 제거
+        this.toggleNotice(false);
         if (this.$window.classList.contains("hide")) {
             // 챗봇이 숨겨져있을 때
             // 숨김해제
@@ -34,8 +36,6 @@ export default class ToggleChatBot {
             // 버튼 모양 변경
             this.toggleButton.button.innerText = "숨기기";
             this.toggleButton.button.classList.add("open");
-            // 답변알림기능 제거
-            this.toggleNotice(false);
             // 입력창에 포커스
             document.querySelector("#question").focus();
         } else {

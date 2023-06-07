@@ -198,8 +198,7 @@ loading-screen {
     height: 100%;
     position: absolute;
     margin-left: -30px;
-    background-color: grey;
-    opacity: 0.97;
+    background-color: rgb(128, 128, 128, 0.9);
     border-radius: inherit;
 }
 loading-screen.hide {
@@ -396,7 +395,7 @@ footer {
     position: fixed;
     right: 2rem;
     bottom: 2rem;
-    z-index: 9999;
+    z-index: 5;
 }
 .chat-window {
     display: block;
@@ -511,11 +510,71 @@ user-chat chat-content {
 }
 
 .toggle-chat.open {
+    border: 1px solid black;
     border-radius: 0 0 5px 5px;
     background-color: royalblue;
     height: 40px;
     color: white;
     font-size: 18px;
+}
+
+/* == alert modal == */
+.alert-screen {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: rgb(128, 128, 128, 0.9);
+    z-index: 10;
+}
+
+.alert-box {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 70px 30px 30px 30px;
+    gap: 50px;
+}
+
+.alert-box > p {
+    font-weight: 600;
+}
+
+.alert-box > button {
+    background-color: royalblue;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    width: 200px;
+    height: 50px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.alert-box > button:hover {
+    box-shadow: 3px 3px 2px black;
+    transition-duration: 100ms;
+}
+
+.alert-box > button:active {
+    box-shadow: none;
+}
+
+/* 챗봇 alert modal 레이아웃변경  */
+.chat-window > .alert-screen {
+    position: absolute;
+    border-radius: 5px;
+}
+
+/* alert modal 기능 구현 */
+.alert-screen.show {
+    display: flex;
 }
 
 /* == animation == */

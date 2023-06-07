@@ -22,7 +22,6 @@ export default class ChatApi {
                 this.sendState({
                     busy: false,
                 });
-                alert("죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.");
             });
     }
 }
