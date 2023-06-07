@@ -1,10 +1,10 @@
 import img_src from "../../data/img_data.js";
 import { makeBox } from "../common/common_box.js";
 
-import LoadingScreen from "./PlanGenerator/LoadingScreen.js";
-import GeneratorForm from "./PlanGenerator/GeneratorForm.js";
-import GeneratorApi from "./PlanGenerator/GeneratorApi.js";
-import Footer from "./PlanGenerator/Footer.js";
+import LoadingScreen from "./plan_generator/LoadingScreen.js";
+import GeneratorForm from "./plan_generator/GeneratorForm.js";
+import GeneratorApi from "./plan_generator/GeneratorApi.js";
+import Footer from "./plan_generator/Footer.js";
 
 export default class PlanGenerator {
     constructor({ $slide, getState }) {

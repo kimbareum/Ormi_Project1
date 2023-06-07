@@ -1,4 +1,4 @@
-import PlanBox from "./PlanViewer/PlanBox.js";
+import PlanBox from "./plan_viewer/PlanBox.js";
 import img_src from "../../data/img_data.js";
 import { makeBox } from "../common/common_box.js";
 

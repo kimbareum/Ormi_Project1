@@ -1,5 +1,5 @@
 import { generatorData as data } from "../../../data/api_data.js";
-import apiPost from "../../../utils/open_ai_api.js";
+import apiPost from "../../../api/open_ai_api.js";
 
 export default class GeneratorApi {
     constructor({ getState }) {

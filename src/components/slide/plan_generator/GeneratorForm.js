@@ -104,10 +104,17 @@ export default class GeneratorForm {
             e.preventDefault();
             this.handleQuestion();
         });
-        // enter키 입력 이벤트
+        // input에 Enter key 입력 이벤트 추가.
         this.extra.setEvent({
-            eventType: "enter",
-            event: this.handleQuestion,
+            eventType: "keydown",
+            event: (e) => {
+                if (e.shiftKey && e.key == "Enter") {
+                    return;
+                } else if (e.key == "Enter") {
+                    e.preventDefault();
+                    this.handleQuestion();
+                }
+            },
         });
     }
 

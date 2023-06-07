@@ -1,6 +1,6 @@
 // 입력폼을 만드는 class
 export default class Input {
-    constructor({ $target = "", type, id, option = {} }) {
+    constructor({ $target = null, type, id, option = {} }) {
         // input 또는 textarea를 생성
         if (type === "textarea") {
             this.input = document.createElement("textarea");
