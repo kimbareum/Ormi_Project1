@@ -74,11 +74,14 @@ export default class PlanGenerator {
         } else {
             // state가 busy가 아닐때(api 응답을 받은 상태)
             if (localStorage.getItem("isCorrect") === "true") {
-                // 응답이 정상적이었다면 planviewer에 render 요청
+                // 응답이 정상적이었다면 slide state를 true로
                 this.sendState({ render: true });
             } else {
-                // 응답이 비정상적이었다면 alertModal render
+                // 응답이 비정상적이었다면
+                // alertModal 렌더링
                 this.alertModal.show();
+                // slide state를 false로
+                this.sendState({ render: false });
             }
         }
         // genForm 입력 다시 가능하게 state 전송.

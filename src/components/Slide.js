@@ -33,11 +33,14 @@ export default class Slide {
     }
 
     render() {
-        // 여행계획 생성기에서 렌더링 state가 오면 여행계획 뷰어에게 렌더링 명령
+        // 여행계획 생성기에서 state render:true가 오면 여행계획 뷰어에게 렌더링 명령.
         if (this.state.render) {
             this.planViewer.render();
             // 슬라이드를 2로 변경.
             this.setPage("two");
+        } else {
+            // 여행계획 생성기에서 state render:false가 오면 api응답에 실패했다는 뜻이므로 슬라이드를 1로 변경.
+            this.setPage("one");
         }
     }
 
