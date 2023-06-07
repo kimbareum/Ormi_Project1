@@ -9,6 +9,7 @@ import Footer from "./plan_generator/Footer.js";
 
 /** section1 여행계획생성기 */
 export default class PlanGenerator {
+    /** section1 여행계획생성기 */
     constructor({ $target, getState }) {
         this.state = { busy: false };
 

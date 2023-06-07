@@ -4,6 +4,7 @@ import { makeBox } from "../common/commonBoxes.js";
 
 /** section2 여행계획 뷰어 */
 export default class PlanViewer {
+    /** section2 여행계획 뷰어 */
     constructor({ $target }) {
         // 여행계획 뷰어 section 생성
         const window = makeBox({

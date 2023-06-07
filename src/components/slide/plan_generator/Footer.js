@@ -1,6 +1,7 @@
 import IMG_SRC from "../../../data/imgPaths.js";
 import { makeImgBox, makeTextBox } from "../../common/commonBoxes.js";
 
+/** Footer */
 export default class Footer {
     constructor({ $target }) {
         const footer = document.createElement("footer");

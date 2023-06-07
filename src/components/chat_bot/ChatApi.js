@@ -1,5 +1,5 @@
 import apiPost from "../../api/openAIApi.js";
-import { saveAnswer } from "../../utils/dataRecord.js";
+import { saveAnswer } from "../../api/dataRecord.js";
 import { chatbotData as data } from "../../data/apiData.js";
 
 /** 챗봇의 API응답과 응답의 처리를 담당한다 */

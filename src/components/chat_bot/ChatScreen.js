@@ -5,6 +5,7 @@ import AlertModal from "../common/AlertModal.js";
 
 /** 챗봇 화면의 렌더링을 담당한다. */
 export default class ChatScreen {
+    /** 챗봇 화면의 렌더링을 담당한다. */
     constructor({ $target }) {
         this.state = { busy: false };
 
