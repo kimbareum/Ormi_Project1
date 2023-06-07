@@ -189,7 +189,7 @@ export default class GeneratorForm {
         // 유효성 검증 통과
         return true;
     }
-    // 유효성 검증 실패시 버튼 아래에 메세지 출력
+    // 유효성 검증 실패시 입력창 아래에 메세지 출력
     noticeValidInfo({ target, text }) {
         // info box
         const notice = makeTextBox({

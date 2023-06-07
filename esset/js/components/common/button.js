@@ -9,6 +9,6 @@ export default class Button {
     }
 
     setEvent({ eventType, event }) {
-        this.input.addEventListener(eventType, (e) => event(e));
+        this.button.addEventListener(eventType, (e) => event(e));
     }
 }

@@ -20,10 +20,12 @@ export default class ToggleChatBot {
 
     setEvent() {
         // 버튼에 챗봇 토글 이벤트 할당.
-        this.toggleButton.button.addEventListener("click", this.toggleChatBot);
+        this.toggleButton.setEvent({
+            eventType: "click",
+            event: this.toggleChatBot,
+        });
     }
 
-    // 하위컴포넌트의 요소에 전달되기때문에 => 로 선언해서 this를 bind.
     toggleChatBot = () => {
         if (this.$window.classList.contains("hide")) {
             // 챗봇이 숨겨져있을 때
