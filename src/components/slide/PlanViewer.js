@@ -1,6 +1,6 @@
 import PlanBox from "./plan_viewer/PlanBox.js";
-import IMG_SRC from "../../data/img_data.js";
-import { makeBox } from "../common/common_boxes.js";
+import IMG_SRC from "../../data/imgPaths.js";
+import { makeBox } from "../common/commonBoxes.js";
 
 /** section2 여행계획 뷰어 */
 export default class PlanViewer {

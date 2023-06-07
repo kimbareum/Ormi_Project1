@@ -1,6 +1,6 @@
-import IMG_SRC from "../../data/img_data.js";
-import { chatbotData as data } from "../../data/api_data.js";
-import { makeBox, makeTextBox, makeImgBox } from "../common/common_boxes.js";
+import IMG_SRC from "../../data/imgPaths.js";
+import { chatbotData as data } from "../../data/apiData.js";
+import { makeBox, makeTextBox, makeImgBox } from "../common/commonBoxes.js";
 import AlertModal from "../common/AlertModal.js";
 
 /** 챗봇 화면의 렌더링을 담당한다. */

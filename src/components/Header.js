@@ -1,7 +1,7 @@
-import { makeImgBox } from "./common/common_boxes.js";
+import { makeImgBox } from "./common/commonBoxes.js";
 import SlideButton from "./header/SlideButton.js";
 
-import IMG_SRC from "../data/img_data.js";
+import IMG_SRC from "../data/imgPaths.js";
 
 export default class Header {
     constructor($target) {

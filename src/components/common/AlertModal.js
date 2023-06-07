@@ -1,4 +1,4 @@
-import { makeBox } from "./common_boxes.js";
+import { makeBox } from "./commonBoxes.js";
 import Button from "./Button.js";
 
 /** alert용도로 사용될 modal을 생성하고, 텍스트변경, 표기, 숨김 메서드를 제공한다. */

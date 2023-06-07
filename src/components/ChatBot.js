@@ -3,7 +3,7 @@ import ToggleChatBot from "./chat_bot/ToggleChatBot.js";
 import ChatForm from "./chat_bot/ChatForm.js";
 import ChatApi from "./chat_bot/ChatApi.js";
 
-import { makeBox } from "./common/common_boxes.js";
+import { makeBox } from "./common/commonBoxes.js";
 
 //* aside: 챗봇 */
 export default class ChatBot {

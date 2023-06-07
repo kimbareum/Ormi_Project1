@@ -1,5 +1,5 @@
 import CardBox from "./CardBox.js";
-import { makeBox, makeTextBox } from "../../common/common_boxes.js";
+import { makeBox, makeTextBox } from "../../common/commonBoxes.js";
 
 /** 여행계획의 렌더링을 담당한다. */
 export default class PlanBox {

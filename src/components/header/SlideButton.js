@@ -1,5 +1,5 @@
-import IMG_SRC from "../../data/img_data.js";
-import { makeImgBox } from "../common/common_boxes.js";
+import IMG_SRC from "../../data/imgPaths.js";
+import { makeImgBox } from "../common/commonBoxes.js";
 
 export default class SlideButton {
     constructor({ $target }) {

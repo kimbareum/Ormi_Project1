@@ -1,6 +1,6 @@
 import apiPost from "../../api/open_ai_api.js";
-import { saveAnswer } from "../../utils/data_record.js";
-import { chatbotData as data } from "../../data/api_data.js";
+import { saveAnswer } from "../../utils/dataRecord.js";
+import { chatbotData as data } from "../../data/apiData.js";
 
 /** 챗봇의 API응답과 응답의 처리를 담당한다 */
 export default class ChatApi {

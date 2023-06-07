@@ -1,5 +1,5 @@
-import { chatbotData as data } from "../../data/api_data.js";
-import { saveQuestion } from "../../utils/data_record.js";
+import { chatbotData as data } from "../../data/apiData.js";
+import { saveQuestion } from "../../utils/dataRecord.js";
 import Button from "../common/Button.js";
 import Input from "../common/Input.js";
 

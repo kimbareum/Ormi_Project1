@@ -1,4 +1,4 @@
-import IMG_SRC from "../../data/img_data.js";
+import IMG_SRC from "../../data/imgPaths.js";
 import Button from "../common/Button.js";
 
 /** 챗봇의 토글액션을 담당한다. */

@@ -1,5 +1,5 @@
-import IMG_SRC from "../../data/img_data.js";
-import { makeBox } from "../common/common_boxes.js";
+import IMG_SRC from "../../data/imgPaths.js";
+import { makeBox } from "../common/commonBoxes.js";
 
 import LoadingScreen from "../common/LoadingScreen.js";
 import AlertModal from "../common/AlertModal.js";
