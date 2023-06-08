@@ -9,11 +9,11 @@ export default class Button {
      * @param {Object} detail.text 버튼의 텍스트.
      * @param {Object} detail.option 추가적인 버튼의 attribute.
      */
-    constructor({ $target = null, type, className, text, option = {} }) {
+    constructor({ $target = null, type, className, HTML, option = {} }) {
         this.button = document.createElement("button");
         this.button.setAttribute("type", type);
         this.button.className = className;
-        this.button.innerText = text;
+        this.button.innerHTML = HTML;
 
         // 옵션값이 있다면 속성을 동적으로 할당.
         for (const key in option) {

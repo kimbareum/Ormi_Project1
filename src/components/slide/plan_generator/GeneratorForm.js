@@ -80,12 +80,12 @@ export default class GeneratorForm {
         this.submitButton = new Button({
             $target: buttonBox,
             type: "submit",
-            text: "생성",
+            HTML: "생성",
         });
         this.resetButton = new Button({
             $target: buttonBox,
             type: "reset",
-            text: "리셋",
+            HTML: "리셋",
         });
 
         // 상위 컴포넌트로 state 전송.

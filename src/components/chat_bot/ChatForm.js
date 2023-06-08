@@ -25,7 +25,7 @@ export default class ChatForm {
             $target: this.chatForm,
             type: "submit",
             className: "chat-button",
-            text: "질문하기",
+            HTML: "질문하기",
         });
 
         // ChatBot으로 state 전달

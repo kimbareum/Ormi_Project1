@@ -6,15 +6,16 @@ export default class ToggleChatBot {
     /** 챗봇의 토글액션을 담당한다. */
     constructor({ $target, $eventTarget }) {
         // 버튼 생성.
+        this.button_img = IMG_SRC.chat_hide_icon;
+        this.toggleButtonHTML = `<img src="${this.button_img}" alt="챗봇 토글">`;
+
         this.toggleButton = new Button({
             $target: $target,
             type: "button",
             className: "toggle-chat",
-            text: "",
+            HTML: this.toggleButtonHTML,
         });
         // 버튼의 이미지 설정.
-        this.button_img = IMG_SRC.chat_hide_icon;
-        this.toggleButton.button.innerHTML = `<img src="${this.button_img}" alt="챗봇 토글">`;
 
         this.$eventTarget = $eventTarget;
         this.setEvent();

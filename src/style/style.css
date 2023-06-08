@@ -94,10 +94,10 @@ h1 > img {
     gap: 20px;
 }
 
-.theme-list > li {
-    /* box-sizing: border-box; */
+.theme-list > button {
     padding: 4px;
-    height: 20px;
+    border: none;
+    background: none;
 }
 
 .theme-list img {
@@ -712,7 +712,7 @@ footer {
         width: 65px;
         overflow: hidden;
     }
-    .theme-list > li {
+    .theme-list > button {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -722,7 +722,7 @@ footer {
         transition-duration: 0.15s;
     }
 
-    .theme-list > li[view="dark"] {
+    .theme-list > button[view="dark"] {
         left: -60px;
     }
 }
