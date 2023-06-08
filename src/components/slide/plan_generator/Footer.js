@@ -12,8 +12,8 @@ export default class Footer {
 
         const pageDescription = makeTextBox({
             boxTag: "p",
-            boxClass: "page-description",
-            text: "The first project at Ormi Bootcamp. Travel planning helpers with HTML, CSS, and JAVA.",
+            boxClass: "footer-text",
+            text: `Copyright 2023. KimBareum. All rights reserved.`,
         });
 
         footer.innerHTML = githubLink;
