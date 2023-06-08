@@ -49,9 +49,16 @@ export default class ChatForm {
         this.question.setEvent({
             eventType: "keydown",
             event: (e) => {
-                if (e.shiftKey && e.key == "Enter") {
+                // 모바일 환경인지 확인
+                const isMobile = /iPhone|iPad|iPod|Android|Mobile/i.test(
+                    navigator.userAgent
+                );
+                // 모바일 환경에서는 엔터키로 줄바꿈만 동작.
+                if (isMobile && e.key === "Enter") {
                     return;
-                } else if (e.key == "Enter") {
+                }
+                // 모바일 환경이 아니고 shift키와 함께 눌러지지 않은 경우 submit
+                if (!isMobile && !e.shiftKey && e.key === "Enter") {
                     e.preventDefault();
                     this.handleQuestion();
                 }

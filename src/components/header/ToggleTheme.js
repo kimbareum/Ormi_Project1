@@ -59,14 +59,13 @@ export default class ToggleTheme {
                 event: () => {
                     // 테마 변경 이벤트
                     this.currentTheme = theme;
-                    console.log(theme, this.currentTheme);
                     localStorage.setItem("Theme", theme);
                     this.render();
                 },
             });
             // 테마 선택 버튼의 이미지를 변경하기 위해서 HTML element 저장한다.
             this.themeButtonImg[theme] =
-                themeButton.button.querySelector("img");
+                this.themeList.lastElementChild.querySelector("img");
         }
     }
     render() {
