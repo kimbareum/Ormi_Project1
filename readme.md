@@ -34,7 +34,8 @@ https://kimbareum.github.io/Ormi_Project1/
 
 <img src="readme/plan_generator.png" width="45%"> <img src="readme/plan_viewer.png" width="45%">
 
-    - 여행계획 생성기에서 목표 여행지와, 여행지에 도착하는시간, 여행지에서 떠나는시간을 넣고 생성을 누르면, openAI API를 통해서 얻어진 여행계획이 뷰어 슬라이드에 카드 형식으로 나타난다.
+    - 여행계획 생성기에서 목표 여행지와, 여행지에 도착하는 시간, 여행지에서 떠나는 시간을 넣고 생성을 누르면,
+    openAI API를 통해서 얻어진 여행계획이 뷰어 슬라이드에 카드 형식으로 나타난다.
 
     - 슬라이드간의 전환은 우측상단의 버튼이나 드래그, 스와이프로 가능하다.
 
@@ -59,11 +60,13 @@ https://kimbareum.github.io/Ormi_Project1/
 <img src="readme/plan_generator_feature1.gif" height="400">
 
     - 여행의 목적지, 시작시간, 종료시간, 그외 특이사항을 입력하면 chatGPT를 통해 여행계획을 생성.
-    - 여행의 목적지와 시작시간, 종료시간은 필수 입력요소로서 입력되지 않으면 입력되지 않은 곳을 포커스하고, 시각적으로 피드백.
-    - 시작시간이 현재시간보다 빠르거나, 여행종료시간이 시작시간보다 빠를경우에도 잘못된 곳을 포커스하고, 시각적으로 피드백.
+    - 여행의 목적지와 시작시간, 종료시간은 필수 입력요소로서 입력되지 않으면 입력되지 않은 곳을 포커스하고,
+    시각적으로 피드백.
+    - 시작시간이 현재시간보다 빠르거나, 여행종료시간이 시작시간보다 빠를경우에도 잘못된 곳을 포커스하고,
+    시각적으로 피드백.
     - textarea에서도 enter키로 submit이 가능하고, shift + enter키로는 줄바꿈이 작동하게 설정.
 
-<img src="readme/plan_generator_feature2-1.png" width="45%"> <img src="readme/plan_generator_feature2-2.png" width="45%">
+<img src="readme/plan_generator_feature2-1.png" height="270"> <img src="readme/plan_generator_feature2-2.png" height="270">
 
     - API 응답을 대기하고 있을때는 입력 창 위에 예상시간과 로딩바를 표기.
     - API 응답의 결과가 올바르지 않을때는 모달로 만든 경고창을 띄워서 생성이 제대로 되지 않았음을 안내.
@@ -84,7 +87,7 @@ https://kimbareum.github.io/Ormi_Project1/
     - 질문하기를 누르면 값이있는지, 응답이 대기중이지 않는지 확인하고 API 요청.
     - enter키로 submit이 가능하고, shift + enter키로는 줄바꿈이 작동하게 설정.
     - API 응답을 대기중일때는 스크린에 로딩바를 띄워서 동적으로 피드백.
-    - fixed된 채팅아이콘에 hover시 커지는 효과와, API응답이 왔을때 움직이는 애니메이션을 줘서 동적인 버튼을 구성.
+    - API응답이 왔을때 움직이는 애니메이션을 줘서 동적인 버튼을 구성.
     - API 응답이 실패했을때는 모달로 만든 경고창을 띄워서 답변이 정상적으로 만들어지지 않았음을 안내.
     - 화면이 렌더링될 때 마다 챗봇의 화면이 가장 아래로 내려가게 설정.
 
@@ -97,7 +100,8 @@ https://kimbareum.github.io/Ormi_Project1/
 <img src="readme/동적_ui.gif" height="400">
 
     - 테마변경 버튼, 화면 슬라이드 버튼, 챗봇 토글 버튼에 hover조건을 줘서 동적인 UI로 구성.
-    - form의 입력, 리셋버튼에는 hover시와 active시 조건을 줘서, hover시에는 올라가고, 클릭시에는 들어가는 듯한 효과를 줘서 동적인 UI로 구성.
+    - form의 입력, 리셋버튼에는 hover시와 active시 조건을 줘서,
+    hover시에는 올라가고, 클릭시에는 들어가는 것처럼 보이는 동적인 UI로 구성.
 
 -   반응형 화면 구성
 
@@ -109,8 +113,8 @@ https://kimbareum.github.io/Ormi_Project1/
 
     - 동적 UI의 hover 조건을 action 조건으로 변경하여 모바일에서 조금 더 자연스러운 동적 UI로 보이도록 변경.
 
-<img src="readme/plan_viewer_반응형1.png" height="350"> <img src="readme/plan_viewer_반응형2.png" height="350">
-<img src="readme/plan_viewer_반응형3.png" height="350"> <img src="readme/plan_viewer_반응형4.png" height="350">
+<img src="readme/plan_viewer_반응형1.png" height="300"> <img src="readme/plan_viewer_반응형2.png" height="300">
+<img src="readme/plan_viewer_반응형3.png" height="300"> <img src="readme/plan_viewer_반응형4.png" height="300">
 
     - 여행계획 뷰어는 좌우 폭에 따라서 카드를 1줄에 4장, 3장, 2장, 1장씩 표기되도록 단계적으로 변경.
 
