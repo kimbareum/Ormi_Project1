@@ -108,6 +108,9 @@ h1 > img {
 .theme-list img:hover {
     box-shadow: 0 0 10px var(--font-color);
 }
+.theme-list img:active {
+    box-shadow: 0 0 10px var(--font-color);
+}
 
 /* 슬라이드 버튼 */
 .slide-button {
@@ -587,7 +590,6 @@ footer {
 }
 .toggle-chat > img:hover {
     height: 60px;
-    animation: none;
 }
 
 .toggle-chat.open {
@@ -729,6 +731,23 @@ footer {
         left: -60px;
     }
 }
+/* hover 액션을 작은 화면에서 active 액션으로 변경 */
+@media (max-width: 1100px) {
+    .theme-list img:hover {
+        box-shadow: none;
+    }
+    .theme-list img:active {
+        box-shadow: 0 0 10px var(--font-color);
+    }
+
+    .slide-button > img:hover {
+        height: 40px;
+    }
+
+    .slide-button > img:active {
+        height: 60px;
+    }
+}
 
 /* == 여행계획 표시부 및 챗봇 반응형 == */
 @media (max-width: 1400px) {
@@ -752,6 +771,10 @@ footer {
     }
     .card-box {
         justify-content: center;
+    }
+    .chat-bot {
+        right: 1rem;
+        bottom: 1rem;
     }
     .chat-window {
         width: 70vw;

@@ -2,7 +2,7 @@
 
 ### 주제
 
-부트캠프에서 제공된 openAI API(chatGPT)를 이용해서 할 수 있는 프로젝트에 무엇이 있을까 고민하던 중, chatGPT 본연의 기능에 가까운 챗봇 기능과, chatGPT의 답변을 가공해서 사용하는 응용 기능을 모두 구현하고 싶다는 생각이 들었다.
+openAI API(chatGPT)를 이용해서 할 수 있는 프로젝트에 무엇이 있을까 고민하던 중, chatGPT 본연의 기능에 가까운 챗봇 기능과, chatGPT의 답변을 가공해서 사용하는 응용 기능을 모두 구현하고 싶다는 생각이 들었다.
 그런 방향의 고민끝에, 여행의 일정과 조건을 작성하면, 일정에 맞는 계획을 카드 형태로 보여주고, 화면 구석에 있는 채팅창 아이콘을 클릭하면 챗봇이 열려서, 여행의 일정이나 조건, 여행계획에 대한 질문들을 할 수 있는 서비스를 만들게 되었다.
 
 ### 프로젝트의 목표
@@ -22,7 +22,11 @@ https://kimbareum.github.io/Ormi_Project1/
 
 ### 개발 환경 및 개발 기간
 
-2023년 5월 30일 ~ 2023년 6월 10일
+-   개발 환경
+    Vanilla JavaScript, CSS
+
+-   개발 기간
+    2023년 5월 30일 ~ 2023년 6월 8일
 
 ### 사용 예제
 
@@ -37,6 +41,10 @@ https://kimbareum.github.io/Ormi_Project1/
     -   우측하단의 파란색 메세지 아이콘을 누르면 여행관련 질문에 응답하는 챗봇을 이용할 수 있다.
 
     -   질문을 하고 챗봇을 접어둔 채로 API의 응답이 오면, 챗봇아이콘에 시각적인 피드백을 줘서 사용자에게 알린다.
+
+-   반응형 웹사이트
+
+    -   화면의 좌우 크기에 따라서, 레이아웃을 적절하게 변화시킨다.
 
 ### 세부 구현 기능
 
@@ -73,7 +81,7 @@ https://kimbareum.github.io/Ormi_Project1/
     -   화면이 렌더링될 때 마다 챗봇의 화면이 가장 아래로 내려가게 설정.
     -   fixed된 채팅아이콘에 hover시 커지는 효과와, API응답이 왔을때 움직이는 애니메이션을 줘서 동적인 버튼을 구성.
 
-### 폴더 구조
+### 프로젝트 구조
 
 ```shell
 |   index.html
@@ -82,7 +90,8 @@ https://kimbareum.github.io/Ormi_Project1/
     |   main.js
     |
     +---api
-    |       open_ai_api.js
+    |       dataRecord.js
+    |       openAIApi.js
     |
     +---components
     |   |   App.js
@@ -99,12 +108,13 @@ https://kimbareum.github.io/Ormi_Project1/
     |   +---common
     |   |       AlertModal.js
     |   |       Button.js
-    |   |       common_boxes.js
+    |   |       commonBoxes.js
     |   |       Input.js
     |   |       LoadingScreen.js
     |   |
     |   +---header
     |   |       SlideButton.js
+    |   |       ToggleTheme.js
     |   |
     |   \---slide
     |       |   PlanGenerator.js
@@ -120,32 +130,34 @@ https://kimbareum.github.io/Ormi_Project1/
     |               PlanBox.js
     |
     +---data
-    |       api_data.js
-    |       img_data.js
+    |       apiData.js
+    |       imgPaths.js
     |
     +---img
-    |       chatbot_icon.png
-    |       exchange.png
-    |       generator_label.png
-    |       generator_label_dark.png
-    |       github-mark-white.png
-    |       github-mark.png
-    |       logo.png
-    |       main_img.jpg
-    |       plan_label.png
-    |       plan_label_dark.png
-    |       robot_icon.png
+    |       background_main.jpg
+    |       background_main_dark.jpg
+    |       icon_ai_chat.png
+    |       icon_chatbot.png
+    |       icon_darkmode_dark.png
+    |       icon_darkmode_light.png
+    |       icon_exchange.png
+    |       icon_github.png
+    |       icon_github_white.png
+    |       icon_lightmode_dark.png
+    |       icon_lightmode_light.png
+    |       logo_generator.png
+    |       logo_generator_dark.png
+    |       logo_header.png
+    |       logo_viewer.png
+    |       logo_viewer_dark.png
     |
     +---style
-    |   |   style.css
-    |   |
-    |   \---font
-    |           Nanum_barun_gothic.ttf
-    |           Nanum_barun_gothic_bold.ttf
-    |           ohmyu_daibbm.ttf
-    |
-    \---utils
-            data_record.js
+        |   style.css
+        |
+        \---font
+                Nanum_barun_gothic.ttf
+               Nanum_barun_gothic_bold.ttf
+                ohmyu_daibbm.ttf
 ```
 
 ### 개발 과정
