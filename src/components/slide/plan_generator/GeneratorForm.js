@@ -114,12 +114,10 @@ export default class GeneratorForm {
                 const isMobile = /iPhone|iPad|iPod|Android|Mobile/i.test(
                     navigator.userAgent
                 );
-
-                // 모바일 환경에서는 기본 동작을 유지하여 엔터키로 줄바꿈이 되도록 처리
+                // 모바일 환경에서는 엔터키로 줄바꿈만 동작.
                 if (isMobile && e.key === "Enter") {
                     return;
                 }
-
                 // 모바일 환경이 아니고 shift키와 함께 눌러지지 않은 경우 submit
                 if (!isMobile && !e.shiftKey && e.key === "Enter") {
                     e.preventDefault();

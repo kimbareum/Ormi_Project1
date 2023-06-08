@@ -27,7 +27,6 @@ body {
     --background-color: whitesmoke;
     --font-color: #363636;
     --main-color: royalblue;
-    --footer-color: #e8f0fe;
     --chat-window-color: #677bac;
     --main-image: url(../img/background_main.jpg);
     --gen-label: url(../img/logo_generator.png);
@@ -38,7 +37,6 @@ body {
         --background-color: #363636;
         --font-color: #cccccc;
         --main-color: royalblue;
-        --footer-color: #363636;
         --chat-window-color: #37425c;
         --main-image: url(../img/background_main_dark.jpg);
         --gen-label: url(../img/logo_generator_dark.png);
@@ -448,7 +446,7 @@ footer {
     width: 100%;
     min-height: 80px;
     border-top: 2px solid royalblue;
-    background: var(--footer-color);
+    background: var(--background-color);
 }
 
 .github-link > div {
