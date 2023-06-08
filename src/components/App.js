@@ -5,12 +5,15 @@ import Slide from "./Slide.js";
 export default class App {
     constructor($target) {
         this.$target = $target;
-        this.render($target);
+
+        this.themeList = ["light", "dark"];
+
+        this.render($target, this.themeList);
     }
 
-    render($target) {
+    render($target, themeList) {
         $target.innerHTML = "";
-        this.header = new Header($target);
+        this.header = new Header($target, themeList);
 
         this.slide = new Slide($target);
 

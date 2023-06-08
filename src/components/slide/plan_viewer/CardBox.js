@@ -63,7 +63,7 @@ export default class CardBox {
 
                 // card의 각 row를 생성
                 const row = makeBox({
-                    baxTag: "li",
+                    boxTag: "li",
                     boxClass: "card-row",
                 });
                 // card row에 시간 column 생성

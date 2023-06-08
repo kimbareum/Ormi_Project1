@@ -1,4 +1,3 @@
-import IMG_SRC from "../../data/imgPaths.js";
 import { makeBox } from "../common/commonBoxes.js";
 
 import LoadingScreen from "../common/LoadingScreen.js";
@@ -30,9 +29,9 @@ export default class PlanGenerator {
         panel.setAttribute("action", "post");
         window.append(panel);
 
-        // 여행계획 생성기 제목 과 설명 생성
+        // 여행계획 생성기 제목과 설명 생성
         const label = `
-        <h2 class="gen-label"><img src="${IMG_SRC.generator_label}" alt="여행계획 생성기"></h2>`;
+        <h2 class="gen-label"><div></div></h2>`;
         const generatorNotice = `
         <p class="gen-notice">chatGPT를 활용해서 여러분들의 여행계획을 자동으로 짜드립니다. 우측하단의 챗봇을 통해 여행관련 질문도 자유롭게 해주세요!</p>`;
 
@@ -78,13 +77,13 @@ export default class PlanGenerator {
             this.loadingScreen.hide();
             // state가 busy가 아닐때(api 응답을 받은 상태)
             if (localStorage.getItem("isCorrect") === "true") {
-                // 응답이 정상적이었다면 slide state를 true로
+                // 응답이 정상적이었다면 slide state를 render : true로
                 this.sendState({ render: true });
             } else {
                 // 응답이 비정상적이었다면
                 // alertModal 렌더링
                 this.alertModal.show();
-                // slide state를 false로
+                // slide state를 render : false로
                 this.sendState({ render: false });
             }
         }

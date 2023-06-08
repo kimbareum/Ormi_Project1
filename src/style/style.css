@@ -18,6 +18,35 @@ aside {
     font-size: medium;
 }
 
+ul {
+    list-style: none;
+}
+
+/* theme에 따른 색상 지정*/
+body {
+    --background-color: whitesmoke;
+    --font-color: #363636;
+    --main-color: royalblue;
+    --footer-color: #e8f0fe;
+    --chat-window-color: #677bac;
+    --main-image: url(../img/background_main.jpg);
+    --gen-label: url(../img/logo_generator.png);
+    --viewer-label: url(../img/logo_viewer.png);
+    --github-icon: url(../img/icon_github.png);
+
+    &[theme="dark"] {
+        --background-color: #363636;
+        --font-color: #cccccc;
+        --main-color: royalblue;
+        --footer-color: #363636;
+        --chat-window-color: #37425c;
+        --main-image: url(../img/background_main_dark.jpg);
+        --gen-label: url(../img/logo_generator_dark.png);
+        --viewer-label: url(../img/logo_viewer_dark.png);
+        --github-icon: url(../img/icon_github_white.png);
+    }
+}
+
 @font-face {
     font-family: "nanumGothicBold";
     src: url("./font/Nanum_barun_gothic_bold.ttf") format("truetype");
@@ -32,25 +61,51 @@ aside {
     src: url("./font/ohmyu_daibbm.ttf");
 }
 
+body {
+    color: var(--font-color);
+    background-color: var(--background-color);
+}
+
 /* == 헤딩 == */
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 30px;
     height: 75px;
     border-bottom: 2px solid royalblue;
 }
 
 h1 {
     margin-left: 15vw;
+    flex-grow: 1;
 }
 
 h1 > img {
     height: 40px;
 }
 
+.theme-list {
+    display: flex;
+    gap: 20px;
+}
+.theme-list img {
+    box-sizing: border-box;
+    padding: 4px;
+    height: 20px;
+    border-radius: 5px;
+}
+.theme-list img:hover {
+    box-shadow: 0 0 10px black;
+}
+
+.slide-button {
+    flex-shrink: 0;
+    width: 60px;
+    margin-right: 10px;
+}
+
 .slide-button > img {
-    padding-right: 2vw;
     height: 40px;
 }
 .slide-button > img:hover {
@@ -78,7 +133,7 @@ main {
     left: 0px;
     width: 100vw;
     height: 1000px;
-    background: url(../img/background_main.jpg);
+    background: var(--main-image);
     background-position: center;
     background-size: cover;
 }
@@ -94,15 +149,18 @@ main {
     margin-top: auto;
     padding: 30px;
     gap: 40px;
-    background-color: whitesmoke;
+    background-color: var(--background-color);
 }
 
 .gen-label {
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
-.gen-label > img {
+.gen-label > div {
     height: 30px;
+    width: 184px;
+    background: var(--gen-label);
 }
 
 .gen-notice {
@@ -265,8 +323,15 @@ main {
 }
 
 .viewer-label {
-    height: 30px;
+    display: flex;
     margin: 20px 0px 20px 0;
+}
+.viewer-label {
+    height: 30px;
+    width: 150px;
+    background: var(--viewer-label);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* 여행계획 표시 박스 */
@@ -369,15 +434,18 @@ footer {
     width: 100%;
     min-height: 80px;
     border-top: 2px solid royalblue;
-    background-color: aliceblue;
+    background: var(--footer-color);
 }
 
 .github-link {
     order: 1;
 }
-.github-link > img {
+.github-link > div {
     height: 25px;
+    width: 25px;
     margin-left: 20px;
+    background: var(--github-icon);
+    background-size: contain;
 }
 
 .page-description {
@@ -395,11 +463,11 @@ footer {
     position: fixed;
     right: 2rem;
     bottom: 2rem;
-    z-index: 5;
+    z-index: 10;
 }
 .chat-window {
     display: block;
-    background-color: #677bac;
+    background-color: var(--chat-window-color);
     border: 1px solid rgb(190, 190, 190);
     border-radius: 5px 5px 0 0;
     width: 30vw;
@@ -431,6 +499,7 @@ footer {
 .chat-content {
     width: fit-content;
     padding: 10px;
+    color: #363636;
 }
 
 .ai-chat .chat-content {
@@ -511,7 +580,7 @@ footer {
 }
 
 .toggle-chat.open {
-    border: 1px solid black;
+    border: 1px solid var(--font-color);
     border-radius: 0 0 5px 5px;
     background-color: royalblue;
     height: 40px;
@@ -530,7 +599,7 @@ footer {
     min-width: 100%;
     min-height: 100%;
     background-color: rgb(128, 128, 128, 0.9);
-    z-index: 10;
+    z-index: 20;
 }
 
 .alert-box {
@@ -604,10 +673,13 @@ footer {
 
 /* == 여행계획 생성부 반응형 == */
 @media (max-width: 560px) {
+    h1 {
+        margin-left: 5vw;
+    }
     .slide-generator {
         height: 870px;
         background: none;
-        background-color: whitesmoke;
+        background-color: var(--background-color);
         border: none;
         border-radius: 0px;
     }

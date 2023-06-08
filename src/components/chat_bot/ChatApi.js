@@ -4,6 +4,7 @@ import { chatbotData as data } from "../../data/apiData.js";
 
 /** 챗봇의 API응답과 응답의 처리를 담당한다 */
 export default class ChatApi {
+    /** 챗봇의 API응답과 응답의 처리를 담당한다 */
     constructor({ getState }) {
         // ChatBot으로 state 전달.
         this.sendState = getState;

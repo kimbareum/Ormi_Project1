@@ -3,6 +3,7 @@ import apiPost from "../../../api/openAIApi.js";
 
 /** 여행계획생성기의 API응답과 응답의 전처리, 유효성검증을 담당한다. */
 export default class GeneratorApi {
+    /** 여행계획생성기의 API응답과 응답의 전처리, 유효성검증을 담당한다. */
     constructor({ getState }) {
         this.state = { busy: false };
         // PlanGenerator로 state 전달.

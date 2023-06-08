@@ -24,7 +24,7 @@ export default class PlanViewer {
 
         // 여행계획 뷰어 제목 생성
         const label = `
-        <h2 class="viewer-label"><img src="${IMG_SRC.viewer_label}" alt="여행계획 뷰어"></h2>`;
+        <h2 class="viewer-label"><div></div></h2>`;
         screen.innerHTML = label;
 
         // 여행계획을 표시할 컴포넌트 생성
