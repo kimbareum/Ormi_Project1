@@ -45,7 +45,7 @@ export default class Input {
     };
 
     /**
-     * 입력폼에 addEventListener를 추가한다.
+     * 입력폼에 EventListener를 추가한다.
      * @param {object} eventInfo
      * @param {string} eventInfo.eventType 이벤트의 타입(ex: "click", "keyDown"..)
      * @param {function} eventInfo.event 실행할 이벤트.

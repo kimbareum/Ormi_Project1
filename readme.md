@@ -2,7 +2,7 @@
 
 ## 주제
 
-openAI API를 활용하여 여행계획을 생성해서 카드형식으로 보여주고, 챗봇을 통해 여행계획에 대한 도움을 받을 수 있는 SPA
+openAI API를 활용하여 여행계획을 생성해서 카드형식으로 보여주고, 챗봇을 통해 여행계획에 대한 도움을 받을 수 있는 웹 어플리케이션
 
 ## 프로젝트의 목표
 
@@ -17,7 +17,7 @@ openAI API를 활용하여 여행계획을 생성해서 카드형식으로 보�
 
 ## 배포주소
 
-https://kimbareum.github.io/Ormi_Project1/
+https://kimbareum.github.io/TravelPlanHelper/
 
 ## 개발 환경 및 개발 기간
 
@@ -44,7 +44,7 @@ https://kimbareum.github.io/Ormi_Project1/
 
     - 우측하단의 파란색 메세지 아이콘을 누르면 여행관련 질문에 응답하는 챗봇을 이용할 수 있다.
 
-### 세부 구현 기능
+### - 세부 구현 기능
 
 -   슬라이드 기능
 
@@ -64,6 +64,7 @@ https://kimbareum.github.io/Ormi_Project1/
     - 시작시간이 현재시간보다 빠르거나, 여행종료시간이 시작시간보다 빠를경우에도 잘못된 곳을 포커스하고,
     시각적으로 피드백.
     - textarea에서도 enter키로 submit이 가능하고, shift + enter키로는 줄바꿈이 작동하게 설정.
+    - 모바일 환경에서는 기존과 동일하게 enter키로 줄바꿈이 되도록 설정.
 
 <img src="readme/plan_generator_feature2-1.png" height="270"> <img src="readme/plan_generator_feature2-2.png" height="270">
 
@@ -85,6 +86,7 @@ https://kimbareum.github.io/Ormi_Project1/
     - 화면 구석에 fixed된 채팅 아이콘으로 챗봇을 토글하게 만듬.
     - 질문하기를 누르면 값이있는지, 응답이 대기중이지 않는지 확인하고 API 요청.
     - enter키로 submit이 가능하고, shift + enter키로는 줄바꿈이 작동하게 설정.
+    - 모바일 환경에서는 기존과 동일하게 enter키로 줄바꿈이 되도록 설정.
     - API 응답을 대기중일때는 스크린에 로딩바를 띄워서 동적으로 피드백.
     - API응답이 왔을때 움직이는 애니메이션을 줘서 동적인 버튼을 구성.
     - API 응답이 실패했을때는 모달로 만든 경고창을 띄워서 답변이 정상적으로 만들어지지 않았음을 안내.
@@ -110,14 +112,14 @@ https://kimbareum.github.io/Ormi_Project1/
 
     - 모바일 화면에서는 배경을 없애고 여행계획 생성기의 입력폼만 나타나도록 변경.
 
-    - 동적 UI의 hover 조건을 action 조건으로 변경하여 모바일에서 조금 더 자연스러운 동적 UI로 보이도록 변경.
+    - 동적 UI의 hover 조건을 active 조건으로 변경하여 모바일에서 조금 더 자연스러운 동적 UI로 보이도록 변경.
 
 <img src="readme/plan_viewer_반응형1.png" height="300"> <img src="readme/plan_viewer_반응형2.png" height="300">
 <img src="readme/plan_viewer_반응형3.png" height="300"> <img src="readme/plan_viewer_반응형4.png" height="300">
 
     - 여행계획 뷰어는 좌우 폭에 따라서 카드를 1줄에 4장, 3장, 2장, 1장씩 표기되도록 단계적으로 변경.
 
-### 프로젝트 구조
+## 프로젝트 구조
 
 ```shell
 |   index.html
@@ -196,6 +198,6 @@ https://kimbareum.github.io/Ormi_Project1/
                 ohmyu_daibbm.ttf
 ```
 
-### 개발 과정
+## 개발 과정
 
 작성중 ....

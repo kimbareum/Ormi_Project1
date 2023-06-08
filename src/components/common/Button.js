@@ -6,7 +6,7 @@ export default class Button {
      * @param {(null|HTMLElement)} detail.$target 값이 있다면 생성된 input을 append 한다.
      * @param {string} detail.type 버튼의 타입.
      * @param {string} detail.className 버튼의 클래스.
-     * @param {Object} detail.text 버튼의 텍스트.
+     * @param {Object} detail.HTML 버튼의 내부에 들어갈 HTML.
      * @param {Object} detail.option 추가적인 버튼의 attribute.
      */
     constructor({ $target = null, type, className, HTML, option = {} }) {
@@ -27,7 +27,7 @@ export default class Button {
     }
 
     /**
-     * 버튼에 addEventListener를 추가
+     * 버튼에 EventListener를 추가
      * @param {object} eventInfo
      * @param {string} eventInfo.eventType 이벤트의 타입(ex: "click", "keyDown"..)
      * @param {function} eventInfo.event 실행할 이벤트.

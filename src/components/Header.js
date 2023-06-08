@@ -18,6 +18,7 @@ export default class Header {
         });
         header.append(h1);
 
+        // 테마 변경 버튼 생성.
         this.toggleTheme = new ToggleTheme({ $target: header, themeList });
 
         // 슬라이드 버튼 생성.
