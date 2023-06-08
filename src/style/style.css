@@ -443,7 +443,7 @@ main {
 footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: auto;
     width: 100%;
     min-height: 80px;
@@ -451,9 +451,6 @@ footer {
     background: var(--footer-color);
 }
 
-.github-link {
-    order: 1;
-}
 .github-link > div {
     height: 25px;
     width: 25px;
@@ -463,8 +460,6 @@ footer {
 }
 
 .footer-text {
-    order: 2;
-    flex-grow: 1;
     text-align: center;
     padding: 20px;
     word-break: keep-all;
