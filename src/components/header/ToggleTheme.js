@@ -31,8 +31,10 @@ export default class ToggleTheme {
             boxClass: "theme-list",
         });
         this.box.append(this.themeList);
+
         // 버튼의 이미지를 한번에 바꾸기 위해서 버튼이미지 HTML 요소를 저장할 Object.
         this.themeButtonImg = {};
+
         // 테마 선택 버튼을 만들고 theme 변경 이벤트를 할당.
         for (const theme of themeList) {
             const themeButton = makeImgBox({
@@ -58,5 +60,12 @@ export default class ToggleTheme {
             this.themeButtonImg[theme].src =
                 IMG_SRC[`${theme}Theme_${this.currentTheme}_icon`];
         }
+        // 반응형일때 버튼을 슬라이딩하는 요소.
+        this.themeList.childNodes.forEach((btn) =>
+            btn.setAttribute(
+                "view",
+                this.currentTheme === "light" ? "dark" : "light"
+            )
+        );
     }
 }
