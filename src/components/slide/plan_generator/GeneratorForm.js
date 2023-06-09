@@ -97,7 +97,7 @@ export default class GeneratorForm {
     }
 
     setState(newState) {
-        this.state = newState;
+        this.state = { ...this.state, ...newState };
     }
 
     setEvent() {

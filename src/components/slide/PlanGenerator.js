@@ -51,7 +51,7 @@ export default class PlanGenerator {
     }
 
     setState(newState) {
-        this.state = newState;
+        this.state = { ...this.state, ...newState };
         this.render();
     }
 

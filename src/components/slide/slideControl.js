@@ -1,4 +1,11 @@
+/** 슬라이드의 표기 슬라이드를 제어한다 */
 export default class SlideControl {
+    /**
+     * 슬라이드의 표기 슬라이드를 제어한다
+     * @param {object} option 슬라이드box와, 슬라이드 목록
+     * @param {HTMLElement} option.slide 슬라이드 box
+     * @param {Array} option.slideItems 슬라이드 목록
+     */
     constructor({ slide, slideItems }) {
         this.page = 0;
         this.slide = slide;
@@ -27,6 +34,7 @@ export default class SlideControl {
         setTimeout(() => {
             // 애니메이션용 class 제거
             this.slideItems[this.page].classList.remove(direction);
+            // 표기 슬라이드 변경
             this.slide.innerHTML = "";
             this.slide.append(this.slideItems[newPage]);
             this.page = newPage;

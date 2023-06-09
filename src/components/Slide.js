@@ -12,26 +12,22 @@ export default class Slide {
         this.slide = document.createElement("main");
         $target.append(this.slide);
 
-        // 슬라이드 전환 이벤트를 위해 slide 목록을 저장.
+        // 슬라이드 전환 이벤트를 위해 slide 목록을 저장할 Array
         this.slideItems = [];
 
-        // 여행계획 생성을 담당하는 컴포넌트 생성.
-        const planGeneratorWindow = makeBox({
-            boxTag: "section",
-            boxClass: ["slide-generator", "slide-item"],
+        // 여행계획 생성을 담당하는 컴포넌트 생성하고 slide 목록에 저장
+        this.PlanGenerator = this.createSlideItem({
+            Component: PlanGenerator,
+            slideClass: "slide-generator",
         });
-        this.PlanGenerator = this.createSlideItem(
-            PlanGenerator,
-            planGeneratorWindow
-        );
 
-        // 여행계획의 렌더링을 담당하는 컴포넌트 생성.
-        const planViewerWindow = makeBox({
-            boxTag: "section",
-            boxClass: ["slide-viewer", "slide-item"],
+        // 여행계획의 렌더링을 담당하는 컴포넌트 생성하고 slide 목록에 저장
+        this.planViewer = this.createSlideItem({
+            Component: PlanViewer,
+            slideClass: "slide-viewer",
         });
-        this.planViewer = this.createSlideItem(PlanViewer, planViewerWindow);
 
+        // 슬라이드의 전환을 담당하는 컴포넌트 생성.
         this.slideControl = new SlideControl({
             slide: this.slide,
             slideItems: this.slideItems,
@@ -42,7 +38,7 @@ export default class Slide {
     }
 
     setState(newState) {
-        this.state = newState;
+        this.state = { ...this.state, ...newState };
         this.render();
     }
 
@@ -51,10 +47,10 @@ export default class Slide {
         if (this.state.render) {
             this.planViewer.render();
             // 슬라이드를 1로 변경.
-            this.slideChange.setSlide(1);
+            this.slideControl.setSlide(1);
         } else {
             // 여행계획 생성기에서 state render:false가 오면 api응답에 실패했다는 뜻이므로 슬라이드를 0으로 변경.
-            this.slideChange.setSlide(0);
+            this.slideControl.setSlide(0);
         }
     }
 
@@ -63,13 +59,22 @@ export default class Slide {
         this.setState(newState);
     };
 
-    /** 슬라이드내의 각각의 슬라이드를 생성하고 슬라이드 리스트에 추가함. */
-    createSlideItem(Component, target) {
-        const slide = new Component({
-            $target: target,
+    /**
+     * 각각의 슬라이드를 생성하고 슬라이드 리스트에 추가함.
+     * @param {Object} option 생성할 컴포넌트와 슬라이드 section의 클래스명
+     * @param {Component} option.Component 생성할 컴포넌트
+     * @param {string} option.slideClass 슬라이드의 section의 클래스명
+     * */
+    createSlideItem({ Component, slideClass }) {
+        const slide = makeBox({
+            boxTag: "section",
+            boxClass: [slideClass, "slide-item"],
+        });
+        const component = new Component({
+            $target: slide,
             getState: this.getState,
         });
-        this.slideItems.push(target);
-        return slide;
+        this.slideItems.push(slide);
+        return component;
     }
 }
