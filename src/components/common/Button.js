@@ -3,13 +3,13 @@ export default class Button {
     /**
      * 버튼을 만들고, 이벤트지정 메서드를 제공한다.
      * @param {Object} detail
-     * @param {(null|HTMLElement)} detail.$target 값이 있다면 생성된 input을 append 한다.
+     * @param {HTMLElement} detail.$target 버튼을 append할 타겟.
      * @param {string} detail.type 버튼의 타입.
      * @param {string} detail.className 버튼의 클래스.
      * @param {Object} detail.HTML 버튼의 내부에 들어갈 HTML.
      * @param {Object} detail.option 추가적인 버튼의 attribute.
      */
-    constructor({ $target = null, type, className, HTML, option = {} }) {
+    constructor({ $target, type, className, HTML, option = {} }) {
         this.button = document.createElement("button");
         this.button.setAttribute("type", type);
         this.button.className = className;
@@ -21,9 +21,7 @@ export default class Button {
         }
 
         // target을 인자로 받았다면 target에 append
-        if ($target) {
-            $target.append(this.button);
-        }
+        $target.append(this.button);
     }
 
     /**

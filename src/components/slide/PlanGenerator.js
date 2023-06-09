@@ -4,7 +4,6 @@ import LoadingScreen from "../common/LoadingScreen.js";
 import AlertModal from "../common/AlertModal.js";
 import GeneratorForm from "./plan_generator/GeneratorForm.js";
 import GeneratorApi from "./plan_generator/GeneratorApi.js";
-import Footer from "./plan_generator/Footer.js";
 
 /** section1 여행계획생성기 */
 export default class PlanGenerator {
@@ -12,22 +11,13 @@ export default class PlanGenerator {
     constructor({ $target, getState }) {
         this.state = { busy: false };
 
-        // 여행계획 생성기 section 생성
-        const window = makeBox({
-            boxTag: "section",
-            boxClass: ["slide-generator", "slide-item"],
-        });
-        // 초기 페이지를 one으로 설정.
-        window.setAttribute("view", "one");
-        $target.append(window);
-
         // 여행계획 생성기 form 생성.
         const panel = makeBox({
             boxTag: "form",
             boxClass: "generator",
         });
         panel.setAttribute("action", "post");
-        window.append(panel);
+        $target.append(panel);
 
         // 여행계획 생성기 제목과 설명 생성
         const label = `
@@ -53,18 +43,15 @@ export default class PlanGenerator {
         });
 
         this.alertModal = new AlertModal({
-            $target: window,
+            $target: $target,
             text: "죄송합니다! 오류가 발생했어요. 다시 한번 시도해주세요.",
         });
-
-        // 여행계획생성기 푸터 생성.
-        this.footer = new Footer({ $target: window });
 
         this.sendState = getState;
     }
 
     setState(newState) {
-        this.state = newState;
+        this.state = { ...this.state, ...newState };
         this.render();
     }
 

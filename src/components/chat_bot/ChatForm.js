@@ -35,7 +35,7 @@ export default class ChatForm {
     }
 
     setState(newState) {
-        this.state = newState;
+        this.state = { ...this.state, ...newState };
     }
 
     setEvent() {

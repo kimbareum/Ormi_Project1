@@ -5,21 +5,12 @@ import { makeBox } from "../common/commonBoxes.js";
 export default class PlanViewer {
     /** section2 여행계획 뷰어 */
     constructor({ $target }) {
-        // 여행계획 뷰어 section 생성
-        const window = makeBox({
-            boxTag: "section",
-            boxClass: ["slide-viewer", "slide-item"],
-        });
-        // 현재 페이지를 one으로 설정.
-        window.setAttribute("view", "one");
-        $target.append(window);
-
         // 여행계획 뷰어 내부 컨테이너 생성.
         const screen = makeBox({
             boxTag: "div",
             boxClass: "viewer-screen",
         });
-        window.append(screen);
+        $target.append(screen);
 
         // 여행계획 뷰어 제목 생성
         const label = `

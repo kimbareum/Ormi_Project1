@@ -3,7 +3,7 @@ export default class Input {
     /**
      * 입력폼(input|textarea)을 만들고, 값반환, 값초기화, 포커스, 이벤트지정 메서드를 제공한다.
      * @param {Object} detail
-     * @param {(null|HTMLElement)} detail.$target 값이 있다면 생성된 input을 append 한다.
+     * @param {HTMLElement} detail.$target input을 append 할 타겟.
      * @param {string} detail.type 입력폼의 타입.
      * @param {string} detail.id 입력폼의 id와 name.
      * @param {Object} detail.option 추가적인 입력폼의 attribute.
@@ -24,10 +24,8 @@ export default class Input {
         for (const key in option) {
             this.input.setAttribute(key, option[key]);
         }
-        // target을 인자로 받았다면 target에 append
-        if ($target) {
-            $target.append(this.input);
-        }
+        // target에 append
+        $target.append(this.input);
     }
     /** 현재 입력되어있는 값을 반환한다. */
     getValue = () => {

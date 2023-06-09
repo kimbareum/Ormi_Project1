@@ -1,5 +1,4 @@
-import IMG_SRC from "../../../data/imgPaths.js";
-import { makeBox, makeTextBox } from "../../common/commonBoxes.js";
+import { makeTextBox } from "./common/commonBoxes.js";
 
 /** Footer */
 export default class Footer {
