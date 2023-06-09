@@ -6,7 +6,7 @@ openAI API를 활용하여 여행계획을 생성해서 카드형식으로 보�
 
 ## 프로젝트의 목표
 
-1. 바닐라 HTML, CSS, JS로 SPA 웹페이지를 구현한다.
+1. 바닐라 HTML, CSS, JS로 웹페이지를 구현한다.
 2. 클래스를 기반으로한 컴포넌트 구조로 웹페이지를 구현한다.
 3. JS 코드들을 최대한 기능 단위로 모듈화 한다.
 4. 웹 페이지의 요소들에 동적인 요소들을 추가해서 사용자에게 피드백을 준다.
@@ -35,7 +35,6 @@ https://kimbareum.github.io/TravelPlanHelper/
 
     - 여행계획 생성기에서 목표 여행지와, 여행지에 도착하는 시간, 여행지에서 떠나는 시간을 넣고 생성을 누르면,
     openAI API를 통해서 얻어진 여행계획이 뷰어 슬라이드에 카드 형식으로 나타난다.
-
     - 슬라이드간의 전환은 우측상단의 버튼이나 드래그, 스와이프로 가능하다.
 
 ### - 여행 챗봇기능
@@ -109,9 +108,7 @@ https://kimbareum.github.io/TravelPlanHelper/
 <img src="readme/header_plan_viewer_반응형.gif" height="400">
 
     - 모바일 화면에서는 헤더의 좌우 공백을 줄이고 테마 선택버튼이 토글되는 하나의 버튼이되도록 변경.
-
     - 모바일 화면에서는 배경을 없애고 여행계획 생성기의 입력폼만 나타나도록 변경.
-
     - 동적 UI의 hover 조건을 active 조건으로 변경하여 모바일에서 조금 더 자연스러운 동적 UI로 보이도록 변경.
 
 <img src="readme/plan_viewer_반응형1.png" height="300"> <img src="readme/plan_viewer_반응형2.png" height="300">

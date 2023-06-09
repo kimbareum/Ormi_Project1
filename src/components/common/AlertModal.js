@@ -32,7 +32,7 @@ export default class AlertModal {
             $target: this.alertBox,
             type: "button",
             className: "alert-button",
-            text: "확인",
+            HTML: "확인",
         });
 
         if (text) {
