@@ -22,6 +22,6 @@ export default class Header {
         this.toggleTheme = new ToggleTheme({ $target: header, themeList });
 
         // 슬라이드 버튼 생성.
-        this.slide_button = new SlideButton({ $target: header });
+        this.slideButton = new SlideButton({ $target: header });
     }
 }
