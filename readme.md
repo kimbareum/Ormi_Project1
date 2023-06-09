@@ -25,7 +25,7 @@ https://kimbareum.github.io/TravelPlanHelper/
     Vanilla JavaScript, CSS
 
 -   개발 기간  
-    2023년 5월 30일 ~ 2023년 6월 8일
+    2023년 5월 30일 ~ 2023년 6월 9일
 
 ## 사용 예제
 
@@ -102,6 +102,7 @@ https://kimbareum.github.io/TravelPlanHelper/
     - 테마변경 버튼, 화면 슬라이드 버튼, 챗봇 토글 버튼에 hover조건을 줘서 동적인 UI로 구성.
     - form의 입력, 리셋버튼에는 hover시와 active시 조건을 줘서,
     hover시에는 올라가고, 클릭시에는 들어가는 것처럼 보이는 동적인 UI로 구성.
+    - 슬라이드의 전환시 화면이 밀리는 듯한 효과를 줌.
 
 -   반응형 화면 구성
 
@@ -154,6 +155,7 @@ https://kimbareum.github.io/TravelPlanHelper/
     |   \---slide
     |       |   PlanGenerator.js
     |       |   PlanViewer.js
+    |       |   SlideControl.js
     |       |
     |       +---plan_generator
     |       |       Footer.js
