@@ -1,6 +1,7 @@
 import Header from "./Header.js";
 import ChatBot from "./ChatBot.js";
 import Slide from "./Slide.js";
+import Footer from "./Footer.js";
 
 export default class App {
     constructor($target) {
@@ -18,5 +19,7 @@ export default class App {
         this.slide = new Slide($target);
 
         this.chatbot = new ChatBot($target);
+
+        this.footer = new Footer({ $target: $target });
     }
 }
