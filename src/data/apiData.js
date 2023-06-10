@@ -1,5 +1,5 @@
 /** 여행계획 생성기의 기본세팅 및 질문을 저장하는 데이터. */
-export let generatorData = [
+export const generatorData = [
     {
         role: "system",
         content: `assistant는 여행계획을 만들어주는 전문가이다.`,
@@ -78,7 +78,7 @@ export let generatorData = [
 ];
 
 /** 챗봇의 기본세팅 및 질문과 응답을 저장하는 데이터. */
-export let chatbotData = [
+export const chatbotData = [
     {
         role: "system",
         content: "assistant는 여행 관련 질문에 대답해주는 여행 전문가야.",
