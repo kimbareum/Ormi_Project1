@@ -59,7 +59,7 @@ export default class PlanGenerator {
         if (this.state.busy) {
             this.loadingScreen.show();
             // state가 busy 라면(api 응답을 받아야 하는 상태) api 호출
-            this.genApi.setState(this.state);
+            this.genApi.getAnswer();
         } else {
             this.loadingScreen.hide();
             // state가 busy가 아닐때(api 응답을 받은 상태)
