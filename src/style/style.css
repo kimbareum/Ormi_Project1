@@ -130,9 +130,6 @@ h1 > img {
 .theme-list img:hover {
     box-shadow: 0 0 10px var(--font-color);
 }
-.theme-list img:active {
-    box-shadow: 0 0 10px var(--font-color);
-}
 
 /* 슬라이드 버튼 */
 .slide-button {
@@ -743,7 +740,7 @@ footer {
     }
 
     .slide-button > img:hover {
-        height: 40px;
+        transform: none;
     }
 
     .slide-button > img:active {
