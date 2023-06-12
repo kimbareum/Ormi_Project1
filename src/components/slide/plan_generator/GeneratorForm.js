@@ -25,6 +25,7 @@ export default class GeneratorForm {
             id: "target",
             option: { placeholder: "여행지를 입력하세요." },
         });
+        // 여행 시작 일자 입력창
         this.startDateBox = makeLabelBox({
             boxTag: "div",
             boxClass: "gen-input",
@@ -36,6 +37,7 @@ export default class GeneratorForm {
             type: "datetime-local",
             id: "start-date",
         });
+        // 여행 끝나는 일자 입력창
         this.endDateBox = makeLabelBox({
             boxTag: "div",
             boxClass: "gen-input",
@@ -47,6 +49,7 @@ export default class GeneratorForm {
             type: "datetime-local",
             id: "end-date",
         });
+        // 추가 여행 조건 입력창
         this.extraBox = makeLabelBox({
             boxTag: "div",
             boxClass: "gen-input",

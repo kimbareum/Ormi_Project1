@@ -60,6 +60,30 @@ body {
     src: url("./font/ohmyu_daibbm.ttf");
 }
 
+/* == animation == */
+
+@keyframes loading {
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes wait {
+    0%,
+    100% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+
 body {
     color: var(--font-color);
     background-color: var(--background-color);
@@ -121,7 +145,7 @@ h1 > img {
     height: 40px;
 }
 .slide-button > img:hover {
-    height: 60px;
+    transform: scale(1.5);
     transition-duration: 0.5s;
 }
 
@@ -134,7 +158,6 @@ main {
 .slide-item {
     position: relative;
     left: 0;
-    transition: left 0.15s;
     width: 100%;
     min-height: 900px;
     display: flex;
@@ -429,10 +452,12 @@ main {
 
 /* 슬라이드 기능 구현*/
 .slide-item.left {
-    left: -100vw;
+    transition: 0.15s;
+    transform: translateX(-100vw);
 }
 .slide-item.right {
-    left: +100vw;
+    transition: 0.15s;
+    transform: translateX(100vw);
 }
 
 /* == footer --*/
@@ -581,7 +606,7 @@ footer {
     animation: wait 2s infinite;
 }
 .toggle-chat > img:hover {
-    height: 60px;
+    transform: scale(1.5);
 }
 
 .toggle-chat.open {
@@ -653,30 +678,6 @@ footer {
     display: flex;
 }
 
-/* == animation == */
-
-@keyframes loading {
-    0%,
-    100% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-}
-
-@keyframes wait {
-    0%,
-    100% {
-        transform: scale(0.8);
-    }
-    50% {
-        transform: scale(1);
-    }
-}
-
 /* == 여행계획 생성부 및 헤더 반응형 == */
 @media (max-width: 560px) {
     /* 여행계획 생성부 반응형 */
@@ -719,7 +720,7 @@ footer {
     }
 
     .theme-list > button[view="dark"] {
-        left: -60px;
+        transform: translateX(-65px);
     }
 }
 
@@ -746,7 +747,7 @@ footer {
     }
 
     .slide-button > img:active {
-        height: 60px;
+        transform: scale(1.5);
     }
 }
 
