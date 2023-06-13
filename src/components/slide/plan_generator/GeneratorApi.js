@@ -11,13 +11,13 @@ export default class GeneratorApi {
 
     /** 응답값 전처리1 : JSON 스트링만 뽑아내서 parsing 한다. */
     jsonParsing(text) {
-        if (text) {
-            let result = null;
+        try {
             const regex = /\{[\s\S]*\}/g;
             const jsonStr = text.match(regex);
-            result = JSON.parse(jsonStr[0]);
-
+            const result = JSON.parse(jsonStr[0]);
             return result;
+        } catch {
+            throw new Error("JSON parsing error");
         }
     }
 

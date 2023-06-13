@@ -19,6 +19,7 @@ const apiPost = async (data) => {
         })
         .catch((err) => {
             console.log(err);
+            throw new Error("API error");
         });
 };
 
