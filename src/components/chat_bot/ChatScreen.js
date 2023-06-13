@@ -61,7 +61,9 @@ export default class ChatScreen {
 
     /** 챗스크린이 업데이트될때 스크롤을 맨위로 이동한다. */
     scrollTop() {
-        this.chatScreen.scrollTop = this.chatScreen.scrollHeight;
+        const lastChatheight = this.chatScreen.lastChild.scrollHeight;
+        this.chatScreen.scrollTop =
+            this.chatScreen.scrollHeight - lastChatheight;
     }
 
     /** ai-chat의 위치에 로딩바를 렌더링한다 */
