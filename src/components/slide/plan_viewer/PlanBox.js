@@ -32,9 +32,13 @@ export default class PlanBox {
 
     render() {
         const target = localStorage.getItem("target");
+        const isCorrect = localStorage.getItem("isCorrect");
         // localStorage에 데이터가 없다면 박스를 초기화.
         if (!target) {
             this.cardBox.clear();
+            return;
+        }
+        if (!isCorrect) {
             return;
         }
         this.planLabel.innerText = `${target} 여행 계획`;
