@@ -20,7 +20,7 @@ export class Header {
         // 테마 변경 버튼 생성.
         this.toggleTheme = new ToggleTheme({ $target: header, themeList });
 
-        // 슬라이드 버튼 생성.
+        // 슬라이드 버튼 생성. 이벤트는 Slide 컴포넌트에서 추가.
         const slideButton = makeImgBox({
             boxTag: "aside",
             boxClass: "slide-button",
