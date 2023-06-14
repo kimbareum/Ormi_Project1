@@ -1,8 +1,8 @@
 import { generatorData as data } from "../../../data/apiData.js";
-import apiPost from "../../../api/openAIApi.js";
+import { apiPost } from "../../../api/openAIApi.js";
 
 /** 여행계획생성기의 API응답과 응답의 전처리, 유효성검증을 담당한다. */
-export default class GeneratorApi {
+export class GeneratorApi {
     /** 여행계획생성기의 API응답과 응답의 전처리, 유효성검증을 담당한다. */
     constructor({ getState }) {
         // PlanGenerator로 state 전달.
@@ -11,9 +11,9 @@ export default class GeneratorApi {
 
     /** 응답값 전처리1 : JSON 스트링만 뽑아내서 parsing 한다. */
     jsonParsing(text) {
+        const regex = /\{[\s\S]*\}/g;
+        const jsonStr = text.match(regex);
         try {
-            const regex = /\{[\s\S]*\}/g;
-            const jsonStr = text.match(regex);
             const result = JSON.parse(jsonStr[0]);
             return result;
         } catch {

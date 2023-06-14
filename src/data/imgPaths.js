@@ -1,5 +1,5 @@
 /** 이미지의 src값을 저장하는 데이터 */
-const IMG_SRC = {
+export const IMG_SRC = {
     main_logo: "./src/img/logo_header.png",
     generator_label: "./src/img/logo_generator.png",
     generator_label_dark: "./src/img/logo_generator_dark.png",
@@ -15,5 +15,3 @@ const IMG_SRC = {
     lightTheme_dark_icon: "./src/img/icon_lightmode_dark.png",
     lightTheme_light_icon: "./src/img/icon_lightmode_light.png",
 };
-
-export default IMG_SRC;

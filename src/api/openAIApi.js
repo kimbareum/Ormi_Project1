@@ -1,6 +1,6 @@
 const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
-const apiPost = async (data) => {
+export const apiPost = async (data) => {
     return await fetch(url, {
         method: "POST",
         headers: {
@@ -14,13 +14,9 @@ const apiPost = async (data) => {
         })
         .then((res) => {
             const text = res.choices[0].message.content;
-            console.log(text);
             return text;
         })
-        .catch((err) => {
-            console.log(err);
+        .catch(() => {
             throw new Error("API error");
         });
 };
-
-export default apiPost;

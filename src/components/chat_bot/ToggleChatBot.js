@@ -1,8 +1,8 @@
-import IMG_SRC from "../../data/imgPaths.js";
-import Button from "../common/Button.js";
+import { IMG_SRC } from "../../data/imgPaths.js";
+import { Button } from "../common/Button.js";
 
 /** 챗봇의 토글액션을 담당한다. */
-export default class ToggleChatBot {
+export class ToggleChatBot {
     /** 챗봇의 토글액션을 담당한다. */
     constructor({ $target, $eventTarget }) {
         // 버튼 생성.

@@ -1,12 +1,12 @@
 import { makeBox } from "../common/commonBoxes.js";
 
-import LoadingScreen from "../common/LoadingScreen.js";
-import AlertModal from "../common/AlertModal.js";
-import GeneratorForm from "./plan_generator/GeneratorForm.js";
-import GeneratorApi from "./plan_generator/GeneratorApi.js";
+import { LoadingScreen } from "../common/LoadingScreen.js";
+import { AlertModal } from "../common/AlertModal.js";
+import { GeneratorForm } from "./plan_generator/GeneratorForm.js";
+import { GeneratorApi } from "./plan_generator/GeneratorApi.js";
 
 /** section1 여행계획생성기 */
-export default class PlanGenerator {
+export class PlanGenerator {
     /** section1 여행계획생성기 */
     constructor({ $target, getState }) {
         this.state = { busy: false };

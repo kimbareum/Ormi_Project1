@@ -1,5 +1,5 @@
 /** 버튼을 만들고, 이벤트지정 메서드를 제공한다. */
-export default class Button {
+export class Button {
     /**
      * 버튼을 만들고, 이벤트지정 메서드를 제공한다.
      * @param {Object} detail

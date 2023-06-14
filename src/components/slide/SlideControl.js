@@ -1,5 +1,5 @@
 /** 슬라이드의 표기 슬라이드를 제어한다 */
-export default class SlideControl {
+export class SlideControl {
     /**
      * 슬라이드의 표기 슬라이드를 제어한다
      * @param {object} option 슬라이드box와, 슬라이드 목록

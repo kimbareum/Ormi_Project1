@@ -1,9 +1,9 @@
-import Header from "./Header.js";
-import ChatBot from "./ChatBot.js";
-import Slide from "./Slide.js";
-import Footer from "./Footer.js";
+import { Header } from "./Header.js";
+import { ChatBot } from "./ChatBot.js";
+import { Slide } from "./Slide.js";
+import { Footer } from "./Footer.js";
 
-export default class App {
+export class App {
     constructor($target) {
         this.$target = $target;
 

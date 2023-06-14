@@ -1,7 +1,7 @@
 import { makeBox } from "./commonBoxes.js";
 
 /** 로딩스크린 modal을 생성하고, 표시와 숨김 메서드를 제공한다. */
-export default class LoadingScreen {
+export class LoadingScreen {
     /** 로딩스크린 modal을 생성하고, 표시와 숨김 메서드를 제공한다. */
     constructor({ $target, text }) {
         // 로딩스크린 박스 생성.

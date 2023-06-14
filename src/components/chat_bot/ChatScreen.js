@@ -1,10 +1,10 @@
-import IMG_SRC from "../../data/imgPaths.js";
+import { IMG_SRC } from "../../data/imgPaths.js";
 import { chatbotData as data } from "../../data/apiData.js";
 import { makeBox, makeTextBox, makeImgBox } from "../common/commonBoxes.js";
-import AlertModal from "../common/AlertModal.js";
+import { AlertModal } from "../common/AlertModal.js";
 
 /** 챗봇 화면의 렌더링을 담당한다. */
-export default class ChatScreen {
+export class ChatScreen {
     /** 챗봇 화면의 렌더링을 담당한다. */
     constructor({ $target }) {
         this.state = { busy: false };

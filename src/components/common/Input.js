@@ -1,5 +1,5 @@
 /** 입력폼(input|textarea)을 만들고, 값반환, 값초기화, 포커스, 이벤트지정 메서드를 제공한다. */
-export default class Input {
+export class Input {
     /**
      * 입력폼(input|textarea)을 만들고, 값반환, 값초기화, 포커스, 이벤트지정 메서드를 제공한다.
      * @param {Object} detail

@@ -1,8 +1,8 @@
 import { makeBox } from "./commonBoxes.js";
-import Button from "./Button.js";
+import { Button } from "./Button.js";
 
 /** alert용도로 사용될 modal을 생성하고, 텍스트변경, 표기, 숨김 메서드를 제공한다. */
-export default class AlertModal {
+export class AlertModal {
     /**
      * alert용도로 사용될 modal을 생성하고, 텍스트변경, 표기, 숨김 메서드를 제공한다.
      * @param {Object} option 모달의 위치와 모달 내부 메세지

@@ -1,11 +1,11 @@
 import { generatorData as data } from "../../../data/apiData.js";
 import { saveQuestion } from "../../../api/dataRecord.js";
-import Button from "../../common/Button.js";
-import Input from "../../common/Input.js";
+import { Button } from "../../common/Button.js";
+import { Input } from "../../common/Input.js";
 import { makeTextBox, makeLabelBox } from "../../common/commonBoxes.js";
 
 /** 여행계획생성기의 입력값을 관리한다. */
-export default class GeneratorForm {
+export class GeneratorForm {
     /** 여행계획생성기의 입력값을 관리한다. */
     constructor({ $target, getState }) {
         this.state = { busy: false };

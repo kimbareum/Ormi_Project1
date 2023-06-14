@@ -1,7 +1,7 @@
 import { makeBox, makeTextBox } from "../../common/commonBoxes.js";
 
 /** PlanBox의 하위 컴포넌트로 카드 한장한장의 생성을 담당한다. */
-export default class CardBox {
+export class CardBox {
     constructor({ $planBox }) {
         // card box 생성
         this.cardBox = makeBox({

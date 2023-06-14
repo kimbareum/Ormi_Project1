@@ -1,10 +1,10 @@
-import PlanGenerator from "./slide/PlanGenerator.js";
-import PlanViewer from "./slide/PlanViewer.js";
+import { PlanGenerator } from "./slide/PlanGenerator.js";
+import { PlanViewer } from "./slide/PlanViewer.js";
 import { makeBox } from "./common/commonBoxes.js";
-import SlideControl from "./slide/SlideControl.js";
+import { SlideControl } from "./slide/SlideControl.js";
 
 /** main 여행계획 생성기 */
-export default class Slide {
+export class Slide {
     constructor($target) {
         this.state = { render: false };
 

@@ -1,11 +1,10 @@
 import { makeImgBox } from "./common/commonBoxes.js";
-import ToggleTheme from "./header/ToggleTheme.js";
-import SlideButton from "./header/SlideButton.js";
+import { ToggleTheme } from "./header/ToggleTheme.js";
 
-import IMG_SRC from "../data/imgPaths.js";
+import { IMG_SRC } from "../data/imgPaths.js";
 
 /** Header */
-export default class Header {
+export class Header {
     constructor($target, themeList) {
         const header = document.createElement("header");
         $target.append(header);
@@ -22,6 +21,12 @@ export default class Header {
         this.toggleTheme = new ToggleTheme({ $target: header, themeList });
 
         // 슬라이드 버튼 생성.
-        this.slideButton = new SlideButton({ $target: header });
+        const slideButton = makeImgBox({
+            boxTag: "aside",
+            boxClass: "slide-button",
+            imgSrc: IMG_SRC.slide_button,
+            imgAlt: "슬라이드 전환",
+        });
+        header.append(slideButton);
     }
 }

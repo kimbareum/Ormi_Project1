@@ -1,12 +1,12 @@
-import ChatScreen from "./chat_bot/ChatScreen.js";
-import ToggleChatBot from "./chat_bot/ToggleChatBot.js";
-import ChatForm from "./chat_bot/ChatForm.js";
-import ChatApi from "./chat_bot/ChatApi.js";
+import { ChatScreen } from "./chat_bot/ChatScreen.js";
+import { ToggleChatBot } from "./chat_bot/ToggleChatBot.js";
+import { ChatForm } from "./chat_bot/ChatForm.js";
+import { ChatApi } from "./chat_bot/ChatApi.js";
 
 import { makeBox } from "./common/commonBoxes.js";
 
 //* aside: 챗봇 */
-export default class ChatBot {
+export class ChatBot {
     constructor($target) {
         this.state = { busy: false };
 

@@ -1,9 +1,9 @@
 import { makeBox } from "../common/commonBoxes.js";
-import IMG_SRC from "../../data/imgPaths.js";
-import Button from "../common/Button.js";
+import { IMG_SRC } from "../../data/imgPaths.js";
+import { Button } from "../common/Button.js";
 
 /** 화면의 테마를 변경하는 버튼과 기능을 제공한다. */
-export default class ToggleTheme {
+export class ToggleTheme {
     /** 화면의 테마를 변경하는 버튼과 기능을 제공한다. */
     constructor({ $target, themeList }) {
         // 로컬스토리지에 저장된 테마가 있는가 ?

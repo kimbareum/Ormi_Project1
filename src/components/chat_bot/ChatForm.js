@@ -1,10 +1,10 @@
 import { chatbotData as data } from "../../data/apiData.js";
 import { saveQuestion } from "../../api/dataRecord.js";
-import Button from "../common/Button.js";
-import Input from "../common/Input.js";
+import { Button } from "../common/Button.js";
+import { Input } from "../common/Input.js";
 
 /** 챗봇의 입력과 제출을 관리한다. */
-export default class ChatForm {
+export class ChatForm {
     /** 챗봇의 입력과 제출을 관리한다. */
     constructor({ $target, getState }) {
         this.state = { busy: false };

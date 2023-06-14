@@ -1,8 +1,8 @@
-import CardBox from "./CardBox.js";
+import { CardBox } from "./CardBox.js";
 import { makeBox, makeTextBox } from "../../common/commonBoxes.js";
 
 /** 여행계획의 렌더링을 담당한다. */
-export default class PlanBox {
+export class PlanBox {
     constructor({ $target }) {
         // plan을 표시할 box를 생성
         const planBox = makeBox({

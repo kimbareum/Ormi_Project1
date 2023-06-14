@@ -1,7 +1,7 @@
 import { makeTextBox } from "./common/commonBoxes.js";
 
 /** Footer */
-export default class Footer {
+export class Footer {
     constructor({ $target }) {
         const footer = document.createElement("footer");
         $target.append(footer);

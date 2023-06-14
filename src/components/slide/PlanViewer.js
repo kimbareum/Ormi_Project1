@@ -1,8 +1,8 @@
-import PlanBox from "./plan_viewer/PlanBox.js";
+import { PlanBox } from "./plan_viewer/PlanBox.js";
 import { makeBox } from "../common/commonBoxes.js";
 
 /** section2 여행계획 뷰어 */
-export default class PlanViewer {
+export class PlanViewer {
     /** section2 여행계획 뷰어 */
     constructor({ $target }) {
         // 여행계획 뷰어 내부 컨테이너 생성.
