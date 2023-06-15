@@ -142,7 +142,7 @@ h1 > img {
     height: 40px;
 }
 .slide-button > img:hover {
-    transform: scale(1.5);
+    transform: scale(1.25);
     transition-duration: 0.5s;
 }
 
@@ -603,7 +603,7 @@ footer {
     animation: wait 2s infinite;
 }
 .toggle-chat > img:hover {
-    transform: scale(1.5);
+    transform: scale(1.25);
 }
 
 .toggle-chat.open {
@@ -744,7 +744,7 @@ footer {
     }
 
     .slide-button > img:active {
-        transform: scale(1.5);
+        transform: scale(1.25);
     }
 }
 
