@@ -7,7 +7,7 @@ export class Footer {
         $target.append(footer);
 
         // 깃허브 링크
-        const githubLink = `<a class="github-link" href="https://github.com/kimbareum/Ormi_Project1" target="_blank" aria-label="github 링크"><div></div></a>`;
+        const githubLink = `<a class="github-link" href="https://github.com/kimbareum/TravelPlanHelper" target="_blank" aria-label="github 링크"><div></div></a>`;
 
         const pageDescription = makeTextBox({
             boxTag: "p",
